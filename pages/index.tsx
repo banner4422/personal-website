@@ -36,7 +36,7 @@ const Home: NextPage = () => {
       shouldReduceMotion={shouldReduceMotion!} 
       switchLoad={switchLoad} >
       <Head>
-        <title>{domain !== process.env.NEXT_PUBLIC_domain1 ? process.env.NEXT_PUBLIC_name : process.env.NEXT_PUBLIC_fullName}</title>
+        <title>Christian Nielsen</title>
       </Head>
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto pb-6">
         <AvatarCard domain={domain} shouldReduceMotion={shouldReduceMotion!} />

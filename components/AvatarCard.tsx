@@ -16,18 +16,11 @@ export default function AvatarCard({ domain, shouldReduceMotion }: props) {
                 initial="hidden" 
                 animate="show"
                 className="font-bold text-3xl md:text-5xl tracking-tight mb-1 text-black dark:text-gray-50"
-              >{domain !== process.env.NEXT_PUBLIC_domain2 ? process.env.NEXT_PUBLIC_name : process.env.NEXT_PUBLIC_fullName}</motion.h1>
+              >Christian Nielsen</motion.h1>
               <motion.h2 
                 initial="hidden" 
                 animate="show" 
-                className="text-gray-700 dark:text-gray-200 mb-4">Student Software Engineer {domain !== process.env.NEXT_PUBLIC_domain2 ? 
-                <Fragment></Fragment>
-                :
-                <motion.span 
-                  initial="hidden" 
-                  animate="show" 
-                  className="font-semibold">at {process.env.NEXT_PUBLIC_workplace} <motion.span className="text-work">{process.env.NEXT_PUBLIC_workplace2}</motion.span>
-                </motion.span>}
+                className="text-gray-700 dark:text-gray-200 mb-4">Student Software Engineer
               </motion.h2>
               <motion.p 
                 initial="hidden" 
@@ -51,7 +44,7 @@ export default function AvatarCard({ domain, shouldReduceMotion }: props) {
               animate="show" 
               className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto">
               <Image
-                alt={domain !== process.env.NEXT_PUBLIC_domain2 ? process.env.NEXT_PUBLIC_name as string : process.env.NEXT_PUBLIC_fullName as string}
+                alt="Christian Nielsen"
                 height={176}
                 width={176}
                 src="/avatar.jpg"
