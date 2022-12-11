@@ -20,10 +20,10 @@ export default function AvatarCard({ domain, shouldReduceMotion }: props) {
               <motion.h2 
                 initial="hidden" 
                 animate="show" 
-                className="text-gray-700 dark:text-gray-200 mb-4">Student Software Engineer <motion.span 
+                className="text-gray-700 dark:text-gray-200 mb-4">Student Software Engineer at <motion.span 
                 initial="hidden" 
                 animate="show" 
-                className="font-semibold">at Copenhagen <motion.span className="text-work">Optimization</motion.span>
+                className="font-semibold">Copenhagen <motion.span className="text-work">Optimization</motion.span>
               </motion.span>
               </motion.h2>
               <motion.p 
