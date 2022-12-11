@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import AvatarCard from '../components/AvatarCard';
 import Container from '../components/Container';
 import SocialMediaButton, { socialMediaButtonsData } from '../components/SocialMediaButton';
-import { mediaBoxAnimation } from '../lib/animationVariants';
+//import { mediaBoxAnimation } from '../lib/animationVariants';
 
 const Home: NextPage = () => {
   const [mounted, setMounted] = useState(false);
@@ -43,7 +43,6 @@ const Home: NextPage = () => {
         <motion.div 
           initial="hidden" 
           animate="show" 
-          variants={mediaBoxAnimation(shouldReduceMotion!)} 
           className="mx-auto md:flex-row flex flex-wrap text-center justify-center gap-4 md:gap-16 pb-8">
           {socialMediaButtonsData.map(x => 
             (<SocialMediaButton key={x.colour} colour={x.colour} link={x.link} />)

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import Image from 'next/image';
 import { Fragment } from "react";
-import { headerAnimation, textAnimation, avatarAnimation } from "../lib/animationVariants";
+//import { headerAnimation, textAnimation, avatarAnimation } from "../lib/animationVariants";
 
 interface props {
     domain: string;
@@ -15,27 +15,23 @@ export default function AvatarCard({ domain, shouldReduceMotion }: props) {
               <motion.h1 
                 initial="hidden" 
                 animate="show"
-                variants={headerAnimation(shouldReduceMotion)} 
                 className="font-bold text-3xl md:text-5xl tracking-tight mb-1 text-black dark:text-gray-50"
               >{domain !== process.env.NEXT_PUBLIC_domain2 ? process.env.NEXT_PUBLIC_name : process.env.NEXT_PUBLIC_fullName}</motion.h1>
               <motion.h2 
                 initial="hidden" 
                 animate="show" 
-                variants={textAnimation(shouldReduceMotion)} 
                 className="text-gray-700 dark:text-gray-200 mb-4">Student Software Engineer {domain !== process.env.NEXT_PUBLIC_domain2 ? 
                 <Fragment></Fragment>
                 :
                 <motion.span 
                   initial="hidden" 
                   animate="show" 
-                  variants={textAnimation(shouldReduceMotion)} 
                   className="font-semibold">at {process.env.NEXT_PUBLIC_workplace} <motion.span className="text-work">{process.env.NEXT_PUBLIC_workplace2}</motion.span>
                 </motion.span>}
               </motion.h2>
               <motion.p 
                 initial="hidden" 
                 animate="show" 
-                variants={textAnimation(shouldReduceMotion)} 
                 className="text-gray-600 dark:text-gray-400 mb-10 w-fit">
                   Software interested lad from Copenhagen, Denmark.
                   <br/>
@@ -53,7 +49,6 @@ export default function AvatarCard({ domain, shouldReduceMotion }: props) {
             <motion.div
               initial="hidden" 
               animate="show" 
-              variants={avatarAnimation(shouldReduceMotion)} 
               className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto">
               <Image
                 alt={domain !== process.env.NEXT_PUBLIC_domain2 ? process.env.NEXT_PUBLIC_name as string : process.env.NEXT_PUBLIC_fullName as string}

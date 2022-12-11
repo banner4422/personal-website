@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import Head from "next/head";
-import { Fragment } from "react";
-import { footerAnimation } from "../lib/animationVariants";
+//import { footerAnimation } from "../lib/animationVariants";
 import NavBar from "./NavBar";
 import Spotify from "./Spotify";
 
@@ -25,7 +24,6 @@ export default function Container({ switchLoad, shouldReduceMotion, resolvedThem
             <motion.footer 
                 initial="hidden" 
                 animate="show" 
-                variants={footerAnimation(shouldReduceMotion!)} 
                 className="flex flex-col justify-center items-start max-w-2xl mx-auto w-full dark:opacity-50">
                 <hr className="w-full border-1 border-gray-200 dark:border-gray-800 mb-8" />
                 <Spotify />

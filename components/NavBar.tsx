@@ -1,6 +1,6 @@
 import { Switch } from "@headlessui/react";
 import { motion } from "framer-motion";
-import { darkModeSwitchAnimation } from "../lib/animationVariants";
+//import { darkModeSwitchAnimation } from "../lib/animationVariants";
 
 interface props {
     switchLoad: boolean;
@@ -19,7 +19,6 @@ export default function NavBar({ switchLoad, shouldReduceMotion, resolvedTheme, 
                     aria-label="Enable Dark Mode"
                     initial="hidden" 
                     animate="show"
-                    variants={switchLoad ? null : darkModeSwitchAnimation(shouldReduceMotion)} 
                     checked={resolvedTheme === "dark" ? false : true}
                     onChange={() => setThemeExtended()}
                     className={`${

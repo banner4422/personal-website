@@ -1,8 +1,11 @@
 import { Variants } from "framer-motion"
 
-export function footerAnimation(shouldReduceMotion: boolean): Variants {
-    return (
-        shouldReduceMotion ? 
+export function footerAnimation(shouldReduceMotion: boolean) {
+  let variants: Variants = {};
+  const isMobile = window.innerWidth < 768;
+  if (!isMobile) {  
+  return (
+    variants = shouldReduceMotion ? 
         {
             hidden: { opacity: 0 },
             show: {
@@ -28,4 +31,5 @@ export function footerAnimation(shouldReduceMotion: boolean): Variants {
             },
           }
     )
+  }
 }
