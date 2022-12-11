@@ -16,11 +16,15 @@ export default function AvatarCard({ domain, shouldReduceMotion }: props) {
                 initial="hidden" 
                 animate="show"
                 className="font-bold text-3xl md:text-5xl tracking-tight mb-1 text-black dark:text-gray-50"
-              >Christian Nielsen</motion.h1>
+              >Christian Krogh Nielsen</motion.h1>
               <motion.h2 
                 initial="hidden" 
                 animate="show" 
-                className="text-gray-700 dark:text-gray-200 mb-4">Student Software Engineer
+                className="text-gray-700 dark:text-gray-200 mb-4">Student Software Engineer <motion.span 
+                initial="hidden" 
+                animate="show" 
+                className="font-semibold">at Copenhagen <motion.span className="text-work">Optimization</motion.span>
+              </motion.span>
               </motion.h2>
               <motion.p 
                 initial="hidden" 
