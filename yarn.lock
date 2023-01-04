@@ -34,9 +34,9 @@
   dependencies:
     prop-types "^15.8.1"
 
-"@headlessui/react@^1.7.5":
-  version "1.7.5"
-  resolved "https://registry.npmjs.org/@headlessui/react/-/react-1.7.5.tgz"
+"@headlessui/react@^1.7.7":
+  version "1.7.7"
+  resolved "https://registry.yarnpkg.com/@headlessui/react/-/react-1.7.7.tgz#d6f8708d8943ae8ebb1a6929108234e4515ac7e8"
   dependencies:
     client-only "^0.0.1"
 
