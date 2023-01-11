@@ -377,9 +377,9 @@ fraction.js@^4.2.0:
   version "4.2.0"
   resolved "https://registry.npmjs.org/fraction.js/-/fraction.js-4.2.0.tgz"
 
-framer-motion@^8.1.9:
-  version "8.1.9"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-8.1.9.tgz#c8ade497a35082e34adbb541a352e944344e912b"
+framer-motion@^8.4.0:
+  version "8.4.0"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-8.4.0.tgz#3211ba4006a335fc9f5d04690e473dfb7ab20bc8"
   dependencies:
     "@motionone/dom" "^10.15.3"
     hey-listen "^1.0.8"
