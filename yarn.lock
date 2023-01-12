@@ -49,9 +49,9 @@
     "@motionone/utils" "^10.15.1"
     tslib "^2.3.1"
 
-"@motionone/dom@^10.15.3":
-  version "10.15.3"
-  resolved "https://registry.npmjs.org/@motionone/dom/-/dom-10.15.3.tgz"
+"@motionone/dom@^10.15.3", "@motionone/dom@^10.15.5":
+  version "10.15.5"
+  resolved "https://registry.yarnpkg.com/@motionone/dom/-/dom-10.15.5.tgz#4af18f8136d85c2fc997cac98121c969f6731802"
   dependencies:
     "@motionone/animation" "^10.15.1"
     "@motionone/generators" "^10.15.1"
@@ -75,11 +75,11 @@
     "@motionone/utils" "^10.15.1"
     tslib "^2.3.1"
 
-"@motionone/svelte@^10.15.3":
-  version "10.15.3"
-  resolved "https://registry.npmjs.org/@motionone/svelte/-/svelte-10.15.3.tgz"
+"@motionone/svelte@^10.15.5":
+  version "10.15.5"
+  resolved "https://registry.yarnpkg.com/@motionone/svelte/-/svelte-10.15.5.tgz#f36b40101ec1db122820598089f42e831f6cf5f5"
   dependencies:
-    "@motionone/dom" "^10.15.3"
+    "@motionone/dom" "^10.15.5"
     tslib "^2.3.1"
 
 "@motionone/types@^10.15.1":
@@ -94,11 +94,11 @@
     hey-listen "^1.0.8"
     tslib "^2.3.1"
 
-"@motionone/vue@^10.15.3":
-  version "10.15.3"
-  resolved "https://registry.npmjs.org/@motionone/vue/-/vue-10.15.3.tgz"
+"@motionone/vue@^10.15.5":
+  version "10.15.5"
+  resolved "https://registry.yarnpkg.com/@motionone/vue/-/vue-10.15.5.tgz#3101c62b2fce06b3f3072b9ff0f551213eb02476"
   dependencies:
-    "@motionone/dom" "^10.15.3"
+    "@motionone/dom" "^10.15.5"
     tslib "^2.3.1"
 
 "@next/env@13.1.1":
@@ -479,16 +479,16 @@ minimist@^1.2.6:
   version "1.2.6"
   resolved "https://registry.npmjs.org/minimist/-/minimist-1.2.6.tgz"
 
-motion@^10.15.3:
-  version "10.15.3"
-  resolved "https://registry.npmjs.org/motion/-/motion-10.15.3.tgz"
+motion@^10.15.5:
+  version "10.15.5"
+  resolved "https://registry.yarnpkg.com/motion/-/motion-10.15.5.tgz#d336ddbdd37bc28bb99fbb243fe309df6c685ad6"
   dependencies:
     "@motionone/animation" "^10.15.1"
-    "@motionone/dom" "^10.15.3"
-    "@motionone/svelte" "^10.15.3"
+    "@motionone/dom" "^10.15.5"
+    "@motionone/svelte" "^10.15.5"
     "@motionone/types" "^10.15.1"
     "@motionone/utils" "^10.15.1"
-    "@motionone/vue" "^10.15.3"
+    "@motionone/vue" "^10.15.5"
 
 nanoid@^3.3.4:
   version "3.3.4"
