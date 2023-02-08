@@ -32,7 +32,7 @@ export default function AvatarCard({ domain, shouldReduceMotion }: props) {
                 className="text-gray-600 dark:text-gray-400 mb-10 w-fit">
                   Software interested lad from Copenhagen, Denmark.
                   <br/>
-                  Currently on my 5th semester at <a className="text-cbs hover:underline underline-offset-2" href="https://www.cbs.dk/uddannelse/bachelor/hait-erhvervsoekonomi-informationsteknologi" target="_blank" rel="noopener noreferrer">Copenhagen Business School</a>. 
+                  Currently on my 6th semester at <a className="text-cbs hover:underline underline-offset-2" href="https://www.cbs.dk/uddannelse/bachelor/hait-erhvervsoekonomi-informationsteknologi" target="_blank" rel="noopener noreferrer">Copenhagen Business School</a>. 
                   <br/>
                   Experienced with <span className="text-TypeScript">TypeScript</span>, <span className="text-React">React</span> and a little bit of <span className="text-React">React Native</span> as well. 
                   <br/>

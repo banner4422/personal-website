@@ -9,9 +9,9 @@ A personal website meant for information and basically be a portfolio.
 
 Credits to [Lee Robinson](https://github.com/leerob/leerob.io) for inspiration.
 ## How to set up and run this locally
-1. first
-2. second
-3. third
+1. Create a `.env.local` with the following elements seen in the [.env.example](https://github.com/banner4422/personal-website/blob/master/.env.example) file
+2. `npm install`
+3. `npm run dev`
 
 ## Implementations
 - [x] Personal Avatar card.
