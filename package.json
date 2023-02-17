@@ -11,7 +11,7 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@headlessui/react": "^1.7.11",
     "@next/font": "^13.1.6",
-    "framer-motion": "^9.0.2",
+    "framer-motion": "^9.0.4",
     "isomorphic-unfetch": "^4.0.2",
     "motion": "^10.15.5",
     "next": "^13.1.6",
