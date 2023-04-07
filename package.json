@@ -10,7 +10,7 @@
     "@fortawesome/free-brands-svg-icons": "^6.4.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@headlessui/react": "^1.7.13",
-    "@next/font": "^13.2.4",
+    "@next/font": "^13.3.0",
     "framer-motion": "^10.10.0",
     "isomorphic-unfetch": "^4.0.2",
     "motion": "^10.15.5",
