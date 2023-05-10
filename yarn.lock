@@ -393,9 +393,9 @@ fraction.js@^4.2.0:
   version "4.2.0"
   resolved "https://registry.npmjs.org/fraction.js/-/fraction.js-4.2.0.tgz"
 
-framer-motion@^10.12.6:
-  version "10.12.6"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-10.12.6.tgz#ac14eac81ed98c2c1b332a0fc30165a0a090b31b"
+framer-motion@^10.12.9:
+  version "10.12.9"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-10.12.9.tgz#113bfdf34d32e06fc8e8093033829bc5ee1ea03e"
   dependencies:
     tslib "^2.4.0"
   optionalDependencies:
