@@ -140,9 +140,9 @@
   version "13.4.6"
   resolved "https://registry.yarnpkg.com/@next/env/-/env-13.4.6.tgz#3f2041c7758660d7255707ae4cb9166519113dea"
 
-"@next/font@^13.4.5":
-  version "13.4.5"
-  resolved "https://registry.yarnpkg.com/@next/font/-/font-13.4.5.tgz#c720fc2196557aa34330985de46a513688c9adcc"
+"@next/font@^13.4.6":
+  version "13.4.6"
+  resolved "https://registry.yarnpkg.com/@next/font/-/font-13.4.6.tgz#76ac7a3a566e8dbceab821a99bfa9face7d59ed9"
 
 "@next/swc-darwin-arm64@13.4.6":
   version "13.4.6"
