@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+"@alloc/quick-lru@^5.2.0":
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/@alloc/quick-lru/-/quick-lru-5.2.0.tgz#7bf68b20c0a350f936915fcae06f58e32007ce30"
+
 "@emotion/is-prop-valid@^0.8.2":
   version "0.8.8"
   resolved "https://registry.npmjs.org/@emotion/is-prop-valid/-/is-prop-valid-0.8.8.tgz"
@@ -12,21 +16,21 @@
   version "0.7.4"
   resolved "https://registry.npmjs.org/@emotion/memoize/-/memoize-0.7.4.tgz"
 
-"@fortawesome/fontawesome-common-types@6.4.0":
-  version "6.4.0"
-  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-6.4.0.tgz#88da2b70d6ca18aaa6ed3687832e11f39e80624b"
+"@fortawesome/fontawesome-common-types@6.4.2":
+  version "6.4.2"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-6.4.2.tgz#1766039cad33f8ad87f9467b98e0d18fbc8f01c5"
 
-"@fortawesome/fontawesome-svg-core@^6.4.0":
-  version "6.4.0"
-  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-svg-core/-/fontawesome-svg-core-6.4.0.tgz#3727552eff9179506e9203d72feb5b1063c11a21"
+"@fortawesome/fontawesome-svg-core@^6.4.2":
+  version "6.4.2"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-svg-core/-/fontawesome-svg-core-6.4.2.tgz#37f4507d5ec645c8b50df6db14eced32a6f9be09"
   dependencies:
-    "@fortawesome/fontawesome-common-types" "6.4.0"
+    "@fortawesome/fontawesome-common-types" "6.4.2"
 
-"@fortawesome/free-brands-svg-icons@^6.4.0":
-  version "6.4.0"
-  resolved "https://registry.yarnpkg.com/@fortawesome/free-brands-svg-icons/-/free-brands-svg-icons-6.4.0.tgz#c785cf5563231eadc5ef5f8cd0274e0b8920433f"
+"@fortawesome/free-brands-svg-icons@^6.4.2":
+  version "6.4.2"
+  resolved "https://registry.yarnpkg.com/@fortawesome/free-brands-svg-icons/-/free-brands-svg-icons-6.4.2.tgz#9b8e78066ea6dd563da5dfa686615791d0f7cc71"
   dependencies:
-    "@fortawesome/fontawesome-common-types" "6.4.0"
+    "@fortawesome/fontawesome-common-types" "6.4.2"
 
 "@fortawesome/react-fontawesome@^0.2.0":
   version "0.2.0"
@@ -34,11 +38,42 @@
   dependencies:
     prop-types "^15.8.1"
 
-"@headlessui/react@^1.7.14":
-  version "1.7.14"
-  resolved "https://registry.yarnpkg.com/@headlessui/react/-/react-1.7.14.tgz#75f19552c535113640fe8a3a40e71474f49e89c9"
+"@headlessui/react@^1.7.16":
+  version "1.7.16"
+  resolved "https://registry.yarnpkg.com/@headlessui/react/-/react-1.7.16.tgz#9c458c9c4dbb708258c9e8da3fe5363f915f7b11"
   dependencies:
     client-only "^0.0.1"
+
+"@jridgewell/gen-mapping@^0.3.2":
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/@jridgewell/gen-mapping/-/gen-mapping-0.3.3.tgz#7e02e6eb5df901aaedb08514203b096614024098"
+  dependencies:
+    "@jridgewell/set-array" "^1.0.1"
+    "@jridgewell/sourcemap-codec" "^1.4.10"
+    "@jridgewell/trace-mapping" "^0.3.9"
+
+"@jridgewell/resolve-uri@3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@jridgewell/resolve-uri/-/resolve-uri-3.1.0.tgz#2203b118c157721addfe69d47b70465463066d78"
+
+"@jridgewell/set-array@^1.0.1":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@jridgewell/set-array/-/set-array-1.1.2.tgz#7c6cf998d6d20b914c0a55a91ae928ff25965e72"
+
+"@jridgewell/sourcemap-codec@1.4.14":
+  version "1.4.14"
+  resolved "https://registry.yarnpkg.com/@jridgewell/sourcemap-codec/-/sourcemap-codec-1.4.14.tgz#add4c98d341472a289190b424efbdb096991bb24"
+
+"@jridgewell/sourcemap-codec@^1.4.10":
+  version "1.4.15"
+  resolved "https://registry.yarnpkg.com/@jridgewell/sourcemap-codec/-/sourcemap-codec-1.4.15.tgz#d7c6e6755c78567a951e04ab52ef0fd26de59f32"
+
+"@jridgewell/trace-mapping@^0.3.9":
+  version "0.3.18"
+  resolved "https://registry.yarnpkg.com/@jridgewell/trace-mapping/-/trace-mapping-0.3.18.tgz#25783b2086daf6ff1dcb53c9249ae480e4dd4cd6"
+  dependencies:
+    "@jridgewell/resolve-uri" "3.1.0"
+    "@jridgewell/sourcemap-codec" "1.4.14"
 
 "@motionone/animation@^10.15.1":
   version "10.15.1"
@@ -49,9 +84,9 @@
     "@motionone/utils" "^10.15.1"
     tslib "^2.3.1"
 
-"@motionone/dom@^10.15.5":
-  version "10.15.5"
-  resolved "https://registry.yarnpkg.com/@motionone/dom/-/dom-10.15.5.tgz#4af18f8136d85c2fc997cac98121c969f6731802"
+"@motionone/dom@^10.16.2":
+  version "10.16.2"
+  resolved "https://registry.yarnpkg.com/@motionone/dom/-/dom-10.16.2.tgz#0c44df8ee3d1cfc50ee11d27050b27824355a61a"
   dependencies:
     "@motionone/animation" "^10.15.1"
     "@motionone/generators" "^10.15.1"
@@ -75,11 +110,11 @@
     "@motionone/utils" "^10.15.1"
     tslib "^2.3.1"
 
-"@motionone/svelte@^10.15.5":
-  version "10.15.5"
-  resolved "https://registry.yarnpkg.com/@motionone/svelte/-/svelte-10.15.5.tgz#f36b40101ec1db122820598089f42e831f6cf5f5"
+"@motionone/svelte@^10.16.2":
+  version "10.16.2"
+  resolved "https://registry.yarnpkg.com/@motionone/svelte/-/svelte-10.16.2.tgz#0b37c3b12927814d31d24941d1ca0ff49981b444"
   dependencies:
-    "@motionone/dom" "^10.15.5"
+    "@motionone/dom" "^10.16.2"
     tslib "^2.3.1"
 
 "@motionone/types@^10.15.1":
@@ -94,56 +129,56 @@
     hey-listen "^1.0.8"
     tslib "^2.3.1"
 
-"@motionone/vue@^10.15.5":
-  version "10.15.5"
-  resolved "https://registry.yarnpkg.com/@motionone/vue/-/vue-10.15.5.tgz#3101c62b2fce06b3f3072b9ff0f551213eb02476"
+"@motionone/vue@^10.16.2":
+  version "10.16.2"
+  resolved "https://registry.yarnpkg.com/@motionone/vue/-/vue-10.16.2.tgz#faf13afc27620a2df870c71c58a04ee8de8dea65"
   dependencies:
-    "@motionone/dom" "^10.15.5"
+    "@motionone/dom" "^10.16.2"
     tslib "^2.3.1"
 
-"@next/env@13.3.0":
-  version "13.3.0"
-  resolved "https://registry.yarnpkg.com/@next/env/-/env-13.3.0.tgz#cc2e49f03060a4684ce7ec7fd617a21bc5b9edba"
+"@next/env@13.4.12":
+  version "13.4.12"
+  resolved "https://registry.yarnpkg.com/@next/env/-/env-13.4.12.tgz#0b88115ab817f178bf9dc0c5e7b367277595b58d"
 
-"@next/font@^13.3.0":
-  version "13.3.0"
-  resolved "https://registry.yarnpkg.com/@next/font/-/font-13.3.0.tgz#790c5444348fad7aabbfc35a45bfc50505219725"
+"@next/font@^13.4.16":
+  version "13.4.16"
+  resolved "https://registry.yarnpkg.com/@next/font/-/font-13.4.16.tgz#e411255e416b22732409623b68c2d2b4a0de9528"
 
-"@next/swc-darwin-arm64@13.3.0":
-  version "13.3.0"
-  resolved "https://registry.yarnpkg.com/@next/swc-darwin-arm64/-/swc-darwin-arm64-13.3.0.tgz#38f18e0639cd4c7edc6a38d4b83fe00f38eea4f2"
+"@next/swc-darwin-arm64@13.4.12":
+  version "13.4.12"
+  resolved "https://registry.yarnpkg.com/@next/swc-darwin-arm64/-/swc-darwin-arm64-13.4.12.tgz#326c830b111de8a1a51ac0cbc3bcb157c4c4f92c"
 
-"@next/swc-darwin-x64@13.3.0":
-  version "13.3.0"
-  resolved "https://registry.yarnpkg.com/@next/swc-darwin-x64/-/swc-darwin-x64-13.3.0.tgz#b670ed1fd1d231aa21279173ec52e3ad56dc6aeb"
+"@next/swc-darwin-x64@13.4.12":
+  version "13.4.12"
+  resolved "https://registry.yarnpkg.com/@next/swc-darwin-x64/-/swc-darwin-x64-13.4.12.tgz#dd5c49fc092a8ffe4f30b7aa9bf6c5d2e40bbfa1"
 
-"@next/swc-linux-arm64-gnu@13.3.0":
-  version "13.3.0"
-  resolved "https://registry.yarnpkg.com/@next/swc-linux-arm64-gnu/-/swc-linux-arm64-gnu-13.3.0.tgz#b114935f6b4c94c123f6cac55a4823d483209ba5"
+"@next/swc-linux-arm64-gnu@13.4.12":
+  version "13.4.12"
+  resolved "https://registry.yarnpkg.com/@next/swc-linux-arm64-gnu/-/swc-linux-arm64-gnu-13.4.12.tgz#816cbe9d26ce4670ea99d95b66041e483ed122d6"
 
-"@next/swc-linux-arm64-musl@13.3.0":
-  version "13.3.0"
-  resolved "https://registry.yarnpkg.com/@next/swc-linux-arm64-musl/-/swc-linux-arm64-musl-13.3.0.tgz#67a57309f8761c7d00d629d6785d56ed0567a0d2"
+"@next/swc-linux-arm64-musl@13.4.12":
+  version "13.4.12"
+  resolved "https://registry.yarnpkg.com/@next/swc-linux-arm64-musl/-/swc-linux-arm64-musl-13.4.12.tgz#670c8aee221628f65e5b299ee84db746e6c778b0"
 
-"@next/swc-linux-x64-gnu@13.3.0":
-  version "13.3.0"
-  resolved "https://registry.yarnpkg.com/@next/swc-linux-x64-gnu/-/swc-linux-x64-gnu-13.3.0.tgz#11bd2bea7c00b40be111c0dd16e71171f3792086"
+"@next/swc-linux-x64-gnu@13.4.12":
+  version "13.4.12"
+  resolved "https://registry.yarnpkg.com/@next/swc-linux-x64-gnu/-/swc-linux-x64-gnu-13.4.12.tgz#54c64e689f007ae463698dddc1c6637491c99cb4"
 
-"@next/swc-linux-x64-musl@13.3.0":
-  version "13.3.0"
-  resolved "https://registry.yarnpkg.com/@next/swc-linux-x64-musl/-/swc-linux-x64-musl-13.3.0.tgz#d57e99f85890799b78719c3ea32a4624de8d701b"
+"@next/swc-linux-x64-musl@13.4.12":
+  version "13.4.12"
+  resolved "https://registry.yarnpkg.com/@next/swc-linux-x64-musl/-/swc-linux-x64-musl-13.4.12.tgz#9cbddf4e542ef3d32284e0c36ce102facc015f8b"
 
-"@next/swc-win32-arm64-msvc@13.3.0":
-  version "13.3.0"
-  resolved "https://registry.yarnpkg.com/@next/swc-win32-arm64-msvc/-/swc-win32-arm64-msvc-13.3.0.tgz#0c209aa35d1c88b01e78259a89cd68f4139b5093"
+"@next/swc-win32-arm64-msvc@13.4.12":
+  version "13.4.12"
+  resolved "https://registry.yarnpkg.com/@next/swc-win32-arm64-msvc/-/swc-win32-arm64-msvc-13.4.12.tgz#3467a4b25429ccf49fd416388c9d19c80a4f6465"
 
-"@next/swc-win32-ia32-msvc@13.3.0":
-  version "13.3.0"
-  resolved "https://registry.yarnpkg.com/@next/swc-win32-ia32-msvc/-/swc-win32-ia32-msvc-13.3.0.tgz#52ae74da1dd6d840c3743923367d27ed013803dd"
+"@next/swc-win32-ia32-msvc@13.4.12":
+  version "13.4.12"
+  resolved "https://registry.yarnpkg.com/@next/swc-win32-ia32-msvc/-/swc-win32-ia32-msvc-13.4.12.tgz#73494cd167191946833c680b28d6a42435d383a8"
 
-"@next/swc-win32-x64-msvc@13.3.0":
-  version "13.3.0"
-  resolved "https://registry.yarnpkg.com/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-13.3.0.tgz#db7b55fee834dc8c2c484c696469e65bae2ee770"
+"@next/swc-win32-x64-msvc@13.4.12":
+  version "13.4.12"
+  resolved "https://registry.yarnpkg.com/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-13.4.12.tgz#4a497edc4e8c5ee3c3eb27cf0eb39dfadff70874"
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -163,29 +198,29 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@swc/helpers@0.4.14":
-  version "0.4.14"
-  resolved "https://registry.yarnpkg.com/@swc/helpers/-/helpers-0.4.14.tgz#1352ac6d95e3617ccb7c1498ff019654f1e12a74"
+"@swc/helpers@0.5.1":
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/@swc/helpers/-/helpers-0.5.1.tgz#e9031491aa3f26bfcc974a67f48bd456c8a5357a"
   dependencies:
     tslib "^2.4.0"
 
-"@types/node@18.15.11":
-  version "18.15.11"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.15.11.tgz#b3b790f09cb1696cffcec605de025b088fa4225f"
+"@types/node@20.5.0":
+  version "20.5.0"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.5.0.tgz#7fc8636d5f1aaa3b21e6245e97d56b7f56702313"
 
 "@types/prop-types@*":
   version "15.7.5"
   resolved "https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.5.tgz"
 
-"@types/react-dom@18.0.11":
-  version "18.0.11"
-  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.0.11.tgz#321351c1459bc9ca3d216aefc8a167beec334e33"
+"@types/react-dom@18.2.7":
+  version "18.2.7"
+  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.2.7.tgz#67222a08c0a6ae0a0da33c3532348277c70abb63"
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@18.0.35":
-  version "18.0.35"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.35.tgz#192061cb1044fe01f2d3a94272cd35dd50502741"
+"@types/react@*", "@types/react@18.2.20":
+  version "18.2.20"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.20.tgz#1605557a83df5c8a2cc4eeb743b3dfc0eb6aaeb2"
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -283,10 +318,6 @@ client-only@0.0.1, client-only@^0.0.1:
   version "0.0.1"
   resolved "https://registry.npmjs.org/client-only/-/client-only-0.0.1.tgz"
 
-color-name@^1.1.4:
-  version "1.1.4"
-  resolved "https://registry.npmjs.org/color-name/-/color-name-1.1.4.tgz"
-
 commander@^4.0.0:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/commander/-/commander-4.1.1.tgz#9fd602bd936294e9e9ef46a3f4d6964044b18068"
@@ -362,9 +393,9 @@ fraction.js@^4.2.0:
   version "4.2.0"
   resolved "https://registry.npmjs.org/fraction.js/-/fraction.js-4.2.0.tgz"
 
-framer-motion@^10.11.6:
-  version "10.11.6"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-10.11.6.tgz#1c59f9e2dcfa379f5dd1076eebdf8b11b7c62f80"
+framer-motion@^10.15.0:
+  version "10.15.0"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-10.15.0.tgz#5f043fdd4edb2c29a0a5e86cce1f67b88dcdc768"
   dependencies:
     tslib "^2.4.0"
   optionalDependencies:
@@ -394,6 +425,10 @@ glob-parent@^6.0.2:
   dependencies:
     is-glob "^4.0.3"
 
+glob-to-regexp@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/glob-to-regexp/-/glob-to-regexp-0.4.1.tgz#c75297087c851b9a578bd217dd59a92f59fe546e"
+
 glob@7.1.6:
   version "7.1.6"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.6.tgz#141f33b81a7c2492e125594307480c46679278a6"
@@ -404,6 +439,10 @@ glob@7.1.6:
     minimatch "^3.0.4"
     once "^1.3.0"
     path-is-absolute "^1.0.0"
+
+graceful-fs@^4.1.2:
+  version "4.2.11"
+  resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.11.tgz#4183e4e8bf08bb6e05bbb2f7d2e0c8f712ca40e3"
 
 has@^1.0.3:
   version "1.0.3"
@@ -432,9 +471,9 @@ is-binary-path@~2.1.0:
   dependencies:
     binary-extensions "^2.0.0"
 
-is-core-module@^2.9.0:
-  version "2.9.0"
-  resolved "https://registry.npmjs.org/is-core-module/-/is-core-module-2.9.0.tgz"
+is-core-module@^2.11.0:
+  version "2.12.0"
+  resolved "https://registry.yarnpkg.com/is-core-module/-/is-core-module-2.12.0.tgz#36ad62f6f73c8253fd6472517a12483cf03e7ec4"
   dependencies:
     has "^1.0.3"
 
@@ -459,7 +498,7 @@ isomorphic-unfetch@^4.0.2:
     node-fetch "^3.2.0"
     unfetch "^5.0.0"
 
-jiti@^1.17.2:
+jiti@^1.18.2:
   version "1.18.2"
   resolved "https://registry.yarnpkg.com/jiti/-/jiti-1.18.2.tgz#80c3ef3d486ebf2450d9335122b32d121f2a83cd"
 
@@ -467,9 +506,9 @@ jiti@^1.17.2:
   version "4.0.0"
   resolved "https://registry.npmjs.org/js-tokens/-/js-tokens-4.0.0.tgz"
 
-lilconfig@^2.0.5, lilconfig@^2.0.6:
-  version "2.0.6"
-  resolved "https://registry.npmjs.org/lilconfig/-/lilconfig-2.0.6.tgz"
+lilconfig@^2.0.5, lilconfig@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/lilconfig/-/lilconfig-2.1.0.tgz#78e23ac89ebb7e1bfbf25b18043de756548e7f52"
 
 lines-and-columns@^1.1.6:
   version "1.2.4"
@@ -498,16 +537,16 @@ minimatch@^3.0.4:
   dependencies:
     brace-expansion "^1.1.7"
 
-motion@^10.15.5:
-  version "10.15.5"
-  resolved "https://registry.yarnpkg.com/motion/-/motion-10.15.5.tgz#d336ddbdd37bc28bb99fbb243fe309df6c685ad6"
+motion@^10.16.2:
+  version "10.16.2"
+  resolved "https://registry.yarnpkg.com/motion/-/motion-10.16.2.tgz#7dc173c6ad62210a7e9916caeeaf22c51e598d21"
   dependencies:
     "@motionone/animation" "^10.15.1"
-    "@motionone/dom" "^10.15.5"
-    "@motionone/svelte" "^10.15.5"
+    "@motionone/dom" "^10.16.2"
+    "@motionone/svelte" "^10.16.2"
     "@motionone/types" "^10.15.1"
     "@motionone/utils" "^10.15.1"
-    "@motionone/vue" "^10.15.5"
+    "@motionone/vue" "^10.16.2"
 
 mz@^2.7.0:
   version "2.7.0"
@@ -517,34 +556,36 @@ mz@^2.7.0:
     object-assign "^4.0.1"
     thenify-all "^1.0.0"
 
-nanoid@^3.3.4:
-  version "3.3.4"
-  resolved "https://registry.npmjs.org/nanoid/-/nanoid-3.3.4.tgz"
+nanoid@^3.3.4, nanoid@^3.3.6:
+  version "3.3.6"
+  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.6.tgz#443380c856d6e9f9824267d960b4236ad583ea4c"
 
 next-themes@^0.2.1:
   version "0.2.1"
   resolved "https://registry.npmjs.org/next-themes/-/next-themes-0.2.1.tgz"
 
-next@^13.3.0:
-  version "13.3.0"
-  resolved "https://registry.yarnpkg.com/next/-/next-13.3.0.tgz#40632d303d74fc8521faa0a5bf4a033a392749b1"
+next@^13.4.12:
+  version "13.4.12"
+  resolved "https://registry.yarnpkg.com/next/-/next-13.4.12.tgz#809b21ea0aabbe88ced53252c88c4a5bd5af95df"
   dependencies:
-    "@next/env" "13.3.0"
-    "@swc/helpers" "0.4.14"
+    "@next/env" "13.4.12"
+    "@swc/helpers" "0.5.1"
     busboy "1.6.0"
     caniuse-lite "^1.0.30001406"
     postcss "8.4.14"
     styled-jsx "5.1.1"
+    watchpack "2.4.0"
+    zod "3.21.4"
   optionalDependencies:
-    "@next/swc-darwin-arm64" "13.3.0"
-    "@next/swc-darwin-x64" "13.3.0"
-    "@next/swc-linux-arm64-gnu" "13.3.0"
-    "@next/swc-linux-arm64-musl" "13.3.0"
-    "@next/swc-linux-x64-gnu" "13.3.0"
-    "@next/swc-linux-x64-musl" "13.3.0"
-    "@next/swc-win32-arm64-msvc" "13.3.0"
-    "@next/swc-win32-ia32-msvc" "13.3.0"
-    "@next/swc-win32-x64-msvc" "13.3.0"
+    "@next/swc-darwin-arm64" "13.4.12"
+    "@next/swc-darwin-x64" "13.4.12"
+    "@next/swc-linux-arm64-gnu" "13.4.12"
+    "@next/swc-linux-arm64-musl" "13.4.12"
+    "@next/swc-linux-x64-gnu" "13.4.12"
+    "@next/swc-linux-x64-musl" "13.4.12"
+    "@next/swc-win32-arm64-msvc" "13.4.12"
+    "@next/swc-win32-ia32-msvc" "13.4.12"
+    "@next/swc-win32-x64-msvc" "13.4.12"
 
 node-domexception@^1.0.0:
   version "1.0.0"
@@ -608,34 +649,34 @@ pirates@^4.0.1:
   version "4.0.5"
   resolved "https://registry.yarnpkg.com/pirates/-/pirates-4.0.5.tgz#feec352ea5c3268fb23a37c702ab1699f35a5f3b"
 
-postcss-import@^14.1.0:
-  version "14.1.0"
-  resolved "https://registry.npmjs.org/postcss-import/-/postcss-import-14.1.0.tgz"
+postcss-import@^15.1.0:
+  version "15.1.0"
+  resolved "https://registry.yarnpkg.com/postcss-import/-/postcss-import-15.1.0.tgz#41c64ed8cc0e23735a9698b3249ffdbf704adc70"
   dependencies:
     postcss-value-parser "^4.0.0"
     read-cache "^1.0.0"
     resolve "^1.1.7"
 
-postcss-js@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.npmjs.org/postcss-js/-/postcss-js-4.0.0.tgz"
+postcss-js@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/postcss-js/-/postcss-js-4.0.1.tgz#61598186f3703bab052f1c4f7d805f3991bee9d2"
   dependencies:
     camelcase-css "^2.0.1"
 
-postcss-load-config@^3.1.4:
-  version "3.1.4"
-  resolved "https://registry.npmjs.org/postcss-load-config/-/postcss-load-config-3.1.4.tgz"
+postcss-load-config@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/postcss-load-config/-/postcss-load-config-4.0.1.tgz#152383f481c2758274404e4962743191d73875bd"
   dependencies:
     lilconfig "^2.0.5"
-    yaml "^1.10.2"
+    yaml "^2.1.1"
 
-postcss-nested@6.0.0:
-  version "6.0.0"
-  resolved "https://registry.npmjs.org/postcss-nested/-/postcss-nested-6.0.0.tgz"
+postcss-nested@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/postcss-nested/-/postcss-nested-6.0.1.tgz#f83dc9846ca16d2f4fa864f16e9d9f7d0961662c"
   dependencies:
-    postcss-selector-parser "^6.0.10"
+    postcss-selector-parser "^6.0.11"
 
-postcss-selector-parser@^6.0.10, postcss-selector-parser@^6.0.11:
+postcss-selector-parser@^6.0.11:
   version "6.0.11"
   resolved "https://registry.npmjs.org/postcss-selector-parser/-/postcss-selector-parser-6.0.11.tgz"
   dependencies:
@@ -654,11 +695,11 @@ postcss@8.4.14:
     picocolors "^1.0.0"
     source-map-js "^1.0.2"
 
-postcss@^8.0.9, postcss@^8.4.21:
-  version "8.4.21"
-  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.21.tgz#c639b719a57efc3187b13a1d765675485f4134f4"
+postcss@^8.4.23, postcss@^8.4.27:
+  version "8.4.27"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.27.tgz#234d7e4b72e34ba5a92c29636734349e0d9c3057"
   dependencies:
-    nanoid "^3.3.4"
+    nanoid "^3.3.6"
     picocolors "^1.0.0"
     source-map-js "^1.0.2"
 
@@ -673,10 +714,6 @@ prop-types@^15.8.1:
 queue-microtask@^1.2.2:
   version "1.2.3"
   resolved "https://registry.npmjs.org/queue-microtask/-/queue-microtask-1.2.3.tgz"
-
-quick-lru@^5.1.1:
-  version "5.1.1"
-  resolved "https://registry.npmjs.org/quick-lru/-/quick-lru-5.1.1.tgz"
 
 react-dom@18.2.0:
   version "18.2.0"
@@ -707,11 +744,11 @@ readdirp@~3.6.0:
   dependencies:
     picomatch "^2.2.1"
 
-resolve@^1.1.7, resolve@^1.22.1:
-  version "1.22.1"
-  resolved "https://registry.npmjs.org/resolve/-/resolve-1.22.1.tgz"
+resolve@^1.1.7, resolve@^1.22.2:
+  version "1.22.2"
+  resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.22.2.tgz#0ed0943d4e301867955766c9f3e1ae6d01c6845f"
   dependencies:
-    is-core-module "^2.9.0"
+    is-core-module "^2.11.0"
     path-parse "^1.0.7"
     supports-preserve-symlinks-flag "^1.0.0"
 
@@ -745,10 +782,11 @@ styled-jsx@5.1.1:
   dependencies:
     client-only "0.0.1"
 
-sucrase@^3.29.0:
-  version "3.31.0"
-  resolved "https://registry.yarnpkg.com/sucrase/-/sucrase-3.31.0.tgz#daae4fd458167c5d4ba1cce6aef57b988b417b33"
+sucrase@^3.32.0:
+  version "3.32.0"
+  resolved "https://registry.yarnpkg.com/sucrase/-/sucrase-3.32.0.tgz#c4a95e0f1e18b6847127258a75cf360bc568d4a7"
   dependencies:
+    "@jridgewell/gen-mapping" "^0.3.2"
     commander "^4.0.0"
     glob "7.1.6"
     lines-and-columns "^1.1.6"
@@ -760,40 +798,38 @@ supports-preserve-symlinks-flag@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz"
 
-swr@^2.1.3:
-  version "2.1.3"
-  resolved "https://registry.yarnpkg.com/swr/-/swr-2.1.3.tgz#ae3608d4dc19f75121e0b51d1982735fbf02f52e"
+swr@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/swr/-/swr-2.2.0.tgz#575c6ac1bec087847f4c86a39ccbc0043c834d6a"
   dependencies:
     use-sync-external-store "^1.2.0"
 
-tailwindcss@^3.3.1:
-  version "3.3.1"
-  resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-3.3.1.tgz#b6662fab6a9b704779e48d083a9fef5a81d2b81e"
+tailwindcss@^3.3.3:
+  version "3.3.3"
+  resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-3.3.3.tgz#90da807393a2859189e48e9e7000e6880a736daf"
   dependencies:
+    "@alloc/quick-lru" "^5.2.0"
     arg "^5.0.2"
     chokidar "^3.5.3"
-    color-name "^1.1.4"
     didyoumean "^1.2.2"
     dlv "^1.1.3"
     fast-glob "^3.2.12"
     glob-parent "^6.0.2"
     is-glob "^4.0.3"
-    jiti "^1.17.2"
-    lilconfig "^2.0.6"
+    jiti "^1.18.2"
+    lilconfig "^2.1.0"
     micromatch "^4.0.5"
     normalize-path "^3.0.0"
     object-hash "^3.0.0"
     picocolors "^1.0.0"
-    postcss "^8.0.9"
-    postcss-import "^14.1.0"
-    postcss-js "^4.0.0"
-    postcss-load-config "^3.1.4"
-    postcss-nested "6.0.0"
+    postcss "^8.4.23"
+    postcss-import "^15.1.0"
+    postcss-js "^4.0.1"
+    postcss-load-config "^4.0.1"
+    postcss-nested "^6.0.1"
     postcss-selector-parser "^6.0.11"
-    postcss-value-parser "^4.2.0"
-    quick-lru "^5.1.1"
-    resolve "^1.22.1"
-    sucrase "^3.29.0"
+    resolve "^1.22.2"
+    sucrase "^3.32.0"
 
 thenify-all@^1.0.0:
   version "1.6.0"
@@ -821,9 +857,9 @@ tslib@^2.3.1, tslib@^2.4.0:
   version "2.4.1"
   resolved "https://registry.npmjs.org/tslib/-/tslib-2.4.1.tgz"
 
-typescript@5.0.4:
-  version "5.0.4"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.0.4.tgz#b217fd20119bd61a94d4011274e0ab369058da3b"
+typescript@5.1.6:
+  version "5.1.6"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.1.6.tgz#02f8ac202b6dad2c0dd5e0913745b47a37998274"
 
 unfetch@^5.0.0:
   version "5.0.0"
@@ -844,6 +880,13 @@ util-deprecate@^1.0.2:
   version "1.0.2"
   resolved "https://registry.npmjs.org/util-deprecate/-/util-deprecate-1.0.2.tgz"
 
+watchpack@2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/watchpack/-/watchpack-2.4.0.tgz#fa33032374962c78113f93c7f2fb4c54c9862a5d"
+  dependencies:
+    glob-to-regexp "^0.4.1"
+    graceful-fs "^4.1.2"
+
 web-streams-polyfill@^3.0.3:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/web-streams-polyfill/-/web-streams-polyfill-3.2.1.tgz#71c2718c52b45fd49dbeee88634b3a60ceab42a6"
@@ -852,6 +895,10 @@ wrappy@1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/wrappy/-/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
 
-yaml@^1.10.2:
-  version "1.10.2"
-  resolved "https://registry.npmjs.org/yaml/-/yaml-1.10.2.tgz"
+yaml@^2.1.1:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/yaml/-/yaml-2.2.2.tgz#ec551ef37326e6d42872dad1970300f8eb83a073"
+
+zod@3.21.4:
+  version "3.21.4"
+  resolved "https://registry.yarnpkg.com/zod/-/zod-3.21.4.tgz#10882231d992519f0a10b5dd58a38c9dabbb64db"
