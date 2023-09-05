@@ -72,7 +72,7 @@ export default function SocialMediaButton({link, colour}: {link?: string, colour
                                         delay-200
                                         ">
                                         <div>
-                                            My Discord is Banner#1017
+                                            My Discord is <code className='dark:bg-zinc-800 dark:text-gray-50 bg-gray-200'>banner.</code>
                                         </div>
                                     </Popover.Panel>
                                 </Transition>
