@@ -382,9 +382,9 @@ fraction.js@^4.3.7:
   version "4.3.7"
   resolved "https://registry.yarnpkg.com/fraction.js/-/fraction.js-4.3.7.tgz#06ca0085157e42fda7f9e726e79fefc4068840f7"
 
-framer-motion@^11.0.27:
-  version "11.0.27"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-11.0.27.tgz#6881cb76e9dbbdc194353e5560ff93f3bd727a5d"
+framer-motion@^11.0.28:
+  version "11.0.28"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-11.0.28.tgz#b55a61d12c61a3a9e89084a1ff006b20e367436a"
   dependencies:
     tslib "^2.4.0"
 
