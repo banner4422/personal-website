@@ -212,9 +212,9 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@18.2.77":
-  version "18.2.77"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.77.tgz#af2f857b6a6dfb6ca89ec102ebc147b1f1616880"
+"@types/react@*", "@types/react@18.2.78":
+  version "18.2.78"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.78.tgz#94aec453d0ccca909998a2b4b2fd78af15a7d2fe"
   dependencies:
     "@types/prop-types" "*"
     csstype "^3.0.2"
