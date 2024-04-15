@@ -117,9 +117,9 @@
   version "14.2.1"
   resolved "https://registry.yarnpkg.com/@next/env/-/env-14.2.1.tgz#18b4fb5fd76bdda65369ad4ea5f33199ae708d2f"
 
-"@next/font@^14.2.0":
-  version "14.2.0"
-  resolved "https://registry.yarnpkg.com/@next/font/-/font-14.2.0.tgz#4c9ebc9597b36dee009547f4f5f78bf58fe5a726"
+"@next/font@^14.2.1":
+  version "14.2.1"
+  resolved "https://registry.yarnpkg.com/@next/font/-/font-14.2.1.tgz#225ecdbeacb863b7d300cc8e952647ea651f4b18"
 
 "@next/swc-darwin-arm64@14.2.1":
   version "14.2.1"
