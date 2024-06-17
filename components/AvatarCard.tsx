@@ -30,17 +30,17 @@ export default function AvatarCard({ domain, shouldReduceMotion }: props) {
                 initial="hidden" 
                 animate="show" 
                 className="text-gray-600 dark:text-gray-400 mb-10 w-fit">
-                  Software interested lad from Copenhagen, Denmark.
+                  Software interested lad from Copenhagen, <span className="text-red-500">Denmark</span>.
                   <br/>
-                  Currently on my 6th semester at <a className="text-cbs hover:underline underline-offset-2" href="https://www.cbs.dk/uddannelse/bachelor/hait-erhvervsoekonomi-informationsteknologi" target="_blank" rel="noopener noreferrer">Copenhagen Business School</a>. 
+                  Starting my Master{"'"}s degree in Business Administration and Information Systems at <a className="text-cbs hover:underline underline-offset-2" href="https://www.cbs.dk/en/study/graduate/msc-in-business-administration-and-information-systems" target="_blank" rel="noopener noreferrer">Copenhagen Business School</a>. 
                   <br/>
-                  Experienced with <span className="text-TypeScript">TypeScript</span>, <span className="text-React">React</span> and a little bit of <span className="text-React">React Native</span> as well. 
+                  Got a Bachelor{"'"}s degree in Business Administration and Information Systems from <a className="text-cbs hover:underline underline-offset-2" href="https://www.cbs.dk/uddannelse/bachelor/hait-erhvervsoekonomi-informationsteknologi" target="_blank" rel="noopener noreferrer">Copenhagen Business School</a> as well. 
                   <br/>
-                  Currently learning <span className="text-csharp">C#</span>, interested in learning <span className="text-svelte">Svelte</span>. 
+                  Experienced with <span className="text-TypeScript">TypeScript</span>, <span className="text-csharp">C#</span>, <span className="text-React">React</span> and a little bit of <span className="text-React">React Native</span> as well. Interested in learning <span className="text-svelte">Svelte</span>. 
                   <br/>
-                  I maintain a <span className="text-Discord">Discord</span> bot called <a className="dark:text-yellow-300 text-yellow-600 hover:underline underline-offset-2" href="https://bentobot.xyz" target="_blank" rel="noopener noreferrer">Bento</a> as well.
+                  I maintain a <span className="text-Discord">Discord</span> bot called <a className="dark:text-yellow-300 text-yellow-600 hover:underline underline-offset-2" href="https://bentobot.xyz" target="_blank" rel="noopener noreferrer">Bento</a>.
                   <br/>
-                  I like music of all kinds, cooking, beer, and playing video games once in a while {":-))"}.
+                  I like music of all kinds, cooking, beer, design, and playing video games once in a while {":-))"}.
               </motion.p>
             </div>
             <motion.div
