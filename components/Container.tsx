@@ -3,6 +3,7 @@ import Head from "next/head";
 //import { footerAnimation } from "../lib/animationVariants";
 import NavBar from "./NavBar";
 import Spotify from "./Spotify";
+import Weather from "./Weather";
 
 interface props {
     switchLoad: boolean;
@@ -25,8 +26,9 @@ export default function Container({ switchLoad, shouldReduceMotion, resolvedThem
                 initial="hidden" 
                 animate="show" 
                 className="flex flex-col justify-center items-start max-w-2xl mx-auto w-full dark:opacity-50">
-                <hr className="w-full border-1 border-gray-200 dark:border-gray-800 mb-8" />
+                <hr className="w-full border-1 border-gray-200 dark:border-gray-800 mb-4" />
                 <Spotify />
+                <Weather />
             </motion.footer>
             </main>
         </div>

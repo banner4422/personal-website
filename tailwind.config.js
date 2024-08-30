@@ -1,7 +1,7 @@
 module.exports = {
   content: [
-    './pages/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}',
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
@@ -15,13 +15,16 @@ module.exports = {
         TypeScript: "#3178c6",
         csharp: "#9b4993",
         cbs: "#4967AA",
-        svelte: "#EB4E27"
+        svelte: "#EB4E27",
+        Discogs: "#000000",
+        Python: "#ffd343",
+        Spotify: "#1DB954",
       },
       borderRadius: {
-        'social': '20%'
-      }
+        social: "20%",
+      },
     },
   },
   darkMode: "class",
   plugins: [],
-}
+};
