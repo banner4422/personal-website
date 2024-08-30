@@ -35,7 +35,6 @@ export default function Weather() {
             <p className="capsize text-gray-800 dark:text-gray-200 font-medium">
                 📍 Copenhagen 🇩🇰 {" "}
                 <span ref={timeRef}>{new Date().toLocaleTimeString('en-DK', { timeZone: 'Europe/Copenhagen' })}</span>
-                {data?.isDay ? " ☀️" : " 🌙"} {" "} {Math.round(data?.temperature ?? 0)}°C {data?.description} {data?.humidity}% Humidity
             </p>
             </div>
         </div>
