@@ -128,12 +128,12 @@ export default function SocialMediaButton({
                                         rounded-lg
                                         text-center
                                         dark:border-opacity-10
+                                        dark:bg-zinc-900
+                                        bg-gray-50
                                         border-zinc-900
                                         dark:border-gray-50
                                         dark:text-gray-50
                                         text-zinc-900
-                                        hover:text-white
-                                        dark:hover:text-white
                                         transition-all
                                         delay-200
                                         "
