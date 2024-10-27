@@ -44,14 +44,14 @@ const Home: NextPage = () => {
         <title>Christian Krogh Nielsen</title>
       </Head>
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto pb-6">
-        <AvatarCardHalloween domain={domain} shouldReduceMotion={shouldReduceMotion!} />
+        <AvatarCard domain={domain} shouldReduceMotion={shouldReduceMotion!} />
         <motion.div
           initial="hidden"
           animate="show"
           className="mx-auto md:flex-row flex flex-wrap text-center justify-center gap-4 md:gap-x-16 pb-4"
         >
           {socialMediaButtonsDataHalloween.map((x) => (
-            <SocialMediaButtonHalloween key={x.colour} colour={x.colour} link={x.link} />
+            <SocialMediaButton key={x.colour} colour={x.colour} link={x.link} />
           ))}
         </motion.div>
       </div>
