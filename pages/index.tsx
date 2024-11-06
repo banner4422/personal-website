@@ -8,9 +8,6 @@ import Container from "../components/Container";
 import SocialMediaButton, {
   socialMediaButtonsData,
 } from "../components/SocialMediaButton";
-import AvatarCardHalloween from "../components/AvatarCardHalloween";
-import SocialMediaButtonHalloween, { socialMediaButtonsDataHalloween } from "../components/SocialMediaButtonHalloween";
-//import { mediaBoxAnimation } from '../lib/animationVariants';
 
 const Home: NextPage = () => {
   const [mounted, setMounted] = useState(false);
@@ -50,7 +47,7 @@ const Home: NextPage = () => {
           animate="show"
           className="mx-auto md:flex-row flex flex-wrap text-center justify-center gap-4 md:gap-x-16 pb-4"
         >
-          {socialMediaButtonsDataHalloween.map((x) => (
+          {socialMediaButtonsData.map((x) => (
             <SocialMediaButton key={x.colour} colour={x.colour} link={x.link} />
           ))}
         </motion.div>
