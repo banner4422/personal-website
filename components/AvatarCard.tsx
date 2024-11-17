@@ -84,7 +84,7 @@ export default function AvatarCard({ domain, shouldReduceMotion }: props) {
           <span className="text-React">React Native</span> as well. Currently
           becoming acquainted with <span className="text-Python">Python</span>{" "}
           and Machine Learning.
-          <br />I like music of all genres (not country though, sorry), cooking,
+          <br />I like music of all kinds, cooking, good coffee,
           beer, design in all forms and mediums, going to festivals, and playing
           video games once in a while {":-))"}.
         </motion.p>
