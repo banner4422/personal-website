@@ -1,4 +1,3 @@
-import { type NextRequest } from "next/server";
 import { fetchWeatherApi } from 'openmeteo';
 
 export const config = {
@@ -125,7 +124,7 @@ async function getWeather() {
 
 }
 
-export default async function handler(req: NextRequest) {
+export async function GET(request: Request) {
     const weatherData = await getWeather();
 
     return new Response(JSON.stringify(weatherData), {

@@ -1,3 +1,4 @@
+"use client";
 import useSWR from "swr";
 import fetcher from "../lib/fetcher";
 import { useEffect, useRef, useState } from "react";

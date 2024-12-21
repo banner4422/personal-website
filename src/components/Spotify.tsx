@@ -1,3 +1,4 @@
+"use client";
 import useSWR from 'swr';
 import fetcher from '../lib/fetcher';
 import AnimatedBars from './AnimatedBars';
@@ -13,7 +14,7 @@ export type NowPlayingSong = {
   };
 
 export default function Spotify() {
-  const { data } = useSWR<NowPlayingSong>('/api/now-playing', fetcher);
+  const { data } = useSWR<NowPlayingSong>("/api/now-playing", fetcher);
 
   return (
     <div className="flex flex-row-reverse items-center sm:flex-row mb-2 space-x-0 sm:space-x-2 w-full">

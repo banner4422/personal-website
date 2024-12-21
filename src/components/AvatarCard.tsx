@@ -1,40 +1,26 @@
-import { motion } from "framer-motion";
 import Image from "next/image";
-import { Fragment } from "react";
-//import { headerAnimation, textAnimation, avatarAnimation } from "../lib/animationVariants";
 
-interface props {
-  domain: string;
-  shouldReduceMotion: boolean;
-}
-
-export default function AvatarCardHalloween({ domain, shouldReduceMotion }: props) {
+export default function AvatarCard() {
   return (
     <div className="flex flex-col-reverse sm:flex-row items-start overflow-hidden">
       <div className="flex flex-col pr-8">
-        <motion.h1
-          initial="hidden"
-          animate="show"
+        <h1
           className="font-bold text-3xl md:text-5xl tracking-tight mb-3 text-black dark:text-gray-50"
         >
           Christian Krogh Nielsen
-        </motion.h1>
-        <motion.h2
-          initial="hidden"
-          animate="show"
+        </h1>
+        <h2
           className="text-gray-700 dark:text-gray-200 mb-4"
         >
-          Student Finance Assistant at{" "}
-          <motion.span
-            initial="hidden"
-            animate="show"
+          Student Software Engineer at{" "}
+          <span
             className="font-semibold"
           >
             Copenhagen{" "}
-            <motion.span className="text-work">Optimization</motion.span>
-          </motion.span>
+            <span className="text-work">Optimization</span>
+          </span>
           <br />
-          Founder and financial advicer for the{" "}
+          Creator and maintainer of the{" "}
           <span className="text-Discord">Discord</span> bot{" "}
           <a
             className="dark:text-yellow-300 text-yellow-600 hover:underline underline-offset-2"
@@ -44,17 +30,17 @@ export default function AvatarCardHalloween({ domain, shouldReduceMotion }: prop
           >
             Bento
           </a>
-        </motion.h2>
-        <motion.p
-          initial="hidden"
-          animate="show"
+        </h2>
+        <p
+          
+          
           className="text-gray-600 dark:text-gray-400 mb-10 w-fit"
         >
-          Finance interested man from Copenhagen,{" "}
+          Software interested lad from Copenhagen,{" "}
           <span className="text-red-500">Denmark</span>.
           <br />
-          Currently studying a Master{"'"}s Degree in Advanced Economics and Finance
-          at{" "}
+          Currently studying a Master{"'"}s Degree in Business Administration
+          and Information Systems at{" "}
           <a
             className="text-cbs hover:underline underline-offset-2"
             href="https://www.cbs.dk/en/study/graduate/msc-in-business-administration-and-information-systems"
@@ -65,7 +51,7 @@ export default function AvatarCardHalloween({ domain, shouldReduceMotion }: prop
           </a>
           .
           <br />
-          Got a Bachelor{"'"}s Degree in Economics and Business Administration
+          Got a Bachelor{"'"}s Degree in Business Administration and Information
           Systems from{" "}
           <a
             className="text-cbs hover:underline underline-offset-2"
@@ -77,11 +63,19 @@ export default function AvatarCardHalloween({ domain, shouldReduceMotion }: prop
           </a>{" "}
           as well.
           <br />
-        </motion.p>
+          Experienced with <span className="text-TypeScript">
+            TypeScript
+          </span>, <span className="text-csharp">C#</span>,{" "}
+          <span className="text-React">React</span> and a little bit of{" "}
+          <span className="text-React">React Native</span> as well. Currently
+          becoming acquainted with <span className="text-Python">Python</span>{" "}
+          and Machine Learning.
+          <br />I like music of all kinds, cooking, good coffee,
+          beer, design in all forms and mediums, going to festivals, and playing
+          video games once in a while {":-))"}.
+        </p>
       </div>
-      <motion.div
-        initial="hidden"
-        animate="show"
+      <div
         className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto"
       >
         <Image
@@ -93,7 +87,7 @@ export default function AvatarCardHalloween({ domain, shouldReduceMotion }: prop
           priority={true}
           className="rounded-full filter grayscale"
         />
-      </motion.div>
+      </div>
     </div>
   );
 }

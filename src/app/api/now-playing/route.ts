@@ -1,11 +1,10 @@
-import { type NextRequest } from 'next/server';
-import { getNowPlaying } from '../../lib/spotify';
+import { getNowPlaying } from '../../../lib/spotify';
 
 export const config = {
   runtime: 'experimental-edge'
 };
 
-export default async function handler(req: NextRequest) {
+export async function GET(request: Request) {
   const response = await getNowPlaying();
 
   if (response.status === 204 || response.status > 400) {
