@@ -1,9 +1,5 @@
 import { fetchWeatherApi } from 'openmeteo';
 
-export const config = {
-    runtime: 'experimental-edge'
-};
-
 function weatherCodeToDescription(weatherCode: number) {
     switch (weatherCode) {
         case 0:
@@ -122,16 +118,4 @@ async function getWeather() {
         description: weatherCodeToDescription(weatherData.current.weatherCode),
     }
 
-}
-
-export async function GET(request: Request) {
-    const weatherData = await getWeather();
-
-    return new Response(JSON.stringify(weatherData), {
-        status: 200,
-        headers: {
-            "Content-Type": "application/json",
-            "Cache-Control": "public, s-maxage=60, stale-while-revalidate=30",
-        },
-    });
 }

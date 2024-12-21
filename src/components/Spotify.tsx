@@ -1,30 +1,19 @@
-"use client";
-import useSWR from 'swr';
-import fetcher from '../lib/fetcher';
 import AnimatedBars from './AnimatedBars';
 import SpotifyLogo from './SpotifyLogo';
+import { getNowPlaying } from '../lib/spotify';
 
-export type NowPlayingSong = {
-    album: string;
-    albumImageUrl: string;
-    artist: string;
-    isPlaying: boolean;
-    songUrl: string;
-    title: string;
-  };
-
-export default function Spotify() {
-  const { data } = useSWR<NowPlayingSong>("/api/now-playing", fetcher);
+export default async function Spotify() {
+  const data = await getNowPlaying();
 
   return (
     <div className="flex flex-row-reverse items-center sm:flex-row mb-2 space-x-0 sm:space-x-2 w-full">
-      {data?.songUrl ? (
+      {data.isPlaying ? (
         <AnimatedBars />
       ) : (
         <SpotifyLogo />
       )}
       <div className="inline-flex flex-col sm:flex-row w-full max-w-full truncate">
-        {data?.songUrl ? (
+        {data.isPlaying ? (
           <a
             className="capsize text-gray-800 dark:text-gray-200 font-medium max-w-max truncate"
             href={data.songUrl}
@@ -42,7 +31,7 @@ export default function Spotify() {
           {' – '}
         </span>
         <p className="capsize text-gray-500 dark:text-gray-300 max-w-max truncate">
-          {data?.artist ?? 'Spotify'}
+          {data.isPlaying ? data.artist : 'Spotify'}
         </p>
       </div>
     </div>
