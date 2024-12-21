@@ -67,6 +67,7 @@ export const getNowPlaying = async (): Promise<NowPlayingSong> => {
 
   const isPlaying = song.is_playing;
   const title = song.item.name;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const artist = song.item.artists.map((_artist: { name: any; }) => _artist.name).join(', ');
   const album = song.item.album.name;
   const albumImageUrl = song.item.album.images[0].url;

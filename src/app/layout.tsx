@@ -2,7 +2,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { ReactNode } from "react";
-import { Metadata, Viewport } from "next";
+//import { Metadata, Viewport } from "next";
 import Head from "next/head";
 import NavBar from "../components/NavBar";
 import Spotify from "../components/Spotify";

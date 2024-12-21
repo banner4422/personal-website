@@ -62,6 +62,7 @@ function weatherCodeToDescription(weatherCode: number) {
     }
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 async function getWeather() {
     const params = {
         "latitude": 55.6759,
@@ -74,6 +75,7 @@ async function getWeather() {
     const responses = await fetchWeatherApi(url, params);
 
     // Helper function to form time ranges
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const range = (start: number, stop: number, step: number) =>
         Array.from({ length: (stop - start) / step }, (_, i) => start + i * step);
 
@@ -82,9 +84,13 @@ async function getWeather() {
 
     // Attributes for timezone and location
     const utcOffsetSeconds = response.utcOffsetSeconds();
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const timezone = response.timezone();
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const timezoneAbbreviation = response.timezoneAbbreviation();
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const latitude = response.latitude();
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const longitude = response.longitude();
 
     const current = response.current()!;

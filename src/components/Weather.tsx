@@ -1,8 +1,8 @@
-"use client";
-import useSWR from "swr";
-import fetcher from "../lib/fetcher";
-import { useEffect, useRef, useState } from "react";
+//import useSWR from "swr";
+//import fetcher from "../lib/fetcher";
+import { useEffect, useRef } from "react";
 
+/*
 interface WeatherData {
     dateTime: string;
     temperature: number;
@@ -11,10 +11,10 @@ interface WeatherData {
     isDay: boolean;
     description: string;
 }
-
+*/
 export default function Weather() {
     const timeRef = useRef<HTMLSpanElement>(null);
-    const { data } = useSWR<WeatherData>('/api/weather', fetcher);
+    //const { data } = useSWR<WeatherData>('/api/weather', fetcher);
 
     useEffect(() => {
         const timer = setInterval(() => {
