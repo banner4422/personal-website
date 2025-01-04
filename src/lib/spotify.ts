@@ -1,3 +1,4 @@
+"use server";
 const client_id = process.env.SPOTIFY_CLIENT_ID as string;
 const client_secret = process.env.SPOTIFY_CLIENT_SECRET as string;
 const refresh_token = process.env.SPOTIFY_REFRESH_TOKEN as string;
