@@ -85,6 +85,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                     content="max-snippet:-1, max-image-preview:large, max-video-preview:-1"
                     name="robots"
                 />
+				<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
             </Head>
 			<body className={`${inter.className} bg-gray-50 dark:bg-zinc-900`}>
 				<ThemeProvider defaultTheme="system" attribute="class" enableSystem>
