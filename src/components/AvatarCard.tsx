@@ -84,7 +84,6 @@ export default function AvatarCard() {
           width={176}
           src="/avatar.jpg"
           sizes="30vw"
-          priority={true}
           className="rounded-full filter grayscale"
         />
       </div>
