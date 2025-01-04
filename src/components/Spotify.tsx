@@ -6,7 +6,7 @@ export default async function Spotify() {
   const data = await getNowPlaying();
 
   return (
-    <div className="flex flex-row-reverse items-center sm:flex-row mb-2 space-x-0 sm:space-x-2 w-full">
+    <div className="flex flex-row-reverse items-center sm:flex-row mb-2 space-x-0 sm:space-x-2 w-full px-5 pb-2 sm:pb-0 sm:px-0">
       {data.isPlaying ? (
         <AnimatedBars />
       ) : (
@@ -15,7 +15,7 @@ export default async function Spotify() {
       <div className="inline-flex flex-col sm:flex-row w-full max-w-full truncate">
         {data.isPlaying ? (
           <a
-            className="capsize text-gray-800 dark:text-gray-200 font-medium max-w-max truncate"
+            className="text-gray-800 dark:text-gray-200 font-medium max-w-max truncate"
             href={data.songUrl}
             target="_blank"
             rel="noopener noreferrer"
@@ -23,14 +23,14 @@ export default async function Spotify() {
             {data.title}
           </a>
         ) : (
-          <p className="capsize text-gray-800 dark:text-gray-200 font-medium">
+          <p className="text-gray-800 dark:text-gray-200 font-medium">
             Not Playing
           </p>
         )}
-        <span className="capsize mx-2 text-gray-500 dark:text-gray-300 hidden sm:block">
+        <span className="mx-2 text-gray-500 dark:text-gray-300 hidden sm:block">
           {' – '}
         </span>
-        <p className="capsize text-gray-500 dark:text-gray-300 max-w-max truncate">
+        <p className="text-gray-500 dark:text-gray-300 max-w-max truncate">
           {data.isPlaying ? data.artist : 'Spotify'}
         </p>
       </div>
