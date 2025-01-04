@@ -1,5 +1,5 @@
-const client_id = process.env.SPOTIFY_CLIENT_ID;
-const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
+const client_id = process.env.SPOTIFY_CLIENT_ID as string;
+const client_secret = process.env.SPOTIFY_CLIENT_SECRET as string;
 const refresh_token = process.env.SPOTIFY_REFRESH_TOKEN as string;
 
 const basic = btoa(`${client_id}:${client_secret}`);
@@ -7,21 +7,40 @@ const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-pla
 const TOP_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/top/tracks`;
 const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
 
-const getAccessToken = async () => {
-  const response = await fetch(TOKEN_ENDPOINT, {
-    method: 'POST',
-    headers: {
-      Authorization: `Basic ${basic}`,
-      'Content-Type': 'application/x-www-form-urlencoded'
-    },
-    body: new URLSearchParams({
-      grant_type: 'refresh_token',
-      refresh_token
-    })
-  });
+const getAccessToken = (() => {
+  let cachedAccessToken: string | null = null;
+  let tokenExpiryTime: number | null = null;
 
-  return response.json();
-};
+  return async () => {
+    const currentTime = Date.now();
+
+    // Check if the token is cached and still valid
+    if (cachedAccessToken && tokenExpiryTime && currentTime < tokenExpiryTime) {
+      return cachedAccessToken;
+    }
+
+    // Fetch a new token if not cached or expired
+    const response = await fetch(TOKEN_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        Authorization: `Basic ${basic}`,
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams({
+        grant_type: 'refresh_token',
+        refresh_token,
+      }),
+    });
+
+    const data = await response.json();
+
+    // Cache the token and its expiry time
+    cachedAccessToken = data.access_token;
+    tokenExpiryTime = currentTime + data.expires_in * 1000; // expires_in is in seconds, convert to milliseconds
+
+    return cachedAccessToken;
+  };
+})();
 
 export interface NowPlayingSong {
   album: string;
@@ -33,11 +52,11 @@ export interface NowPlayingSong {
 };
 
 export const getNowPlaying = async (): Promise<NowPlayingSong> => {
-  const { access_token } = await getAccessToken();
+  const accessToken = await getAccessToken();
 
   const response = await fetch(NOW_PLAYING_ENDPOINT, {
     headers: {
-      Authorization: `Bearer ${access_token}`
+      Authorization: `Bearer ${accessToken}`
     }
   });
 
@@ -84,11 +103,11 @@ export const getNowPlaying = async (): Promise<NowPlayingSong> => {
 };
 
 export const getTopTracks = async () => {
-  const { access_token } = await getAccessToken();
+  const accessToken = await getAccessToken();
 
   return fetch(TOP_TRACKS_ENDPOINT, {
     headers: {
-      Authorization: `Bearer ${access_token}`
+      Authorization: `Bearer ${accessToken}`
     }
   });
 };
