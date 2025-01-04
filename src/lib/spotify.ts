@@ -58,7 +58,8 @@ export const getNowPlaying = async (): Promise<NowPlayingSong> => {
   const response = await fetch(NOW_PLAYING_ENDPOINT, {
     headers: {
       Authorization: `Bearer ${accessToken}`
-    }
+    },
+    cache: 'no-store'
   });
 
   if (response.status === 204 || response.status > 400) {
