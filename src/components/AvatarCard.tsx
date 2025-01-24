@@ -1,10 +1,10 @@
 import Image from "next/image";
+import { Fragment } from "react";
 
-export default function AvatarCard() {
+export const ProfileAvatar = () => {
   return (
-    <div className="flex flex-col-reverse sm:flex-row items-start overflow-hidden">
-      <div className="flex flex-col pr-8">
-        <h1
+    <Fragment>
+      <h1
           className="font-bold text-3xl md:text-5xl tracking-tight mb-3 text-black dark:text-gray-50"
         >
           Christian Krogh Nielsen
@@ -30,14 +30,6 @@ export default function AvatarCard() {
           >
             Bento
           </a>
-        </h2>
-        <p
-          
-          
-          className="text-gray-600 dark:text-gray-400 mb-10 w-fit"
-        >
-          Software interested lad from Copenhagen,{" "}
-          <span className="text-red-500">Denmark</span>.
           <br />
           Currently studying a Master{"'"}s Degree in Business Administration
           and Information Systems at{" "}
@@ -50,6 +42,21 @@ export default function AvatarCard() {
             Copenhagen Business School
           </a>
           .
+        </h2>
+    </Fragment>
+  );
+}
+
+const ProfileDescription = () => {
+  return (
+    <Fragment>
+      <p
+          
+          
+          className="text-gray-600 dark:text-gray-400 mb-10 w-fit"
+        >
+          Software interested lad from Copenhagen,{" "}
+          <span className="text-red-500">Denmark</span>.
           <br />
           Got a Bachelor{"'"}s Degree in Business Administration and Information
           Systems from{" "}
@@ -74,6 +81,38 @@ export default function AvatarCard() {
           beer, design in all forms and mediums, going to festivals, and playing
           video games once in a while {":-))"}.
         </p>
+    </Fragment>
+  );
+}
+
+export const AvatarCard = () => {
+  return (
+    <div className="flex flex-col-reverse sm:flex-row items-start overflow-hidden">
+      <div className="flex flex-col pr-8">
+        <ProfileAvatar />
+      </div>
+      <div
+        className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto"
+      >
+        <Image
+          alt="Christian Nielsen"
+          height={176}
+          width={176}
+          src="/avatar.jpg"
+          sizes="30vw"
+          className="rounded-full filter grayscale"
+        />
+      </div>
+    </div>
+  );
+}
+
+export const AvatarCardWithDescription = () => {
+  return (
+    <div className="flex flex-col-reverse sm:flex-row items-start overflow-hidden">
+      <div className="flex flex-col pr-8">
+        <ProfileAvatar />
+        <ProfileDescription />
       </div>
       <div
         className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto"

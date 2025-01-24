@@ -1,10 +1,10 @@
 "use client";
 import Head from "next/head";
-import AvatarCard from "../components/AvatarCard";
 import SocialMediaButton, {
   socialMediaButtonsData,
 } from "../components/SocialMediaButton";
 import { Fragment } from "react";
+import { AvatarCard } from "../components/AvatarCard";
 
 export default function Home() {
   return (

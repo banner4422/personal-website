@@ -5,6 +5,7 @@ import {
   faDiscord,
   faInstagram,
   faSpotify,
+  faBluesky,
 } from "@fortawesome/free-brands-svg-icons";
 import { Popover, Transition } from "@headlessui/react";
 import { Fragment } from "react";
@@ -19,7 +20,8 @@ export const socialMediaButtonsData: { colour: string; link?: string }[] = [
     link: "https://www.linkedin.com/in/christian-krogh-nielsen-55152625a/",
   },
   {
-    colour: "Discord",
+    colour: "Bluesky",
+    link: "https://bsky.app/profile/chrkn.dk",
   },
   {
     colour: "Discogs",
@@ -32,6 +34,9 @@ export const socialMediaButtonsData: { colour: string; link?: string }[] = [
   {
     colour: "Spotify",
     link: "https://open.spotify.com/user/ataz1v90gnmq442fjrxpcpfj6?si=d6e8d944ca2142d3",
+  },
+  {
+    colour: "Discord",
   },
 ];
 
@@ -182,6 +187,8 @@ export default function SocialMediaButton({
                                   "hover:bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045]"
                                 : colour === "Spotify"
                                   ? "hover:bg-Spotify dark:hover:bg-Spotify"
+                                  : colour === "Bluesky"
+                                    ? "hover:bg-Bluesky dark:hover:bg-Bluesky"
                                   : ""
                     }
                     border-2
@@ -218,6 +225,12 @@ export default function SocialMediaButton({
           {colour === "Spotify" && (
             <FontAwesomeIcon
               icon={faSpotify}
+              className="w-20 h-20 mx-auto my-auto"
+            />
+          )}
+          {colour === "Bluesky" && (
+            <FontAwesomeIcon
+              icon={faBluesky}
               className="w-20 h-20 mx-auto my-auto"
             />
           )}
