@@ -184,7 +184,7 @@ export default function SocialMediaButton({
                               ? "hover:bg-Discogs dark:hover:bg-Discogs"
                               : colour === "Instagram"
                                 ? // https://stackoverflow.com/questions/67150736/tailwind-background-gradient-transition
-                                  "hover:bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045]"
+                                  "hover:bg-linear-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045]"
                                 : colour === "Spotify"
                                   ? "hover:bg-Spotify dark:hover:bg-Spotify"
                                   : colour === "Bluesky"
