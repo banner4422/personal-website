@@ -19,6 +19,7 @@ module.exports = {
         Discogs: "#000000",
         Python: "#ffd343",
         Spotify: "#1DB954",
+        Bluesky: "#1185FE",
       },
       borderRadius: {
         social: "20%",
