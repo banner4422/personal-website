@@ -2,9 +2,9 @@
 import Head from "next/head";
 import SocialMediaButton, {
   socialMediaButtonsData,
-} from "../components/SocialMediaButton";
+} from "../../components/SocialMediaButton";
 import { Fragment } from "react";
-import { AvatarCard } from "../components/AvatarCard";
+import { AvatarCardWithDescription } from "../../components/AvatarCard";
 
 export default function Home() {
   return (
@@ -14,7 +14,7 @@ export default function Home() {
         </Head>
         <Fragment>
           <div className="flex flex-col justify-center items-start max-w-2xl mx-auto">
-            <AvatarCard />
+            <AvatarCardWithDescription />
             <div
               className="mx-auto md:flex-row flex flex-wrap text-center justify-center gap-4 md:gap-x-16 pb-4"
             >
