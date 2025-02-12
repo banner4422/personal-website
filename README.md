@@ -2,6 +2,8 @@
 ----------
 A personal website meant for information and basically be a portfolio.
 
+Kage
+
 - **Framework:** [Next.js](https://nextjs.org/)
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/)
 
