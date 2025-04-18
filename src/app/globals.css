@@ -1,3 +1,40 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-GitHub: #333;
+  --color-LinkedIn: #0077b5;
+  --color-Discord: #5865f2;
+  --color-React: #61dafb;
+  --color-Untappd: #f5c342;
+  --color-work: #33b3d1;
+  --color-TypeScript: #3178c6;
+  --color-csharp: #9b4993;
+  --color-cbs: #4967aa;
+  --color-svelte: #eb4e27;
+  --color-Discogs: #000000;
+  --color-Python: #ffd343;
+  --color-Spotify: #1db954;
+  --color-Bluesky: #1185fe;
+
+  --radius-social: 20%;
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
