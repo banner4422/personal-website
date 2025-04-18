@@ -110,10 +110,9 @@ export default function SocialMediaButton({
                                     dark:hover:text-white`}
               >
                 {colour === "Discord" && (
-                  <FontAwesomeIcon
-                    icon={faDiscord}
-                    className="w-20 h-20 mx-auto my-auto"
-                  />
+                  <div className="flex items-center justify-center w-full h-full">
+                    <FontAwesomeIcon icon={faDiscord} className="text-[5rem] block" />
+                  </div>
                 )}
               </Popover.Button>
               <Transition
@@ -184,7 +183,7 @@ export default function SocialMediaButton({
                               ? "hover:bg-Discogs dark:hover:bg-Discogs"
                               : colour === "Instagram"
                                 ? // https://stackoverflow.com/questions/67150736/tailwind-background-gradient-transition
-                                  "hover:bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045]"
+                                  "hover:bg-linear-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045]"
                                 : colour === "Spotify"
                                   ? "hover:bg-Spotify dark:hover:bg-Spotify"
                                   : colour === "Bluesky"
@@ -206,32 +205,32 @@ export default function SocialMediaButton({
           {colour === "GitHub" && (
             <FontAwesomeIcon
               icon={faGithub}
-              className="w-20 h-20 mx-auto my-auto"
+              className="text-[5rem] mx-auto my-auto"
             />
           )}
           {colour === "LinkedIn" && (
             <FontAwesomeIcon
               icon={faLinkedin}
-              className="w-20 h-20 mx-auto my-auto"
+              className="text-[5rem] mx-auto my-auto"
             />
           )}
           {colour === "Discogs" && <DiscogsSvgIcon />}
           {colour === "Instagram" && (
             <FontAwesomeIcon
               icon={faInstagram}
-              className="w-20 h-20 mx-auto my-auto"
+              className="text-[5rem] mx-auto my-auto"
             />
           )}
           {colour === "Spotify" && (
             <FontAwesomeIcon
               icon={faSpotify}
-              className="w-20 h-20 mx-auto my-auto"
+              className="text-[5rem] mx-auto my-auto"
             />
           )}
           {colour === "Bluesky" && (
             <FontAwesomeIcon
               icon={faBluesky}
-              className="w-20 h-20 mx-auto my-auto"
+              className="text-[5rem] mx-auto my-auto"
             />
           )}
         </a>
