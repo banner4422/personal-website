@@ -17,7 +17,7 @@
 	<span class="sr-only">{route.name}</span>
 	<a
 		href={route.route}
-		class={`p-1 px-3 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-zinc-800 transition-all ${
+		class={`p-1 px-3 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-zinc-800 transition-colors duration-300 ${
 			isCurrentRoute(route.route)
 				? "font-semibold text-zinc-800 dark:text-gray-200"
 				: "font-normal text-gray-600 dark:text-gray-400"

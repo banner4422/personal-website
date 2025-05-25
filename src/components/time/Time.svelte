@@ -25,7 +25,7 @@
 </script>
 
 <div>
-	<p class="text-gray-500 dark:text-gray-300 text-center">
-		Time in Copenhagen is <span class="text-gray-800 dark:text-gray-200">{time}</span>
+	<p class="text-black dark:text-gray-200 text-center">
+		Time in Copenhagen is <span class="text-black dark:text-white font-medium">{time}</span>
 	</p>
 </div>
