@@ -66,7 +66,12 @@ const MAX_RETRIES = 3;
 const RETRY_DELAY = 1000; // Start with 1 second delay
 
 // Helper function to implement retry logic with exponential backoff
-const fetchWithRetry = async (url: string, options: RequestInit, retries = MAX_RETRIES, delay = RETRY_DELAY): Promise<Response> => {
+const fetchWithRetry = async (
+	url: string,
+	options: RequestInit,
+	retries = MAX_RETRIES,
+	delay = RETRY_DELAY
+): Promise<Response> => {
 	try {
 		return await fetch(url, options);
 	} catch (error) {
@@ -77,7 +82,7 @@ const fetchWithRetry = async (url: string, options: RequestInit, retries = MAX_R
 		console.log(`Fetch failed, retrying in ${delay}ms... (${retries} retries left)`);
 
 		// Wait for the specified delay
-		await new Promise(resolve => setTimeout(resolve, delay));
+		await new Promise((resolve) => setTimeout(resolve, delay));
 
 		// Retry with exponential backoff
 		return fetchWithRetry(url, options, retries - 1, delay * 2);

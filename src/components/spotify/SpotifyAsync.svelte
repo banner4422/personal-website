@@ -1,9 +1,9 @@
 <script lang="ts">
- import { onMount } from "svelte";
- import AnimatedBars from "./AnimatedBars.svelte";
- import SpotifyLogo from "./SpotifyLogo.svelte";
- import LoadingSpinner from "./LoadingSpinner.svelte";
- import { spotifyData, fetchSpotifyData } from "../../lib/spotify/spotifyStore.ts";
+	import { onMount } from "svelte";
+	import AnimatedBars from "./AnimatedBars.svelte";
+	import SpotifyLogo from "./SpotifyLogo.svelte";
+	import LoadingSpinner from "./LoadingSpinner.svelte";
+	import { spotifyData, fetchSpotifyData } from "../../lib/spotify/spotifyStore.ts";
 
 	let loading = true;
 	let data = {

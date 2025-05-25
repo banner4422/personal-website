@@ -92,24 +92,24 @@ const { title, description = SITE_DESCRIPTION } = Astro.props;
 <!-- Prevent transition flicker during page load and navigation -->
 <script is:inline>
 	// Add no-transitions class to body on page load
-	document.body.classList.add('no-transitions');
+	document.body.classList.add("no-transitions");
 
 	// Remove no-transitions class after a short delay
-	window.addEventListener('load', () => {
+	window.addEventListener("load", () => {
 		setTimeout(() => {
-			document.body.classList.remove('no-transitions');
+			document.body.classList.remove("no-transitions");
 		}, 100);
 	});
 
 	// Add no-transitions class before page navigation
-	document.addEventListener('astro:before-preparation', () => {
-		document.body.classList.add('no-transitions');
+	document.addEventListener("astro:before-preparation", () => {
+		document.body.classList.add("no-transitions");
 	});
 
 	// Remove no-transitions class after page navigation
-	document.addEventListener('astro:after-swap', () => {
+	document.addEventListener("astro:after-swap", () => {
 		setTimeout(() => {
-			document.body.classList.remove('no-transitions');
+			document.body.classList.remove("no-transitions");
 		}, 100);
 	});
 </script>
