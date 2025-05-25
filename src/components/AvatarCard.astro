@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import avatarImage from "../content/avatar.jpg";
 ---
 
 <div class="flex flex-col md:flex-row items-center md:items-start">
@@ -39,7 +40,7 @@ import { Image } from "astro:assets";
             alt="Christian Krogh Nielsen"
             height=208
             width=208
-            src="/src/content/avatar.jpg"
+            src={avatarImage}
             class="rounded-full filter grayscale"
             loading="eager"
             decoding="sync"
