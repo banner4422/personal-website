@@ -1,0 +1,74 @@
+---
+title: 'Testing Code Blocks'
+description: 'A test file to verify that code blocks are rendering properly'
+pubDate: 'Jun 10 2024'
+heroImage: '/blog-placeholder-3.jpg'
+---
+
+# Testing Code Blocks
+
+This is a test file to verify that code blocks are rendering properly in MDX files.
+
+## JavaScript Example
+
+```javascript
+// This is a JavaScript code block
+function greet(name) {
+  return `Hello, ${name}!`;
+}
+
+console.log(greet('World'));
+```
+
+## TypeScript Example
+
+```typescript
+// This is a TypeScript code block
+function greet(name: string): string {
+  return `Hello, ${name}!`;
+}
+
+console.log(greet('World'));
+```
+
+## Svelte Example
+
+```svelte
+<script>
+  let name = 'World';
+  
+  function greet(name) {
+    return `Hello, ${name}!`;
+  }
+</script>
+
+<h1>{greet(name)}</h1>
+```
+
+## CSS Example
+
+```css
+/* This is a CSS code block */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+}
+```
+
+## HTML Example
+
+```html
+<!-- This is an HTML code block -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Test</title>
+</head>
+<body>
+  <h1>Hello, World!</h1>
+</body>
+</html>
+```
