@@ -14,5 +14,7 @@ export const getHoverBgClass = (colour: string): string => {
     if (colour === "Instagram") {
         return "instagram-gradient-button";
     }
-    return `hover:bg-${colour} dark:hover:bg-${colour}`;
+
+    // Use a custom class that will be defined in global.css
+    return `hover-bg-${colour}`;
 }

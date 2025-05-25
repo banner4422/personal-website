@@ -61,6 +61,7 @@
   white-space: nowrap;
 }
 
+/* Social media hover effects */
 /* Instagram gradient button with smooth transition */
 .instagram-gradient-button {
   position: relative;
@@ -84,4 +85,54 @@
 
 .instagram-gradient-button:hover::before {
   opacity: 1;
+}
+
+/* Custom hover background classes for social media buttons */
+.hover-bg-GitHub:hover {
+  background-color: var(--color-GitHub);
+}
+
+.hover-bg-LinkedIn:hover {
+  background-color: var(--color-LinkedIn);
+}
+
+.hover-bg-Discord:hover {
+  background-color: var(--color-Discord);
+}
+
+.hover-bg-Bluesky:hover {
+  background-color: var(--color-Bluesky);
+}
+
+.hover-bg-Discogs:hover {
+  background-color: var(--color-Discogs);
+}
+
+.hover-bg-Spotify:hover {
+  background-color: var(--color-Spotify);
+}
+
+/* Dark mode versions */
+.dark .hover-bg-GitHub:hover {
+  background-color: var(--color-GitHub);
+}
+
+.dark .hover-bg-LinkedIn:hover {
+  background-color: var(--color-LinkedIn);
+}
+
+.dark .hover-bg-Discord:hover {
+  background-color: var(--color-Discord);
+}
+
+.dark .hover-bg-Bluesky:hover {
+  background-color: var(--color-Bluesky);
+}
+
+.dark .hover-bg-Discogs:hover {
+  background-color: var(--color-Discogs);
+}
+
+.dark .hover-bg-Spotify:hover {
+  background-color: var(--color-Spotify);
 }
