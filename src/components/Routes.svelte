@@ -13,7 +13,7 @@
 	}
 </script>
 
-{#each navigationRoutes as route}
+{#each navigationRoutes as route (route)}
 	<span class="sr-only">{route.name}</span>
 	<a
 		href={route.route}

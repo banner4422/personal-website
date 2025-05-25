@@ -34,9 +34,7 @@
 	});
 </script>
 
-<div
-	class="flex flex-row-reverse items-center sm:flex-row mb-2 space-x-0 sm:space-x-2 w-full px-5 pb-2 sm:pb-0 sm:px-0"
->
+<div class="flex flex-row items-center">
 	{#if loading}
 		<SpotifyLogo />
 	{:else if data.isPlaying}
@@ -44,13 +42,10 @@
 	{:else}
 		<SpotifyLogo />
 	{/if}
-
-	<div class="inline-flex flex-col sm:flex-row w-full max-w-full truncate">
+	<div class="inline-flex flex-row w-full max-w-full truncate ml-2">
 		{#if loading}
 			<p class="text-gray-800 dark:text-gray-200 font-medium">Not Playing</p>
-			<span class="mx-2 text-gray-500 dark:text-gray-300 hidden sm:block">
-				{" – "}
-			</span>
+			<span class="mx-2 text-gray-500 dark:text-gray-300 hidden sm:block"> – </span>
 			<p class="text-gray-500 dark:text-gray-300 max-w-max truncate">Spotify</p>
 		{:else if data.isPlaying}
 			<a
@@ -61,17 +56,13 @@
 			>
 				{data.title}
 			</a>
-			<span class="mx-2 text-gray-500 dark:text-gray-300 hidden sm:block">
-				{" – "}
-			</span>
+			<span class="mx-2 text-gray-500 dark:text-gray-300 block"> – </span>
 			<p class="text-gray-500 dark:text-gray-300 max-w-max truncate">
 				{data.artist}
 			</p>
 		{:else}
 			<p class="text-gray-800 dark:text-gray-200 font-medium">Not Playing</p>
-			<span class="mx-2 text-gray-500 dark:text-gray-300 hidden sm:block">
-				{" – "}
-			</span>
+			<span class="mx-2 text-gray-500 dark:text-gray-300 block"> – </span>
 			<p class="text-gray-500 dark:text-gray-300 max-w-max truncate">Spotify</p>
 		{/if}
 	</div>
