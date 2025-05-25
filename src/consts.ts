@@ -57,6 +57,12 @@ export const SOCIAL_MEDIA: SocialMediaButton[] = [
 		js: false,
 	},
 	{
+		colour: "LastFm",
+		link: "https://www.last.fm/user/christiankn",
+		icon: "LastfmIcon",
+		js: false,
+	},
+	{
 		colour: "Discord",
 		link: "banner.",
 		js: true,

@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from "svelte";
-	import "../styles/global.css";
-	import { classNames, getHoverBgClass } from "../lib/utils";
+	import "../../styles/global.css";
+	import { classNames, getHoverBgClass } from "../../lib/utils.js";
 
 	export let link = "";
 	export let colour = "";
@@ -33,12 +33,14 @@
 <div class="popover-container relative">
 	<button
 		on:click={togglePopover}
+		aria-label={colour}
 		class={classNames(
 			"bg-gray-50 border-zinc-900 text-zinc-900 hover:text-white",
 			"dark:bg-zinc-900 dark:border-gray-50 dark:text-gray-50 dark:hover:text-white",
 			hoverBgClass,
 			"transition-all ease-in-out duration-300",
-			"m-2 text-center inline-block place-items-center p-5 w-32 h-32 border-2 rounded-social cursor-pointer"
+			"m-2 text-center inline-block place-items-center p-5 w-32 h-32 border-2 rounded-social cursor-pointer",
+			"focus:outline-none tap-highlight-transparent"
 		)}
 	>
 		<span class="inline-block w-full h-full">

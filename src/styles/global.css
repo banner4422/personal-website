@@ -18,8 +18,11 @@
 	--color-Python: #ffd343;
 	--color-Spotify: #1db954;
 	--color-Bluesky: #1185fe;
+	--color-LastFm: #D01F3C;
 
 	--radius-social: 20%;
+
+	--font-sans: 'Inter', 'sans-serif';
 }
 
 /*
@@ -123,6 +126,10 @@
 	background-color: var(--color-Spotify);
 }
 
+.hover-bg-LastFm:hover {
+	background-color: var(--color-LastFm);
+}
+
 /* Dark mode versions */
 .dark .hover-bg-GitHub:hover {
 	background-color: var(--color-GitHub);
@@ -146,4 +153,46 @@
 
 .dark .hover-bg-Spotify:hover {
 	background-color: var(--color-Spotify);
+}
+
+.dark .hover-bg-LastFm:hover {
+	background-color: var(--color-LastFm);
+}
+
+/* Disable tap highlight on mobile devices */
+.tap-highlight-transparent {
+	-webkit-tap-highlight-color: transparent;
+}
+
+/* inter-regular - latin */
+@font-face {
+	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	src: url('/fonts/inter-v18-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* inter-500 - latin */
+@font-face {
+	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 500;
+	src: url('/fonts/inter-v18-latin-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* inter-600 - latin */
+@font-face {
+	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 600;
+	src: url('/fonts/inter-v18-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* inter-700 - latin */
+@font-face {
+	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 700;
+	src: url('/fonts/inter-v18-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }

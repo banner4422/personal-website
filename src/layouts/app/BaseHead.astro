@@ -1,8 +1,8 @@
 ---
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
-import "../styles/global.css";
-import { SITE_TITLE, SITE_DESCRIPTION, AUTHOR, KEYWORDS } from "../consts";
+import "../../styles/global.css";
+import { SITE_TITLE, SITE_DESCRIPTION, AUTHOR, KEYWORDS } from "../../consts";
 
 interface Props {
 	title: string;
@@ -32,16 +32,15 @@ const { title, description = SITE_DESCRIPTION } = Astro.props;
 <link rel="alternate" type="application/rss+xml" title={SITE_TITLE} href={new URL("rss.xml", Astro.site)} />
 
 <!-- Preloads -->
+<link rel="preload" href="/fonts/inter-v18-latin-regular.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/inter-v18-latin-500.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/inter-v18-latin-600.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/inter-v18-latin-700.woff2" as="font" type="font/woff2" crossorigin />
 
 <!-- SEO -->
 <meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
 <meta name="keywords" content={KEYWORDS.join(", ")} />
 <meta name="author" content={AUTHOR.name} />
-
-<!-- Google Fonts - Inter -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
@@ -88,4 +87,29 @@ const { title, description = SITE_DESCRIPTION } = Astro.props;
 			attributeFilter: ["class"],
 		});
 	}
+</script>
+
+<!-- Prevent transition flicker during page load and navigation -->
+<script is:inline>
+	// Add no-transitions class to body on page load
+	document.body.classList.add('no-transitions');
+
+	// Remove no-transitions class after a short delay
+	window.addEventListener('load', () => {
+		setTimeout(() => {
+			document.body.classList.remove('no-transitions');
+		}, 100);
+	});
+
+	// Add no-transitions class before page navigation
+	document.addEventListener('astro:before-preparation', () => {
+		document.body.classList.add('no-transitions');
+	});
+
+	// Remove no-transitions class after page navigation
+	document.addEventListener('astro:after-swap', () => {
+		setTimeout(() => {
+			document.body.classList.remove('no-transitions');
+		}, 100);
+	});
 </script>

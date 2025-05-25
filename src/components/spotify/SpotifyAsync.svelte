@@ -1,8 +1,9 @@
 <script lang="ts">
-	import { onMount } from "svelte";
-	import AnimatedBars from "./AnimatedBars.svelte";
-	import SpotifyLogo from "./SpotifyLogo.svelte";
-	import { spotifyData, fetchSpotifyData } from "../lib/spotifyStore";
+ import { onMount } from "svelte";
+ import AnimatedBars from "./AnimatedBars.svelte";
+ import SpotifyLogo from "./SpotifyLogo.svelte";
+ import LoadingSpinner from "./LoadingSpinner.svelte";
+ import { spotifyData, fetchSpotifyData } from "../../lib/spotify/spotifyStore.ts";
 
 	let loading = true;
 	let data = {
@@ -36,7 +37,7 @@
 
 <div class="flex flex-row items-center">
 	{#if loading}
-		<SpotifyLogo />
+		<LoadingSpinner />
 	{:else if data.isPlaying}
 		<AnimatedBars />
 	{:else}
@@ -49,7 +50,7 @@
 			<p class="text-gray-500 dark:text-gray-300 max-w-max truncate">Spotify</p>
 		{:else if data.isPlaying}
 			<a
-				class="text-gray-800 dark:text-gray-200 font-medium max-w-max truncate"
+				class="text-gray-800 dark:text-gray-200 font-medium max-w-max truncate hover:underline"
 				href={data.songUrl}
 				target="_blank"
 				rel="noopener noreferrer"
