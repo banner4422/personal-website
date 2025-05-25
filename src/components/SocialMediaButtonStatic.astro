@@ -1,9 +1,9 @@
 ---
-import { classNames, getHoverBgClass } from '../lib/utils';
+import { classNames, getHoverBgClass } from "../lib/utils";
 
 interface Props {
-  colour: string;
-  link: string;
+	colour: string;
+	link: string;
 }
 const { colour, link } = Astro.props;
 
@@ -11,19 +11,19 @@ const hoverBgClass = getHoverBgClass(colour);
 ---
 
 <a
-  href={link}
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label={colour}
-  class={classNames(
-      "bg-gray-50 border-zinc-900 text-zinc-900 hover:text-white",
-      "dark:bg-zinc-900 dark:border-gray-50 dark:text-gray-50 dark:hover:text-white",
-      hoverBgClass,
-      "transition-all ease-in-out duration-300",
-      "m-2 text-center inline-block place-items-center p-5 w-32 h-32 border-2 rounded-social cursor-pointer"
-  )}
+	href={link}
+	target="_blank"
+	rel="noopener noreferrer"
+	aria-label={colour}
+	class={classNames(
+		"bg-gray-50 border-zinc-900 text-zinc-900 hover:text-white",
+		"dark:bg-zinc-900 dark:border-gray-50 dark:text-gray-50 dark:hover:text-white",
+		hoverBgClass,
+		"transition-all ease-in-out duration-300",
+		"m-2 text-center inline-block place-items-center p-5 w-32 h-32 border-2 rounded-social cursor-pointer"
+	)}
 >
-  <span class="inline-block w-full h-full">
-    <slot />
-  </span>
+	<span class="inline-block w-full h-full">
+		<slot />
+	</span>
 </a>

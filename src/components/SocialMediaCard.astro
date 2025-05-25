@@ -12,37 +12,39 @@ import SpotifyIcon from "./icons/SpotifyIcon.astro";
 import DiscordIcon from "./icons/DiscordIcon.astro";
 
 // Define a more specific type for the icon components
-type IconComponent = typeof GitHubIcon;
+export type IconComponent = typeof GitHubIcon;
 type IconMap = Record<string, IconComponent>;
 
 // Create a mapping of icon names to components
 const iconComponents: IconMap = {
-    "GitHubIcon": GitHubIcon,
-    "LinkedInIcon": LinkedInIcon,
-    "BlueskyIcon": BlueskyIcon,
-    "DiscogsIcon": DiscogsIcon,
-    "InstagramIcon": InstagramIcon,
-    "SpotifyIcon": SpotifyIcon,
-    "DiscordIcon": DiscordIcon
+	GitHubIcon: GitHubIcon,
+	LinkedInIcon: LinkedInIcon,
+	BlueskyIcon: BlueskyIcon,
+	DiscogsIcon: DiscogsIcon,
+	InstagramIcon: InstagramIcon,
+	SpotifyIcon: SpotifyIcon,
+	DiscordIcon: DiscordIcon,
 };
 
-const socialMediaButtonsWithIcons = SOCIAL_MEDIA.map(x => {
-    const iconComponent = x.icon && iconComponents[x.icon] ? iconComponents[x.icon] : null;
+const socialMediaButtonsWithIcons = SOCIAL_MEDIA.map((x) => {
+	const iconComponent = x.icon && iconComponents[x.icon] ? iconComponents[x.icon] : null;
 
-    return {
-        ...x,
-        iconComponent
-    };
+	return {
+		...x,
+		iconComponent,
+	};
 });
 ---
 
 <div class="w-full flex flex-wrap justify-center gap-4 md:gap-x-16 pb-4">
-    {socialMediaButtonsWithIcons.map((button) => {
-        const Icon = button.iconComponent;
-        return (
-            <SocialMediaButton colour={button.colour} link={button.link} js={button.js}>
-                {Icon && <Icon />}
-            </SocialMediaButton>
-        );
-    })}
+	{
+		socialMediaButtonsWithIcons.map((button) => {
+			const Icon = button.iconComponent;
+			return (
+				<SocialMediaButton colour={button.colour} link={button.link} js={button.js}>
+					{Icon && <Icon />}
+				</SocialMediaButton>
+			);
+		})
+	}
 </div>

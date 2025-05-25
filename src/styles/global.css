@@ -1,25 +1,25 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --color-GitHub: #333;
-  --color-LinkedIn: #0077b5;
-  --color-Discord: #5865f2;
-  --color-React: #61dafb;
-  --color-Untappd: #f5c342;
-  --color-work: #33b3d1;
-  --color-TypeScript: #3178c6;
-  --color-csharp: #9b4993;
-  --color-cbs: #4967aa;
-  --color-svelte: #eb4e27;
-  --color-Discogs: #000000;
-  --color-Python: #ffd343;
-  --color-Spotify: #1db954;
-  --color-Bluesky: #1185fe;
+	--color-GitHub: #333;
+	--color-LinkedIn: #0077b5;
+	--color-Discord: #5865f2;
+	--color-React: #61dafb;
+	--color-Untappd: #f5c342;
+	--color-work: #33b3d1;
+	--color-TypeScript: #3178c6;
+	--color-csharp: #9b4993;
+	--color-cbs: #4967aa;
+	--color-svelte: #eb4e27;
+	--color-Discogs: #000000;
+	--color-Python: #ffd343;
+	--color-Spotify: #1db954;
+	--color-Bluesky: #1185fe;
 
-  --radius-social: 20%;
+	--radius-social: 20%;
 }
 
 /*
@@ -31,108 +31,119 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
-  }
+	*,
+	::after,
+	::before,
+	::backdrop,
+	::file-selector-button {
+		border-color: var(--color-gray-200, currentcolor);
+	}
 
-  html {
-    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  }
+	html {
+		font-family:
+			"Inter",
+			system-ui,
+			-apple-system,
+			BlinkMacSystemFont,
+			"Segoe UI",
+			Roboto,
+			Oxygen,
+			Ubuntu,
+			Cantarell,
+			"Open Sans",
+			"Helvetica Neue",
+			sans-serif;
+	}
 }
-
 
 /*
   Keep only the sr-only class which is important for accessibility
 */
 .sr-only {
-  border: 0;
-  padding: 0;
-  margin: 0;
-  position: absolute !important;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  clip: rect(1px, 1px, 1px, 1px);
-  clip-path: inset(50%);
-  white-space: nowrap;
+	border: 0;
+	padding: 0;
+	margin: 0;
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	white-space: nowrap;
 }
 
 /* Social media hover effects */
 /* Instagram gradient button with smooth transition */
 .instagram-gradient-button {
-  position: relative;
-  z-index: 1;
-  overflow: hidden;
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
 }
 
 .instagram-gradient-button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045);
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-  border-radius: var(--radius-social);
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045);
+	z-index: -1;
+	opacity: 0;
+	transition: opacity 0.3s ease-in-out;
+	border-radius: var(--radius-social);
 }
 
 .instagram-gradient-button:hover::before {
-  opacity: 1;
+	opacity: 1;
 }
 
 /* Custom hover background classes for social media buttons */
 .hover-bg-GitHub:hover {
-  background-color: var(--color-GitHub);
+	background-color: var(--color-GitHub);
 }
 
 .hover-bg-LinkedIn:hover {
-  background-color: var(--color-LinkedIn);
+	background-color: var(--color-LinkedIn);
 }
 
 .hover-bg-Discord:hover {
-  background-color: var(--color-Discord);
+	background-color: var(--color-Discord);
 }
 
 .hover-bg-Bluesky:hover {
-  background-color: var(--color-Bluesky);
+	background-color: var(--color-Bluesky);
 }
 
 .hover-bg-Discogs:hover {
-  background-color: var(--color-Discogs);
+	background-color: var(--color-Discogs);
 }
 
 .hover-bg-Spotify:hover {
-  background-color: var(--color-Spotify);
+	background-color: var(--color-Spotify);
 }
 
 /* Dark mode versions */
 .dark .hover-bg-GitHub:hover {
-  background-color: var(--color-GitHub);
+	background-color: var(--color-GitHub);
 }
 
 .dark .hover-bg-LinkedIn:hover {
-  background-color: var(--color-LinkedIn);
+	background-color: var(--color-LinkedIn);
 }
 
 .dark .hover-bg-Discord:hover {
-  background-color: var(--color-Discord);
+	background-color: var(--color-Discord);
 }
 
 .dark .hover-bg-Bluesky:hover {
-  background-color: var(--color-Bluesky);
+	background-color: var(--color-Bluesky);
 }
 
 .dark .hover-bg-Discogs:hover {
-  background-color: var(--color-Discogs);
+	background-color: var(--color-Discogs);
 }
 
 .dark .hover-bg-Spotify:hover {
-  background-color: var(--color-Spotify);
+	background-color: var(--color-Spotify);
 }

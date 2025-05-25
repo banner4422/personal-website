@@ -1,27 +1,26 @@
 ---
 import SocialMediaButtonStatic from "./SocialMediaButtonStatic.astro";
 import InteractiveSocialMediaButton from "./InteractiveSocialMediaButton.svelte";
+import type { IconComponent } from "../components/SocialMediaCard.astro";
 
 interface Props {
-  colour: string;
-  link: string;
-  js: boolean | undefined;
-  children?: any;
+	colour: string;
+	link: string;
+	js: boolean | undefined;
+	children: IconComponent;
 }
 
-const { colour, link, js = false, children } = Astro.props
+const { colour, link, js = false, children } = Astro.props;
 ---
 
-{js ? (
-  <InteractiveSocialMediaButton colour={colour} link={link} client:visible>
-    <slot>
-      {children}
-    </slot>
-  </InteractiveSocialMediaButton>
-) : (
-  <SocialMediaButtonStatic colour={colour} link={link}>
-    <slot>
-      {children}
-    </slot>
-  </SocialMediaButtonStatic>
-)}
+{
+	js ? (
+		<InteractiveSocialMediaButton colour={colour} link={link} client:visible>
+			<slot>{children}</slot>
+		</InteractiveSocialMediaButton>
+	) : (
+		<SocialMediaButtonStatic colour={colour} link={link}>
+			<slot>{children}</slot>
+		</SocialMediaButtonStatic>
+	)
+}

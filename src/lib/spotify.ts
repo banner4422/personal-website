@@ -11,101 +11,101 @@ let cachedAccessToken: string | null = null;
 let tokenExpiryTime: number | null = null;
 
 export const getAccessToken = async () => {
-  const currentTime = Date.now();
+	const currentTime = Date.now();
 
-  // Check if the token is cached and still valid
-  if (cachedAccessToken && tokenExpiryTime && currentTime < tokenExpiryTime) {
-    return cachedAccessToken;
-  }
+	// Check if the token is cached and still valid
+	if (cachedAccessToken && tokenExpiryTime && currentTime < tokenExpiryTime) {
+		return cachedAccessToken;
+	}
 
-  // Fetch a new token if not cached or expired
-  const response = await fetch(TOKEN_ENDPOINT, {
-    method: 'POST',
-    headers: {
-      Authorization: `Basic ${basic}`,
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    body: new URLSearchParams({
-      grant_type: 'refresh_token',
-      refresh_token,
-    }),
-  });
+	// Fetch a new token if not cached or expired
+	const response = await fetch(TOKEN_ENDPOINT, {
+		method: "POST",
+		headers: {
+			Authorization: `Basic ${basic}`,
+			"Content-Type": "application/x-www-form-urlencoded",
+		},
+		body: new URLSearchParams({
+			grant_type: "refresh_token",
+			refresh_token,
+		}),
+	});
 
-  const data = await response.json();
+	const data = await response.json();
 
-  // Cache the token and its expiry time
-  cachedAccessToken = data.access_token;
-  tokenExpiryTime = currentTime + data.expires_in * 1000; // expires_in is in seconds, convert to milliseconds
+	// Cache the token and its expiry time
+	cachedAccessToken = data.access_token;
+	tokenExpiryTime = currentTime + data.expires_in * 1000; // expires_in is in seconds, convert to milliseconds
 
-  return cachedAccessToken;
+	return cachedAccessToken;
 };
 
 export interface NowPlayingSong {
-  album: string;
-  albumImageUrl: string;
-  artist: string;
-  isPlaying: boolean;
-  songUrl: string;
-  title: string;
-};
+	album: string;
+	albumImageUrl: string;
+	artist: string;
+	isPlaying: boolean;
+	songUrl: string;
+	title: string;
+}
 
 export const getNowPlaying = async (): Promise<NowPlayingSong> => {
-  const accessToken = await getAccessToken();
+	const accessToken = await getAccessToken();
 
-  const response = await fetch(NOW_PLAYING_ENDPOINT, {
-    headers: {
-      Authorization: `Bearer ${accessToken}`
-    },
-    cache: 'no-store'
-  });
+	const response = await fetch(NOW_PLAYING_ENDPOINT, {
+		headers: {
+			Authorization: `Bearer ${accessToken}`,
+		},
+		cache: "no-store",
+	});
 
-  if (response.status === 204 || response.status > 400) {
-    return {
-      album: '',
-      albumImageUrl: '',
-      artist: '',
-      isPlaying: false,
-      songUrl: '',
-      title: ''
-    };
-  }
+	if (response.status === 204 || response.status > 400) {
+		return {
+			album: "",
+			albumImageUrl: "",
+			artist: "",
+			isPlaying: false,
+			songUrl: "",
+			title: "",
+		};
+	}
 
-  const song = await response.json();
+	const song = await response.json();
 
-  if (song.item === null) {
-    return {
-      album: '',
-      albumImageUrl: '',
-      artist: '',
-      isPlaying: false,
-      songUrl: '',
-      title: ''
-    };
-  }
+	if (song.item === null) {
+		return {
+			album: "",
+			albumImageUrl: "",
+			artist: "",
+			isPlaying: false,
+			songUrl: "",
+			title: "",
+		};
+	}
 
-  const isPlaying = song.is_playing;
-  const title = song.item.name;
-  const artist = song.item.artists.map((artist: { name: string }) => artist.name).join(', ');
-  const album = song.item.album.name;
-  const albumImageUrl = song.item.album.images[0].url;
-  const songUrl = song.item.external_urls.spotify;
+	const isPlaying = song.is_playing;
+	const title = song.item.name;
+	const artist = song.item.artists.map((artist: { name: string }) => artist.name).join(", ");
+	const album = song.item.album.name;
+	const albumImageUrl = song.item.album.images[0].url;
+	const songUrl = song.item.external_urls.spotify;
 
-  return {
-    album,
-    albumImageUrl,
-    artist,
-    isPlaying,
-    songUrl,
-    title
-  }
+	return {
+		album,
+		albumImageUrl,
+		artist,
+		isPlaying,
+		songUrl,
+		title,
+	};
 };
 
 export const getTopTracks = async () => {
-  const accessToken = await getAccessToken();
+	const accessToken = await getAccessToken();
 
-  return fetch(TOP_TRACKS_ENDPOINT, {
-    headers: {
-      Authorization: `Bearer ${accessToken}`
-    }
-  });
+	return fetch(TOP_TRACKS_ENDPOINT, {
+		headers: {
+			Authorization: `Bearer ${accessToken}`,
+		},
+	});
 };

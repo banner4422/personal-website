@@ -1,46 +1,46 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
-import mdx from '@astrojs/mdx';
-import sitemap from '@astrojs/sitemap';
+import { defineConfig } from "astro/config";
+import mdx from "@astrojs/mdx";
+import sitemap from "@astrojs/sitemap";
 
-import svelte from '@astrojs/svelte';
+import svelte from "@astrojs/svelte";
 
-import vercel from '@astrojs/vercel';
+import vercel from "@astrojs/vercel";
 
-import tailwindcss from '@tailwindcss/vite';
+import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://chrkn.dk',
-  integrations: [
-    mdx({
-      // Enable syntax highlighting with Shiki
-      syntaxHighlight: 'shiki',
-      shikiConfig: {
-        // Choose a theme for syntax highlighting
-        theme: 'github-dark',
-        // Add custom languages
-        langs: [],
-        // Enable word wrap for better mobile experience
-        wrap: true,
-      },
-    }), 
-    sitemap(), 
-    svelte()
-  ],
-  adapter: vercel(),
+	site: "https://chrkn.dk",
+	integrations: [
+		mdx({
+			// Enable syntax highlighting with Shiki
+			syntaxHighlight: "shiki",
+			shikiConfig: {
+				// Choose a theme for syntax highlighting
+				theme: "github-dark",
+				// Add custom languages
+				langs: [],
+				// Enable word wrap for better mobile experience
+				wrap: true,
+			},
+		}),
+		sitemap(),
+		svelte(),
+	],
+	adapter: vercel(),
 
-  // Enable prefetching for faster page navigation
-  prefetch: true,
+	// Enable prefetching for faster page navigation
+	prefetch: true,
 
-  vite: {
-    plugins: [tailwindcss()],
-  },
-  markdown: {
-    syntaxHighlight: 'shiki',
-    shikiConfig: {
-      theme: 'github-dark',
-      wrap: true,
-    },
-  },
+	vite: {
+		plugins: [tailwindcss()],
+	},
+	markdown: {
+		syntaxHighlight: "shiki",
+		shikiConfig: {
+			theme: "github-dark",
+			wrap: true,
+		},
+	},
 });
