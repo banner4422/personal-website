@@ -32,4 +32,4 @@ If you want to contribute, feel free to open an issue or a pull request. I am al
 
 ## License
 
-This project is licensed under the [AGPL-3.0 License](https://github.com/banner4422/personal-website/blob/1.0/LICENSE).
+This project is licensed under the [AGPL-3.0 License](./LICENSE).
