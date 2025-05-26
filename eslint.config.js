@@ -44,8 +44,8 @@ export default [
         },
         rules: {
             // Relax some TypeScript rules that might be too strict
-            "@typescript-eslint/no-explicit-any": "warn",
-            "@typescript-eslint/no-empty-object-type": "warn",
+            //"@typescript-eslint/no-explicit-any": "warn",
+            //"@typescript-eslint/no-empty-object-type": "warn",
         },
     },
 
