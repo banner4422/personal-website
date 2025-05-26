@@ -9,7 +9,7 @@ import tseslint from "typescript-eslint";
 export default [
     {
         // Ignore generated files and node_modules
-        ignores: ["dist/**", "node_modules/**", ".astro/**"],
+        ignores: ["dist/**", "node_modules/**", ".astro/**", ".vercel/**"],
     },
     eslintJs.configs.recommended,
     ...tseslint.configs.recommended,
