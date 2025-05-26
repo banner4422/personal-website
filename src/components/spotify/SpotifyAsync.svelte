@@ -3,10 +3,11 @@
     import AnimatedBars from "./AnimatedBars.svelte";
     import SpotifyLogo from "./SpotifyLogo.svelte";
     import LoadingSpinner from "./LoadingSpinner.svelte";
-    import { spotifyData, fetchSpotifyData } from "../../lib/spotify/spotifyStore.ts";
+    import { spotifyData, fetchSpotifyData } from "../../lib/spotify/spotifyStore";
+    import type { NowPlayingSong } from "../../lib/spotify/spotify";
 
     let loading = true;
-    let data = {
+    let data: NowPlayingSong = {
         album: "",
         albumImageUrl: "",
         artist: "",
