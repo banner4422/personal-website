@@ -167,23 +167,23 @@ we can use 3 backticks ``` in new line and write snippet and close with 3 backti
 
 ```markdown
 - Fruit
-    - Apple
-    - Orange
-    - Banana
+  - Apple
+  - Orange
+  - Banana
 - Dairy
-    - Milk
-    - Cheese
+  - Milk
+  - Cheese
 ```
 
 #### Output
 
 - Fruit
-    - Apple
-    - Orange
-    - Banana
+  - Apple
+  - Orange
+  - Banana
 - Dairy
-    - Milk
-    - Cheese
+  - Milk
+  - Cheese
 
 ## Other Elements — abbr, sub, sup, kbd, mark
 

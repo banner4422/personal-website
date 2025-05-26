@@ -49,7 +49,9 @@
 	</button>
 
 	{#if isPopoverOpen}
-		<div class="absolute z-10 mt-2 w-32 md:w-64 rounded-md shadow-lg bg-white dark:bg-zinc-800 focus:outline-none">
+		<div
+			class="absolute z-10 mt-2 w-32 md:w-64 rounded-md shadow-lg bg-white dark:bg-zinc-800 focus:outline-none"
+		>
 			<div class="py-1">
 				<p class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200">
 					{#if colour === "Discord"}

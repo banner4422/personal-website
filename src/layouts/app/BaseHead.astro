@@ -29,13 +29,42 @@ const { title, description = SITE_DESCRIPTION } = Astro.props;
 
 <!-- Sitemap and RSS -->
 <link rel="sitemap" href="/sitemap-index.xml" />
-<link rel="alternate" type="application/rss+xml" title={SITE_TITLE} href={new URL("rss.xml", Astro.site)} />
+<link
+	rel="alternate"
+	type="application/rss+xml"
+	title={SITE_TITLE}
+	href={new URL("rss.xml", Astro.site)}
+/>
 
 <!-- Preloads -->
-<link rel="preload" href="/fonts/inter-v18-latin-regular.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="preload" href="/fonts/inter-v18-latin-500.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="preload" href="/fonts/inter-v18-latin-600.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="preload" href="/fonts/inter-v18-latin-700.woff2" as="font" type="font/woff2" crossorigin />
+<link
+	rel="preload"
+	href="/fonts/inter-v18-latin-regular.woff2"
+	as="font"
+	type="font/woff2"
+	crossorigin
+/>
+<link
+	rel="preload"
+	href="/fonts/inter-v18-latin-500.woff2"
+	as="font"
+	type="font/woff2"
+	crossorigin
+/>
+<link
+	rel="preload"
+	href="/fonts/inter-v18-latin-600.woff2"
+	as="font"
+	type="font/woff2"
+	crossorigin
+/>
+<link
+	rel="preload"
+	href="/fonts/inter-v18-latin-700.woff2"
+	as="font"
+	type="font/woff2"
+	crossorigin
+/>
 
 <!-- SEO -->
 <meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1" />

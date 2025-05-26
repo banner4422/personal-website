@@ -9,7 +9,9 @@
 
 	function isCurrentRoute(route: string): boolean {
 		if (!currentPath) return false;
-		return route === "/" ? currentPath === "/" : currentPath === route || currentPath.startsWith(route + "/");
+		return route === "/"
+			? currentPath === "/"
+			: currentPath === route || currentPath.startsWith(route + "/");
 	}
 </script>
 
