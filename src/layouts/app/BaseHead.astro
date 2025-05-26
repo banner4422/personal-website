@@ -5,9 +5,9 @@ import "../../styles/global.css";
 import { SITE_TITLE, SITE_DESCRIPTION, AUTHOR, KEYWORDS } from "../../consts";
 
 interface Props {
-	title: string;
-	description?: string;
-	image?: string;
+    title: string;
+    description?: string;
+    image?: string;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -30,40 +30,40 @@ const { title, description = SITE_DESCRIPTION } = Astro.props;
 <!-- Sitemap and RSS -->
 <link rel="sitemap" href="/sitemap-index.xml" />
 <link
-	rel="alternate"
-	type="application/rss+xml"
-	title={SITE_TITLE}
-	href={new URL("rss.xml", Astro.site)}
+    rel="alternate"
+    type="application/rss+xml"
+    title={SITE_TITLE}
+    href={new URL("rss.xml", Astro.site)}
 />
 
 <!-- Preloads -->
 <link
-	rel="preload"
-	href="/fonts/inter-v18-latin-regular.woff2"
-	as="font"
-	type="font/woff2"
-	crossorigin
+    rel="preload"
+    href="/fonts/inter-v18-latin-regular.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
 />
 <link
-	rel="preload"
-	href="/fonts/inter-v18-latin-500.woff2"
-	as="font"
-	type="font/woff2"
-	crossorigin
+    rel="preload"
+    href="/fonts/inter-v18-latin-500.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
 />
 <link
-	rel="preload"
-	href="/fonts/inter-v18-latin-600.woff2"
-	as="font"
-	type="font/woff2"
-	crossorigin
+    rel="preload"
+    href="/fonts/inter-v18-latin-600.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
 />
 <link
-	rel="preload"
-	href="/fonts/inter-v18-latin-700.woff2"
-	as="font"
-	type="font/woff2"
-	crossorigin
+    rel="preload"
+    href="/fonts/inter-v18-latin-700.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
 />
 
 <!-- SEO -->
@@ -96,24 +96,24 @@ const { title, description = SITE_DESCRIPTION } = Astro.props;
 
 <!-- Dark mode script (to prevent flash of incorrect theme) -->
 <script is:inline>
-	const isBrowser = typeof localStorage !== "undefined";
-	const getThemePreference = () => {
-		if (isBrowser && localStorage.getItem("theme")) {
-			return localStorage.getItem("theme");
-		}
-		return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-	};
-	const isDark = getThemePreference() === "dark";
-	document.documentElement.classList[isDark ? "add" : "remove"]("dark");
+    const isBrowser = typeof localStorage !== "undefined";
+    const getThemePreference = () => {
+        if (isBrowser && localStorage.getItem("theme")) {
+            return localStorage.getItem("theme");
+        }
+        return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    };
+    const isDark = getThemePreference() === "dark";
+    document.documentElement.classList[isDark ? "add" : "remove"]("dark");
 
-	if (isBrowser) {
-		const observer = new MutationObserver(() => {
-			const isDark = document.documentElement.classList.contains("dark");
-			localStorage.setItem("theme", isDark ? "dark" : "light");
-		});
-		observer.observe(document.documentElement, {
-			attributes: true,
-			attributeFilter: ["class"],
-		});
-	}
+    if (isBrowser) {
+        const observer = new MutationObserver(() => {
+            const isDark = document.documentElement.classList.contains("dark");
+            localStorage.setItem("theme", isDark ? "dark" : "light");
+        });
+        observer.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ["class"],
+        });
+    }
 </script>

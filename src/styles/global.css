@@ -4,25 +4,25 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-	--color-GitHub: #333;
-	--color-LinkedIn: #0077b5;
-	--color-Discord: #5865f2;
-	--color-React: #61dafb;
-	--color-Untappd: #f5c342;
-	--color-work: #33b3d1;
-	--color-TypeScript: #3178c6;
-	--color-csharp: #9b4993;
-	--color-cbs: #4967aa;
-	--color-svelte: #eb4e27;
-	--color-Discogs: #000000;
-	--color-Python: #ffd343;
-	--color-Spotify: #1db954;
-	--color-Bluesky: #1185fe;
-	--color-LastFm: #d01f3c;
+    --color-GitHub: #333;
+    --color-LinkedIn: #0077b5;
+    --color-Discord: #5865f2;
+    --color-React: #61dafb;
+    --color-Untappd: #f5c342;
+    --color-work: #33b3d1;
+    --color-TypeScript: #3178c6;
+    --color-csharp: #9b4993;
+    --color-cbs: #4967aa;
+    --color-svelte: #eb4e27;
+    --color-Discogs: #000000;
+    --color-Python: #ffd343;
+    --color-Spotify: #1db954;
+    --color-Bluesky: #1185fe;
+    --color-LastFm: #d01f3c;
 
-	--radius-social: 20%;
+    --radius-social: 20%;
 
-	--font-sans: "Inter", "sans-serif";
+    --font-sans: "Inter", "sans-serif";
 }
 
 /*
@@ -34,165 +34,165 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
-	*,
-	::after,
-	::before,
-	::backdrop,
-	::file-selector-button {
-		border-color: var(--color-gray-200, currentcolor);
-	}
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentcolor);
+    }
 
-	html {
-		font-family:
-			"Inter",
-			system-ui,
-			-apple-system,
-			BlinkMacSystemFont,
-			"Segoe UI",
-			Roboto,
-			Oxygen,
-			Ubuntu,
-			Cantarell,
-			"Open Sans",
-			"Helvetica Neue",
-			sans-serif;
-	}
+    html {
+        font-family:
+            "Inter",
+            system-ui,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Roboto,
+            Oxygen,
+            Ubuntu,
+            Cantarell,
+            "Open Sans",
+            "Helvetica Neue",
+            sans-serif;
+    }
 }
 
 /*
   Keep only the sr-only class which is important for accessibility
 */
 .sr-only {
-	border: 0;
-	padding: 0;
-	margin: 0;
-	position: absolute !important;
-	height: 1px;
-	width: 1px;
-	overflow: hidden;
-	clip: rect(1px, 1px, 1px, 1px);
-	clip-path: inset(50%);
-	white-space: nowrap;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    white-space: nowrap;
 }
 
 /* Social media hover effects */
 /* Instagram gradient button with smooth transition */
 .instagram-gradient-button {
-	position: relative;
-	z-index: 1;
-	overflow: hidden;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
 }
 
 .instagram-gradient-button::before {
-	content: "";
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045);
-	z-index: -1;
-	opacity: 0;
-	transition: opacity 0.3s ease-in-out;
-	border-radius: var(--radius-social);
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: var(--radius-social);
 }
 
 .instagram-gradient-button:hover::before {
-	opacity: 1;
+    opacity: 1;
 }
 
 /* Custom hover background classes for social media buttons */
 .hover-bg-GitHub:hover {
-	background-color: var(--color-GitHub);
+    background-color: var(--color-GitHub);
 }
 
 .hover-bg-LinkedIn:hover {
-	background-color: var(--color-LinkedIn);
+    background-color: var(--color-LinkedIn);
 }
 
 .hover-bg-Discord:hover {
-	background-color: var(--color-Discord);
+    background-color: var(--color-Discord);
 }
 
 .hover-bg-Bluesky:hover {
-	background-color: var(--color-Bluesky);
+    background-color: var(--color-Bluesky);
 }
 
 .hover-bg-Discogs:hover {
-	background-color: var(--color-Discogs);
+    background-color: var(--color-Discogs);
 }
 
 .hover-bg-Spotify:hover {
-	background-color: var(--color-Spotify);
+    background-color: var(--color-Spotify);
 }
 
 .hover-bg-LastFm:hover {
-	background-color: var(--color-LastFm);
+    background-color: var(--color-LastFm);
 }
 
 /* Dark mode versions */
 .dark .hover-bg-GitHub:hover {
-	background-color: var(--color-GitHub);
+    background-color: var(--color-GitHub);
 }
 
 .dark .hover-bg-LinkedIn:hover {
-	background-color: var(--color-LinkedIn);
+    background-color: var(--color-LinkedIn);
 }
 
 .dark .hover-bg-Discord:hover {
-	background-color: var(--color-Discord);
+    background-color: var(--color-Discord);
 }
 
 .dark .hover-bg-Bluesky:hover {
-	background-color: var(--color-Bluesky);
+    background-color: var(--color-Bluesky);
 }
 
 .dark .hover-bg-Discogs:hover {
-	background-color: var(--color-Discogs);
+    background-color: var(--color-Discogs);
 }
 
 .dark .hover-bg-Spotify:hover {
-	background-color: var(--color-Spotify);
+    background-color: var(--color-Spotify);
 }
 
 .dark .hover-bg-LastFm:hover {
-	background-color: var(--color-LastFm);
+    background-color: var(--color-LastFm);
 }
 
 /* Disable tap highlight on mobile devices */
 .tap-highlight-transparent {
-	-webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: transparent;
 }
 
 /* inter-regular - latin */
 @font-face {
-	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-	font-family: "Inter";
-	font-style: normal;
-	font-weight: 400;
-	src: url("/fonts/inter-v18-latin-regular.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    src: url("/fonts/inter-v18-latin-regular.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* inter-500 - latin */
 @font-face {
-	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-	font-family: "Inter";
-	font-style: normal;
-	font-weight: 500;
-	src: url("/fonts/inter-v18-latin-500.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    src: url("/fonts/inter-v18-latin-500.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* inter-600 - latin */
 @font-face {
-	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-	font-family: "Inter";
-	font-style: normal;
-	font-weight: 600;
-	src: url("/fonts/inter-v18-latin-600.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    src: url("/fonts/inter-v18-latin-600.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* inter-700 - latin */
 @font-face {
-	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-	font-family: "Inter";
-	font-style: normal;
-	font-weight: 700;
-	src: url("/fonts/inter-v18-latin-700.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    src: url("/fonts/inter-v18-latin-700.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }

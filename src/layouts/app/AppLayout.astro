@@ -6,25 +6,25 @@ import Footer from "./Footer.astro";
 import Navigation from "./Navigation.astro";
 
 export interface Props {
-	title: string;
-	description?: string;
+    title: string;
+    description?: string;
 }
 
 const { title, description = SITE_DESCRIPTION } = Astro.props;
 ---
 
 <html lang="en">
-	<head>
-		<BaseHead title={title} description={description} />
-	</head>
-	<body class="bg-gray-50 dark:bg-zinc-900">
-		<ModeWatcher client:load themeColors={{ dark: "black", light: "white" }} />
-		<Navigation />
-		<main class="flex flex-col items-center w-full">
-			<div class="flex flex-col w-full max-w-2xl px-4 md:px-8">
-				<slot />
-			</div>
-		</main>
-		<Footer />
-	</body>
+    <head>
+        <BaseHead title={title} description={description} />
+    </head>
+    <body class="bg-gray-50 dark:bg-zinc-900">
+        <ModeWatcher client:load themeColors={{ dark: "black", light: "white" }} />
+        <Navigation />
+        <main class="flex flex-col items-center w-full">
+            <div class="flex flex-col w-full max-w-2xl px-4 md:px-8">
+                <slot />
+            </div>
+        </main>
+        <Footer />
+    </body>
 </html>

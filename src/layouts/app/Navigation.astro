@@ -4,10 +4,10 @@ import AppearanceModeSwitch from "../../components/app/AppearanceModeSwitch.svel
 ---
 
 <header class="flex flex-col items-center w-full">
-	<nav class="flex items-center justify-between w-full max-w-2xl px-4 md:px-8 py-8">
-		<div class="ml-[-0.60rem]">
-			<Routes client:load currentPath={Astro.url.pathname} />
-		</div>
-		<AppearanceModeSwitch client:load />
-	</nav>
+    <nav class="flex items-center justify-between w-full max-w-2xl px-4 md:px-8 py-8">
+        <div class="ml-[-0.60rem]">
+            <Routes client:load currentPath={Astro.url.pathname} />
+        </div>
+        <AppearanceModeSwitch client:load />
+    </nav>
 </header>
