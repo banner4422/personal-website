@@ -12,21 +12,26 @@ export const spotifyData = writable<{
     loading: true,
 });
 
+// Helper to determine if current data is "empty"
+function isEmptyData(data: NowPlayingSong | null) {
+    return !data || data.title === "";
+}
+
 // Function to fetch Spotify data with caching
 export async function fetchSpotifyData() {
     const currentTime = Date.now();
-
-    // Get current state before updating
     const state = get(spotifyData);
 
-    // Update loading state
+    // Start loading
     spotifyData.update((s) => ({ ...s, loading: true }));
 
-    // Only fetch if we don't have data or if it's older than 30 seconds
-    if (!state.data || currentTime - state.lastFetched > 30000) {
+    const shouldFetch =
+        !state.data || isEmptyData(state.data) || currentTime - state.lastFetched > 30 * 1000;
+
+    if (shouldFetch) {
         try {
             const response = await fetch("/api/spotify");
-            const data = await response.json();
+            const data: NowPlayingSong = await response.json();
 
             spotifyData.set({
                 data,
@@ -38,7 +43,7 @@ export async function fetchSpotifyData() {
             spotifyData.update((s) => ({ ...s, loading: false }));
         }
     } else {
-        // If we have recent data, just update loading state
+        // Keep existing data, just set loading to false
         spotifyData.update((s) => ({ ...s, loading: false }));
     }
 }

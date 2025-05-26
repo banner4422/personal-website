@@ -13,12 +13,10 @@ let tokenExpiryTime: number | null = null;
 export const getAccessToken = async () => {
     const currentTime = Date.now();
 
-    // Check if the token is cached and still valid
     if (cachedAccessToken && tokenExpiryTime && currentTime < tokenExpiryTime) {
         return cachedAccessToken;
     }
 
-    // Fetch a new token if not cached or expired
     const response = await fetch(TOKEN_ENDPOINT, {
         method: "POST",
         headers: {
@@ -31,11 +29,14 @@ export const getAccessToken = async () => {
         }),
     });
 
+    if (!response.ok) {
+        throw new Error(`Failed to fetch access token: ${response.statusText}`);
+    }
+
     const data = await response.json();
 
-    // Cache the token and its expiry time
     cachedAccessToken = data.access_token;
-    tokenExpiryTime = currentTime + data.expires_in * 1000; // expires_in is in seconds, convert to milliseconds
+    tokenExpiryTime = currentTime + data.expires_in * 1000;
 
     return cachedAccessToken;
 };
@@ -49,6 +50,15 @@ export interface NowPlayingSong {
     title: string;
 }
 
+const EMPTY_RESPONSE: NowPlayingSong = {
+    album: "",
+    albumImageUrl: "",
+    artist: "",
+    isPlaying: false,
+    songUrl: "",
+    title: "",
+};
+
 // Cache for now playing data
 let nowPlayingCache: {
     data: NowPlayingSong | null;
@@ -58,14 +68,12 @@ let nowPlayingCache: {
     timestamp: 0,
 };
 
-// Cache duration in milliseconds (2 minutes)
 const CACHE_DURATION = 2 * 60 * 1000;
+const EMPTY_CACHE_DURATION = 15 * 1000;
 
-// Retry configuration
 const MAX_RETRIES = 3;
-const RETRY_DELAY = 1000; // Start with 1 second delay
+const RETRY_DELAY = 1000;
 
-// Helper function to implement retry logic with exponential backoff
 const fetchWithRetry = async (
     url: string,
     options: RequestInit,
@@ -79,12 +87,8 @@ const fetchWithRetry = async (
             throw error;
         }
 
-        console.log(`Fetch failed, retrying in ${delay}ms... (${retries} retries left)`);
-
-        // Wait for the specified delay
+        console.warn(`Fetch failed, retrying in ${delay}ms... (${retries} retries left)`);
         await new Promise((resolve) => setTimeout(resolve, delay));
-
-        // Retry with exponential backoff
         return fetchWithRetry(url, options, retries - 1, delay * 2);
     }
 };
@@ -92,9 +96,13 @@ const fetchWithRetry = async (
 export const getNowPlaying = async (): Promise<NowPlayingSong> => {
     const currentTime = Date.now();
 
-    // Return cached data if it's still valid
-    if (nowPlayingCache.data && currentTime - nowPlayingCache.timestamp < CACHE_DURATION) {
-        return nowPlayingCache.data;
+    if (nowPlayingCache.data) {
+        const isEmpty = nowPlayingCache.data.title === "";
+        const age = currentTime - nowPlayingCache.timestamp;
+
+        if ((!isEmpty && age < CACHE_DURATION) || (isEmpty && age < EMPTY_CACHE_DURATION)) {
+            return nowPlayingCache.data;
+        }
     }
 
     try {
@@ -107,86 +115,44 @@ export const getNowPlaying = async (): Promise<NowPlayingSong> => {
             cache: "no-store",
         });
 
-        if (response.status === 204 || response.status > 400) {
-            const emptyResponse = {
-                album: "",
-                albumImageUrl: "",
-                artist: "",
-                isPlaying: false,
-                songUrl: "",
-                title: "",
-            };
-
-            // Cache the empty response
-            nowPlayingCache = {
-                data: emptyResponse,
-                timestamp: currentTime,
-            };
-
-            return emptyResponse;
+        if (response.status === 204 || response.status >= 400) {
+            return EMPTY_RESPONSE;
         }
 
         const song = await response.json();
 
-        if (song.item === null) {
-            const emptyResponse = {
-                album: "",
-                albumImageUrl: "",
-                artist: "",
-                isPlaying: false,
-                songUrl: "",
-                title: "",
-            };
-
-            // Cache the empty response
-            nowPlayingCache = {
-                data: emptyResponse,
-                timestamp: currentTime,
-            };
-
-            return emptyResponse;
+        if (!song?.item) {
+            return EMPTY_RESPONSE;
         }
 
-        const isPlaying = song.is_playing;
-        const title = song.item.name;
-        const artist = song.item.artists.map((artist: { name: string }) => artist.name).join(", ");
-        const album = song.item.album.name;
-        const albumImageUrl = song.item.album.images[0].url;
-        const songUrl = song.item.external_urls.spotify;
-
-        const nowPlayingData = {
-            album,
-            albumImageUrl,
-            artist,
-            isPlaying,
-            songUrl,
-            title,
+        const nowPlayingData: NowPlayingSong = {
+            album: song.item.album?.name ?? "",
+            albumImageUrl: song.item.album?.images?.[0]?.url ?? "",
+            artist:
+                song.item.artists?.map((artist: { name: string }) => artist.name).join(", ") ?? "",
+            isPlaying: song.is_playing ?? false,
+            songUrl: song.item.external_urls?.spotify ?? "",
+            title: song.item.name ?? "",
         };
 
-        // Cache the successful response
-        nowPlayingCache = {
-            data: nowPlayingData,
-            timestamp: currentTime,
-        };
+        // Only cache if it has a valid title
+        if (nowPlayingData.title) {
+            nowPlayingCache = {
+                data: nowPlayingData,
+                timestamp: currentTime,
+            };
+        }
 
-        return nowPlayingData;
+        return nowPlayingData.title ? nowPlayingData : EMPTY_RESPONSE;
     } catch (error) {
         console.error("Error fetching now playing data:", error);
 
-        // If we have cached data, return it even if it's expired
+        // Fallback to last known cache (even if stale)
         if (nowPlayingCache.data) {
             return nowPlayingCache.data;
         }
 
-        // Otherwise return an empty response
-        return {
-            album: "",
-            albumImageUrl: "",
-            artist: "",
-            isPlaying: false,
-            songUrl: "",
-            title: "",
-        };
+        return EMPTY_RESPONSE;
     }
 };
 
@@ -201,6 +167,6 @@ export const getTopTracks = async () => {
         });
     } catch (error) {
         console.error("Error fetching top tracks:", error);
-        throw error; // Re-throw the error for the caller to handle
+        throw error;
     }
 };
