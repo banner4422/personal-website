@@ -1,25 +1,7 @@
 import { getNowPlaying } from "../../lib/spotify/spotify";
 import type { APIRoute } from "astro";
 
-const allowedOrigins = ["personal-website-fxwa.vercel.app"];
-
-export const GET: APIRoute = async ({ request }) => {
-    if (!import.meta.env.DEV) {
-        const origin = request.headers.get("origin") || "";
-        const referer = request.headers.get("referer") || "";
-
-        const originIsAllowed = allowedOrigins.some(
-            (domain) => origin.includes(domain) || referer.includes(domain)
-        );
-
-        if (!originIsAllowed) {
-            return new Response(JSON.stringify({ error: "Unauthorized: origin not allowed" }), {
-                status: 401,
-                headers: { "Content-Type": "application/json" },
-            });
-        }
-    }
-
+export const GET: APIRoute = async () => {
     try {
         const response = await getNowPlaying();
 
