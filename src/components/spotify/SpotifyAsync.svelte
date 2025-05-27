@@ -40,31 +40,38 @@
     {#if loading}
         <LoadingSpinner />
     {:else if data.isPlaying}
-        <AnimatedBars />
+        <div class="hidden sm:flex">
+            <AnimatedBars />
+        </div>
+        <div class="flex sm:hidden flex-col space-y-2">
+            <AnimatedBars/>
+            <SpotifyLogo />
+        </div>
     {:else}
         <SpotifyLogo />
     {/if}
-    <div class="inline-flex flex-row w-full max-w-full truncate ml-2">
+    <div class="inline-flex flex-col sm:flex-row w-full max-w-full truncate ml-2">
         {#if loading}
             <p class="text-gray-800 dark:text-gray-200 font-medium">Not Playing</p>
-            <span class="mx-2 text-gray-500 dark:text-gray-300 hidden sm:block"> – </span>
+            <span class="mx-2 text-gray-500 dark:text-gray-300 hidden sm:flex"> – </span>
             <p class="text-gray-500 dark:text-gray-300 max-w-max truncate">Spotify</p>
         {:else if data.isPlaying}
             <a
-                class="text-gray-800 dark:text-gray-200 font-medium max-w-max truncate hover:underline"
+                class="text-gray-800 dark:text-gray-200 font-medium w-72 sm:w-60 md:w-40 truncate hover:underline"
                 href={data.songUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                title={data.title}
             >
                 {data.title}
             </a>
-            <span class="mx-2 text-gray-500 dark:text-gray-300 block"> – </span>
-            <p class="text-gray-500 dark:text-gray-300 max-w-max truncate">
+            <span class="hidden sm:flex mx-2 text-gray-500 dark:text-gray-300"> – </span>
+            <p class="text-gray-500 dark:text-gray-300 w-72 sm:w-60 md:w-40 truncate" title={data.artist}>
                 {data.artist}
             </p>
         {:else}
             <p class="text-gray-800 dark:text-gray-200 font-medium">Not Playing</p>
-            <span class="mx-2 text-gray-500 dark:text-gray-300 block"> – </span>
+            <span class="hidden sm:flex mx-2 text-gray-500 dark:text-gray-300"> – </span>
             <p class="text-gray-500 dark:text-gray-300 max-w-max truncate">Spotify</p>
         {/if}
     </div>
