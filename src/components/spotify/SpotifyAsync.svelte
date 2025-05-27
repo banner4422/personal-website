@@ -57,7 +57,7 @@
             <p class="text-gray-500 dark:text-gray-300 max-w-max truncate">Spotify</p>
         {:else if data.isPlaying}
             <a
-                class="text-gray-800 dark:text-gray-200 font-medium w-72 sm:w-60 md:w-40 truncate hover:underline"
+                class="text-gray-800 dark:text-gray-200 font-medium max-w-fit w-72 sm:w-60 md:w-40 truncate hover:underline"
                 href={data.songUrl}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -66,7 +66,7 @@
                 {data.title}
             </a>
             <span class="hidden sm:flex mx-2 text-gray-500 dark:text-gray-300"> – </span>
-            <p class="text-gray-500 dark:text-gray-300 w-72 sm:w-60 md:w-40 truncate" title={data.artist}>
+            <p class="text-gray-500 dark:text-gray-300 max-w-fit w-72 sm:w-60 md:w-40 truncate" title={data.artist}>
                 {data.artist}
             </p>
         {:else}
