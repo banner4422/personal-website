@@ -4,7 +4,7 @@
     const navigationRoutes = [
         { name: "Home", route: "/" },
         { name: "About", route: "/about" },
-        //{ name: "Blog", route: "/blog" },
+        { name: "Blog", route: "/blog" },
     ];
 
     function isCurrentRoute(route: string): boolean {
