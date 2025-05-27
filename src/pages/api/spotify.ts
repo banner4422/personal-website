@@ -1,7 +1,7 @@
 import { getNowPlaying } from "../../lib/spotify/spotify";
 import type { APIRoute } from "astro";
 
-const allowedOrigins = ["chrkn.dk", "www.chrkn.dk", "chrkn.dev", "www.chrkn.dev"];
+const allowedOrigins = ["personal-website-fxwa.vercel.app"];
 
 export const GET: APIRoute = async ({ request }) => {
     if (!import.meta.env.DEV) {
