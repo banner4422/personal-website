@@ -44,7 +44,7 @@
             <AnimatedBars />
         </div>
         <div class="flex sm:hidden flex-col space-y-2">
-            <AnimatedBars/>
+            <AnimatedBars />
             <SpotifyLogo />
         </div>
     {:else}
@@ -66,7 +66,10 @@
                 {data.title}
             </a>
             <span class="hidden sm:flex mx-2 text-gray-500 dark:text-gray-300"> – </span>
-            <p class="text-gray-500 dark:text-gray-300 max-w-fit w-72 sm:w-60 md:w-40 truncate" title={data.artist}>
+            <p
+                class="text-gray-500 dark:text-gray-300 max-w-fit w-72 sm:w-60 md:w-40 truncate"
+                title={data.artist}
+            >
                 {data.artist}
             </p>
         {:else}

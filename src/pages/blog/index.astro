@@ -11,9 +11,12 @@ const allPosts = await getCollection("blog");
 
 <AppLayout title={`${SITE_TITLE} - Blog`}>
     <PageLayout>
-        <h1 class="text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100">{"Christian's"} Blog</h1>
+        <h1 class="text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100">
+            {"Christian's"} Blog
+        </h1>
         <p class="text-lg text-gray-700 dark:text-gray-300 mb-8">
-            Welcome to my public blog! Here you'll find blog posts on various topics, including technology, personal experiences, and more.
+            Welcome to my public blog! Here you'll find blog posts on various topics, including
+            technology, personal experiences, and more.
         </p>
         <BlogFilter client:load posts={allPosts} />
     </PageLayout>
