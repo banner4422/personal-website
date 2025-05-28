@@ -4,6 +4,9 @@ import { getCollection } from "astro:content";
 import AppLayout from "./app/AppLayout.astro";
 import FormattedDate from "../components/FormattedDate.astro";
 import PageLayout from "./PageLayout.astro";
+import BackToBlogLink from "../components/blog/BackToBlogLink.astro";
+import RelatedPosts from "../components/blog/RelatedPosts.astro";
+import RecentPosts from "../components/blog/RecentPosts.astro";
 
 type Props = CollectionEntry<"blog">["data"] & {
     id?: string;
@@ -35,26 +38,7 @@ const recentPosts = otherPosts
 
 <AppLayout title={title} description={description}>
     <PageLayout>
-        <div class="w-full max-w-prose">
-            <a
-                data-astro-prefetch
-                href="/blog"
-                class="inline-flex items-center text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-zinc-800 rounded-lg px-3 py-2 transition-colors duration-300 mb-4"
-            >
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5 mr-1"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                >
-                    <path
-                        fill-rule="evenodd"
-                        d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z"
-                        clip-rule="evenodd"></path>
-                </svg>
-                Back to Blog
-            </a>
-        </div>
+        <BackToBlogLink />
         <article>
             <div class="w-full flex justify-center">
                 {
@@ -95,107 +79,10 @@ const recentPosts = otherPosts
                     (sameCategoryPosts.length > 0 || recentPosts.length > 0) && (
                         <div class="mt-12 mb-6 pt-4 border-t border-gray-200 dark:border-gray-800">
                             <div class="w-full max-w-prose mb-3">
-                                <a
-                                    data-astro-prefetch
-                                    href="/blog"
-                                    class="inline-flex items-center text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-zinc-800 rounded-lg px-3 py-2 transition-colors duration-300"
-                                >
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        class="h-5 w-5 mr-1"
-                                        viewBox="0 0 20 20"
-                                        fill="currentColor"
-                                    >
-                                        <path
-                                            fill-rule="evenodd"
-                                            d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z"
-                                            clip-rule="evenodd"
-                                        />
-                                    </svg>
-                                    Back to Blog
-                                </a>
+                                <BackToBlogLink />
                             </div>
-                            {sameCategoryPosts.length > 0 && (
-                                <div class="mb-8">
-                                    <h2 class="text-xl font-semibold mb-4">
-                                        More in{" "}
-                                        <span class="font-bold text-gray-900 dark:text-gray-100">
-                                            {category}
-                                        </span>
-                                    </h2>
-                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                        {sameCategoryPosts.map((post) => (
-                                            <a
-                                                data-astro-prefetch
-                                                href={`/blog/${post.id}/`}
-                                                class="group block p-4 border border-gray-200 dark:border-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all"
-                                            >
-                                                {post.data.heroImage && (
-                                                    <img
-                                                        src={post.data.heroImage}
-                                                        alt=""
-                                                        class="w-full h-32 object-cover rounded-lg mb-2 group-hover:shadow-lg"
-                                                    />
-                                                )}
-                                                <h4
-                                                    class="font-medium text-gray-900 dark:text-gray-100 group-hover:text-gray-700 dark:group-hover:text-gray-200 group-hover:underline"
-                                                    title={post.data.title}
-                                                >
-                                                    {post.data.title}
-                                                </h4>
-                                                <p class="text-sm text-gray-600 dark:text-gray-400">
-                                                    <FormattedDate
-                                                        date={post.data.pubDate}
-                                                        format="post"
-                                                    />
-                                                </p>
-                                            </a>
-                                        ))}
-                                    </div>
-                                </div>
-                            )}
-                            {recentPosts.length > 0 && (
-                                <div>
-                                    <h2 class="text-xl font-semibold mb-4">Recent Posts</h2>
-                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                        {recentPosts.map((post) => (
-                                            <a
-                                                data-astro-prefetch
-                                                href={`/blog/${post.id}/`}
-                                                class="group block p-4 border border-gray-200 dark:border-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all"
-                                            >
-                                                {post.data.heroImage && (
-                                                    <img
-                                                        src={post.data.heroImage}
-                                                        alt=""
-                                                        class="w-full h-32 object-cover rounded-lg mb-2 group-hover:shadow-lg"
-                                                    />
-                                                )}
-                                                <h4
-                                                    class="font-medium text-gray-900 dark:text-gray-100 group-hover:text-gray-700 dark:group-hover:text-gray-200 group-hover:underline"
-                                                    title={post.data.title}
-                                                >
-                                                    {post.data.title}
-                                                </h4>
-                                                <p class="text-sm text-gray-600 dark:text-gray-400">
-                                                    <FormattedDate
-                                                        date={post.data.pubDate}
-                                                        format="post"
-                                                    />
-                                                </p>
-                                                {post.data.category && (
-                                                    <span
-                                                        class="inline-block mt-1 text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded"
-                                                        title={post.data.category}
-                                                    >
-                                                        {post.data.category}
-                                                    </span>
-                                                )}
-                                            </a>
-                                        ))}
-                                    </div>
-                                </div>
-                            )}
+                            <RelatedPosts posts={sameCategoryPosts} category={category} />
+                            <RecentPosts posts={recentPosts} />
                         </div>
                     )
                 }

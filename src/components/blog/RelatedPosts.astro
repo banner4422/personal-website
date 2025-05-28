@@ -1,0 +1,48 @@
+---
+import FormattedDate from "../FormattedDate.astro";
+
+import type { CollectionEntry } from "astro:content";
+
+export interface Props {
+    posts: CollectionEntry<"blog">[];
+    category: string;
+}
+
+const { posts, category } = Astro.props;
+---
+
+{
+    posts.length > 0 && (
+        <div class="mb-8">
+            <h2 class="text-xl font-semibold mb-4">
+                More in <span class="font-bold text-gray-900 dark:text-gray-100">{category}</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {posts.map((post) => (
+                    <a
+                        data-astro-prefetch
+                        href={`/blog/${post.id}/`}
+                        class="group block p-4 border border-gray-200 dark:border-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all"
+                    >
+                        {post.data.heroImage && (
+                            <img
+                                src={post.data.heroImage}
+                                alt=""
+                                class="w-full h-32 object-cover rounded-lg mb-2 group-hover:shadow-lg"
+                            />
+                        )}
+                        <h4
+                            class="font-medium text-gray-900 dark:text-gray-100 group-hover:text-gray-700 dark:group-hover:text-gray-200 group-hover:underline"
+                            title={post.data.title}
+                        >
+                            {post.data.title}
+                        </h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">
+                            <FormattedDate date={post.data.pubDate} format="post" />
+                        </p>
+                    </a>
+                ))}
+            </div>
+        </div>
+    )
+}
