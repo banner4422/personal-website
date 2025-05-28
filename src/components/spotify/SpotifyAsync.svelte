@@ -1,7 +1,7 @@
 <script lang="ts">
     import { onMount } from "svelte";
     import AnimatedBars from "./AnimatedBars.svelte";
-    import SpotifyLogo from "./SpotifyLogo.svelte";
+    import SpotifyLogo from "../icons/SpotifyLogo.svelte";
     import LoadingSpinner from "./LoadingSpinner.svelte";
     import { spotifyData, fetchSpotifyData } from "../../lib/spotify/spotifyStore";
     import type { NowPlayingSong } from "../../lib/spotify/spotify";
