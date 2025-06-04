@@ -1,6 +1,5 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import { getCollection } from "astro:content";
+import { type CollectionEntry, getCollection } from "astro:content";
 import AppLayout from "./app/AppLayout.astro";
 import FormattedDate from "../components/FormattedDate.astro";
 import PageLayout from "./PageLayout.astro";
@@ -16,7 +15,7 @@ type Props = CollectionEntry<"blog">["data"] & {
 const { title, description, pubDate, updatedDate, heroImage, category, id } = Astro.props;
 
 // Get all posts for recommendations
-const allPosts = await getCollection("blog");
+const allPosts: CollectionEntry<"blog">[] = await getCollection("blog");
 const currentPostId = id;
 
 // Filter out the current post
