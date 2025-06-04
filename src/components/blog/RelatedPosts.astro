@@ -1,5 +1,6 @@
 ---
 import FormattedDate from "../FormattedDate.astro";
+import { Image } from 'astro:assets';
 
 import type { CollectionEntry } from "astro:content";
 
@@ -25,10 +26,13 @@ const { posts, category } = Astro.props;
                         class="group block p-4 border border-gray-200 dark:border-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all"
                     >
                         {post.data.heroImage && (
-                            <img
+                            <Image
                                 src={post.data.heroImage}
-                                alt=""
+                                width={136.66}
+                                height={128}
+                                alt={`${post.data.title} - ${post.data.description}`}
                                 class="w-full h-32 object-cover rounded-lg mb-2 group-hover:shadow-lg"
+                                loading="lazy"
                             />
                         )}
                         <h4
