@@ -26,12 +26,17 @@
             }
         });
 
+        // Initial fetch
         fetchSpotifyData();
 
+        // Poll every 45 seconds (safe range)
+        const interval = setInterval(() => {
+            fetchSpotifyData();
+        }, 45 * 1000);
+
         return () => {
-            if (unsubscribe) {
-                unsubscribe();
-            }
+            unsubscribe?.();
+            clearInterval(interval);
         };
     });
 </script>
