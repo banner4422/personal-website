@@ -16,27 +16,18 @@
         title: "",
     };
 
-    let unsubscribe: () => void;
+    const unsubscribe = spotifyData.subscribe((state) => {
+        loading = state.loading;
+        if (state.data) {
+            data = state.data;
+        }
+    });
 
     onMount(() => {
-        unsubscribe = spotifyData.subscribe((state) => {
-            loading = state.loading;
-            if (state.data) {
-                data = state.data;
-            }
-        });
-
-        // Initial fetch
         fetchSpotifyData();
 
-        // Poll every 45 seconds (safe range)
-        const interval = setInterval(() => {
-            fetchSpotifyData();
-        }, 45 * 1000);
-
         return () => {
-            unsubscribe?.();
-            clearInterval(interval);
+            unsubscribe();
         };
     });
 </script>
