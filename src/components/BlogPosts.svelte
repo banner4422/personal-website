@@ -2,6 +2,7 @@
     import SearchAndFilterControls from "./blog/SearchAndFilterControls.svelte";
     import FeaturedPost from "./blog/FeaturedPost.svelte";
     import PostGrid from "./blog/PostGrid.svelte";
+    import { type GetImageResult } from "astro";
 
     interface Post {
         id: string;
@@ -17,6 +18,7 @@
     }
 
     export let posts: Post[] = [];
+    export let slugsToImage: { [slug: string]: GetImageResult } = {};
 
     let selectedCategory = "all";
     let sortOrder = "newest";
@@ -59,11 +61,11 @@
         <p class="text-center text-gray-600 dark:text-gray-400 py-8">No posts found.</p>
     {:else}
         {#if featuredPost}
-            <FeaturedPost post={featuredPost} />
+            <FeaturedPost post={featuredPost} slugsToImage={slugsToImage} />
         {/if}
 
         {#if filtered.length > 1}
-            <PostGrid posts={filtered.slice(1)} />
+            <PostGrid posts={filtered.slice(1)} slugsToImage={slugsToImage} />
         {/if}
     {/if}
 </div>

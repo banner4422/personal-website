@@ -1,7 +1,9 @@
 <script lang="ts">
     import { formatArticleDate } from "../../lib/utils";
+    import { type GetImageResult } from "astro";
 
     export let post;
+    export let slugsToImage: { [slug: string]: GetImageResult } = {};
 </script>
 
 <div class="mb-12">
@@ -10,11 +12,9 @@
         class="group block transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl p-2 -m-2"
     >
         <img
-            src={post.data.heroImage}
-            alt=""
+            src={slugsToImage[post.data.heroImage].src}
+            alt={`${post.data.title} - ${post.data.description}`}
             class="w-full rounded-xl mb-4 transition-all duration-200 group-hover:shadow-lg"
-            width={1020}
-            height={510}
         />
         <h2
             class="text-3xl font-bold mb-2 text-gray-900 dark:text-gray-100 group-hover:text-gray-700 dark:group-hover:text-gray-200 group-hover:underline"
