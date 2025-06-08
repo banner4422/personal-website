@@ -24,11 +24,11 @@
     });
 
     onMount(() => {
-        fetchSpotifyData();
+        const skeleton = document.getElementById("spotify-skeleton");
+        if (skeleton) skeleton.style.display = "none";
 
-        return () => {
-            unsubscribe();
-        };
+        fetchSpotifyData();
+        return () => unsubscribe();
     });
 </script>
 
