@@ -1,0 +1,11 @@
+---
+import LoadingSpinner from "./LoadingSpinner.astro";
+---
+<div class="flex flex-row items-center">
+    <LoadingSpinner />
+    <div class="inline-flex flex-col sm:flex-row w-full max-w-full truncate ml-2">
+        <p class="text-gray-800 dark:text-gray-200 font-medium">Not Playing</p>
+        <span class="mx-2 text-gray-500 dark:text-gray-300 hidden sm:flex"> – </span>
+        <p class="text-gray-500 dark:text-gray-300 max-w-max truncate">Spotify</p>
+    </div>
+</div>
