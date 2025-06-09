@@ -1,48 +1,93 @@
 ---
-import type { CollectionEntry } from "astro:content";
+import { type CollectionEntry, getCollection } from "astro:content";
 import AppLayout from "./app/AppLayout.astro";
 import FormattedDate from "../components/FormattedDate.astro";
+import PageLayout from "./PageLayout.astro";
+import BackToBlogLink from "../components/blog/BackToBlogLink.astro";
+import RelatedPosts from "../components/blog/RelatedPosts.astro";
+import RecentPosts from "../components/blog/RecentPosts.astro";
+import { Image } from "astro:assets";
 
-type Props = CollectionEntry<"blog">["data"];
+type Props = CollectionEntry<"blog">["data"] & {
+    id?: string;
+};
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, category, id } = Astro.props;
+
+// Get all posts for recommendations
+const allPosts: CollectionEntry<"blog">[] = await getCollection("blog");
+const currentPostId = id;
+
+// Filter out the current post
+const otherPosts = allPosts.filter((post) => post.id !== currentPostId);
+
+// Get posts with the same category (if category exists)
+const sameCategoryPosts = category
+    ? otherPosts
+          .filter((post) => post.data.category === category)
+          .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+          .slice(0, 3)
+    : [];
+
+// Get recent posts that are not in the same category
+const recentPosts = otherPosts
+    .filter((post) => !sameCategoryPosts.some((catPost) => catPost.id === post.id))
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+    .slice(0, 3);
 ---
 
 <AppLayout title={title} description={description}>
-    <article>
-        <div class="w-full flex justify-center">
-            {
-                heroImage && (
-                    <img
-                        width={1020}
-                        height={510}
-                        src={heroImage}
-                        alt=""
-                        class="rounded-xl shadow-lg"
-                    />
-                )
-            }
-        </div>
-        <div class="w-full max-w-prose px-4 md:px-8 py-4 text-gray-900 dark:text-gray-100">
-            <div class="mb-4 py-4 text-center leading-tight">
-                <div class="mb-2 text-gray-600 dark:text-gray-400">
-                    <FormattedDate date={pubDate} />
-                    {
-                        updatedDate && (
-                            <div class="italic">
-                                Last updated on <FormattedDate date={updatedDate} />
-                            </div>
-                        )
-                    }
+    <PageLayout>
+        <BackToBlogLink />
+        <article>
+            <div class="w-full flex justify-center">
+                {
+                    heroImage && (
+                        <Image
+                            width={1020}
+                            height={510}
+                            src={heroImage}
+                            alt={`${title} - ${description}`}
+                            class="rounded-xl shadow-lg"
+                            loading="eager"
+                        />
+                    )
+                }
+            </div>
+            <div class="w-full max-w-prose px-4 md:px-8 py-4 text-zinc-900 dark:text-zinc-100">
+                <div class="mb-4 py-4 text-center leading-tight">
+                    <div class="mb-2 text-zinc-600 dark:text-zinc-400">
+                        <FormattedDate date={pubDate} format="article" />
+                        {
+                            updatedDate && (
+                                <div class="italic">
+                                    Last updated on{" "}
+                                    <FormattedDate date={updatedDate} format="article" />
+                                </div>
+                            )
+                        }
+                    </div>
+                    <h1 class="mb-2">{title}</h1>
+                    <hr class="border-zinc-200 dark:border-zinc-800" />
                 </div>
-                <h1 class="mb-2">{title}</h1>
-                <hr class="border-gray-200 dark:border-gray-800" />
+                <div
+                    class="prose prose-lg dark:prose-invert prose-headings:text-zinc-900 dark:prose-headings:text-zinc-100 prose-p:text-zinc-700 dark:prose-p:text-zinc-300 prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-img:rounded-lg max-w-none"
+                >
+                    <slot />
+                </div>
+
+                {
+                    (sameCategoryPosts.length > 0 || recentPosts.length > 0) && (
+                        <div class="mt-12 mb-6 pt-4 border-t border-zinc-200 dark:border-zinc-800">
+                            <div class="w-full max-w-prose mb-3">
+                                <BackToBlogLink />
+                            </div>
+                            <RelatedPosts posts={sameCategoryPosts} category={category} />
+                            <RecentPosts posts={recentPosts} />
+                        </div>
+                    )
+                }
             </div>
-            <div
-                class="prose prose-lg dark:prose-invert prose-headings:text-gray-900 dark:prose-headings:text-gray-100 prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-img:rounded-lg max-w-none"
-            >
-                <slot />
-            </div>
-        </div>
-    </article>
+        </article>
+    </PageLayout>
 </AppLayout>

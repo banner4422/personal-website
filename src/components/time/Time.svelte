@@ -7,7 +7,7 @@
 
     const updateTime = () => {
         time = DateTime.now().setZone("Europe/Copenhagen").toFormat("HH:mm");
-    }
+    };
 
     onMount(() => {
         // Update time immediately
@@ -25,7 +25,10 @@
 </script>
 
 <div>
-    <p class="text-black dark:text-gray-200 text-center" title="It refreshes every minute from when you open the page, so it is not real-time">
+    <p
+        class="text-black dark:text-zinc-200 text-center"
+        title="It refreshes every minute from when you open the page, so it is not real-time"
+    >
         Time in Copenhagen is <span class="text-black dark:text-white font-medium">{time}</span>
     </p>
 </div>

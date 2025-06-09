@@ -17,7 +17,7 @@ const { title, description = SITE_DESCRIPTION } = Astro.props;
     <head>
         <BaseHead title={title} description={description} />
     </head>
-    <body class="bg-gray-50 dark:bg-zinc-900">
+    <body class="bg-zinc-50 dark:bg-zinc-900">
         <ModeWatcher client:load themeColors={{ dark: "black", light: "white" }} />
         <Navigation />
         <main class="flex flex-col items-center w-full">

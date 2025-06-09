@@ -1,17 +1,16 @@
 ---
+import { formatArticleDate, formatPostDate } from "../lib/utils";
+
 interface Props {
     date: Date;
+    format?: "article" | "post";
 }
 
-const { date } = Astro.props;
+const { date, format = "article" } = Astro.props;
+
+const formattedDate = format === "article" ? formatArticleDate(date) : formatPostDate(date);
 ---
 
 <time datetime={date.toISOString()}>
-    {
-        date.toLocaleDateString("en-us", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-        })
-    }
+    {formattedDate}
 </time>
