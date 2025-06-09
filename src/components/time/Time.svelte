@@ -1,26 +1,26 @@
 <script lang="ts">
     import { onMount, onDestroy } from "svelte";
-    import { DateTime } from "luxon";
 
     let time = "";
     let intervalId: ReturnType<typeof setInterval>;
 
     const updateTime = () => {
-        time = DateTime.now().setZone("Europe/Copenhagen").toFormat("HH:mm");
+        const formatter = new Intl.DateTimeFormat("en-DK", {
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: false,
+            timeZone: "Europe/Copenhagen",
+        });
+        time = formatter.format(new Date());
     };
 
     onMount(() => {
-        // Update time immediately
         updateTime();
-
-        // Update time every minute
         intervalId = setInterval(updateTime, 60000);
     });
 
     onDestroy(() => {
-        if (intervalId) {
-            clearInterval(intervalId);
-        }
+        clearInterval(intervalId);
     });
 </script>
 

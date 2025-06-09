@@ -17,7 +17,6 @@
     },
     "dependencies": {
         "@nanostores/persistent": "^1.0.0",
-        "luxon": "^3.6.1",
         "mode-watcher": "^1.0.7",
         "nanostores": "^1.0.0"
     },
