@@ -41,6 +41,7 @@
 
     <div class="flex items-center gap-3 ml-auto">
         <div class="w-[150px] relative">
+            <label for="category" class="sr-only">Filter by category</label>
             <select
                 id="category"
                 bind:value={selectedCategory}
