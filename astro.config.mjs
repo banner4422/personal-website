@@ -11,6 +11,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
+    output: "server",
     site: "https://chrkn.dk",
     integrations: [
         mdx({
@@ -28,7 +29,7 @@ export default defineConfig({
         sitemap(),
         svelte(),
     ],
-    adapter: vercel(),
+    adapter: vercel({}),
 
     // Enable prefetching for faster page navigation
     prefetch: true,

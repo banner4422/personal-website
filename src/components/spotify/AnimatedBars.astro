@@ -1,0 +1,41 @@
+---
+
+---
+<!-- AnimatedBars.astro -->
+<div class="w-auto flex items-end overflow-hidden">
+    <span class="w-1 h-2 mr-[3px] bg-gray-300 dark:bg-gray-500 opacity-75 animate-bar1"></span>
+    <span class="w-1 h-1 mr-[3px] bg-gray-300 dark:bg-gray-500 animate-bar2"></span>
+    <span class="w-1 h-3 mr-[3px] bg-gray-300 dark:bg-gray-500 opacity-80 animate-bar3"></span>
+</div>
+
+<style>
+    @keyframes bar1 {
+        0%, 100% { transform: scaleY(1); }
+        50% { transform: scaleY(1.5); }
+    }
+
+    @keyframes bar2 {
+        0%, 100% { transform: scaleY(1); }
+        50% { transform: scaleY(2); }
+    }
+
+    @keyframes bar3 {
+        0%, 100% { transform: scaleY(1); }
+        50% { transform: scaleY(0.5); }
+    }
+
+    .animate-bar1 {
+        animation: bar1 1s ease-in-out infinite;
+        transform-origin: bottom;
+    }
+
+    .animate-bar2 {
+        animation: bar2 1.5s ease-in-out 0.2s infinite;
+        transform-origin: bottom;
+    }
+
+    .animate-bar3 {
+        animation: bar3 1.5s ease-in-out 0.3s infinite;
+        transform-origin: bottom;
+    }
+</style>

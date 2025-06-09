@@ -59,18 +59,6 @@ const EMPTY_RESPONSE: NowPlayingSong = {
     title: "",
 };
 
-// Cache for now playing data
-let nowPlayingCache: {
-    data: NowPlayingSong | null;
-    timestamp: number;
-} = {
-    data: null,
-    timestamp: 0,
-};
-
-const CACHE_DURATION = 2 * 60 * 1000;
-const EMPTY_CACHE_DURATION = 15 * 1000;
-
 const MAX_RETRIES = 3;
 const RETRY_DELAY = 1000;
 
@@ -94,17 +82,6 @@ const fetchWithRetry = async (
 };
 
 export const getNowPlaying = async (): Promise<NowPlayingSong> => {
-    const currentTime = Date.now();
-
-    if (nowPlayingCache.data) {
-        const isEmpty = nowPlayingCache.data.title === "";
-        const age = currentTime - nowPlayingCache.timestamp;
-
-        if ((!isEmpty && age < CACHE_DURATION) || (isEmpty && age < EMPTY_CACHE_DURATION)) {
-            return nowPlayingCache.data;
-        }
-    }
-
     try {
         const accessToken = await getAccessToken();
 
@@ -120,38 +97,18 @@ export const getNowPlaying = async (): Promise<NowPlayingSong> => {
         }
 
         const song = await response.json();
+        if (!song?.item) return EMPTY_RESPONSE;
 
-        if (!song?.item) {
-            return EMPTY_RESPONSE;
-        }
-
-        const nowPlayingData: NowPlayingSong = {
+        return {
             album: song.item.album?.name ?? "",
             albumImageUrl: song.item.album?.images?.[0]?.url ?? "",
-            artist:
-                song.item.artists?.map((artist: { name: string }) => artist.name).join(", ") ?? "",
+            artist: song.item.artists?.map((a: { name: string }) => a.name).join(", ") ?? "",
             isPlaying: song.is_playing ?? false,
             songUrl: song.item.external_urls?.spotify ?? "",
             title: song.item.name ?? "",
         };
-
-        // Only cache if it has a valid title
-        if (nowPlayingData.title) {
-            nowPlayingCache = {
-                data: nowPlayingData,
-                timestamp: currentTime,
-            };
-        }
-
-        return nowPlayingData.title ? nowPlayingData : EMPTY_RESPONSE;
     } catch (error) {
         console.error("Error fetching now playing data:", error);
-
-        // Fallback to last known cache (even if stale)
-        if (nowPlayingCache.data) {
-            return nowPlayingCache.data;
-        }
-
         return EMPTY_RESPONSE;
     }
 };
