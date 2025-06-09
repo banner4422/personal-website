@@ -20,22 +20,27 @@ export const getHoverBgClass = (colour: string): string => {
     return `hover-bg-${colour}`;
 };
 
-import { DateTime } from "luxon";
-
 /*
  * Format a date for article display (weekday, month, day of the month, year)
  * @param {Date} date - The date to format
  * @return {string} - The formatted date string (e.g., "Monday, January 1, 2023")
  */
-export const formatArticleDate = (date: Date): string => {
-    return DateTime.fromJSDate(date).toFormat("EEEE, MMMM d, yyyy");
-};
+export const formatArticleDate = (date: Date): string =>
+    new Intl.DateTimeFormat("en-US", {
+        weekday: "long",
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+    }).format(date);
 
 /*
  * Format a date for post display (date, month in short, and year)
  * @param {Date} date - The date to format
  * @return {string} - The formatted date string (e.g., "1 Jan 2023")
  */
-export const formatPostDate = (date: Date): string => {
-    return DateTime.fromJSDate(date).toFormat("d MMM yyyy");
-};
+export const formatPostDate = (date: Date): string =>
+    new Intl.DateTimeFormat("en-GB", {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+    }).format(date);
