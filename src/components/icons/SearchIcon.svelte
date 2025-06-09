@@ -1,7 +1,7 @@
 <script>
     export let width = 4;
     export let height = 4;
-    export let className = "text-gray-500 dark:text-gray-400";
+    export let className = "text-zinc-500 dark:text-zinc-400";
 </script>
 
 <svg
