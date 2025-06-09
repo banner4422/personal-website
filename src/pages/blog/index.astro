@@ -1,5 +1,6 @@
 ---
 export const prerender = true;
+import BlogSkeleton from "../../components/blog/BlogSkeleton.astro";
 import AppLayout from "../../layouts/app/AppLayout.astro";
 import PageLayout from "../../layouts/PageLayout.astro";
 import { SITE_TITLE } from "../../consts";
@@ -10,14 +11,18 @@ import { getImage } from "astro:assets";
 
 // Load blog posts
 const allPosts: CollectionEntry<"blog">[] = await getCollection("blog");
+console.log(allPosts.find((post) => post.id === "markdown-style-guide"));
 
 const slugsToImage: { [slug: string]: GetImageResult } = {};
 
 await Promise.all(
     allPosts.map(async (post) => {
         if (!post.data.heroImage) return;
-
-        slugsToImage[post.data.heroImage] = await getImage({ src: post.data.heroImage, width: 1020, height: 510 });
+        slugsToImage[post.id] = await getImage({
+            src: post.data.heroImage,
+            width: 1020,
+            height: 510,
+        });
     })
 );
 ---
@@ -31,6 +36,8 @@ await Promise.all(
             Welcome to my public blog! Here you'll find blog posts on various topics, including
             technology, personal experiences, and more.
         </p>
-        <BlogPosts client:load posts={allPosts} slugsToImage={slugsToImage} />
+        <BlogPosts client:only="svelte" posts={allPosts} slugsToImage={slugsToImage}>
+            <BlogSkeleton slot="fallback" />
+        </BlogPosts>
     </PageLayout>
 </AppLayout>

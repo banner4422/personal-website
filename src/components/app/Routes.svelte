@@ -20,10 +20,10 @@
     <a
         href={route.route}
         data-astro-prefetch
-        class={`p-1 px-3 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-zinc-800 transition-colors duration-300 ${
+        class={`p-1 px-3 py-2 rounded-lg hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-colors duration-300 ${
             isCurrentRoute(route.route)
-                ? "font-semibold text-zinc-800 dark:text-gray-200"
-                : "font-normal text-gray-600 dark:text-gray-400"
+                ? "font-semibold text-zinc-800 dark:text-zinc-200"
+                : "font-normal text-zinc-600 dark:text-zinc-400"
         }`}
     >
         {route.name}

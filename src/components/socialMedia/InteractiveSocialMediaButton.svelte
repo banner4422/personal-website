@@ -35,8 +35,8 @@
         on:click={togglePopover}
         aria-label={colour}
         class={classNames(
-            "bg-gray-50 border-zinc-900 text-zinc-900 hover:text-white",
-            "dark:bg-zinc-900 dark:border-gray-50 dark:text-gray-50 dark:hover:text-white",
+            "bg-zinc-50 border-zinc-900 text-zinc-900 hover:text-white",
+            "dark:bg-zinc-900 dark:border-zinc-50 dark:text-zinc-50 dark:hover:text-white",
             hoverBgClass,
             "transition-all ease-in-out duration-300",
             "m-2 text-center inline-block place-items-center p-5 w-32 h-32 border-2 rounded-social cursor-pointer",
@@ -53,7 +53,7 @@
             class="absolute z-10 mt-2 w-32 md:w-64 rounded-md shadow-lg bg-white dark:bg-zinc-800 focus:outline-none"
         >
             <div class="py-1">
-                <p class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200">
+                <p class="block px-4 py-2 text-sm text-zinc-700 dark:text-zinc-200">
                     {#if colour === "Discord"}
                         My Discord username is <code class="font-bold">{link}</code>
                     {:else}

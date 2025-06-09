@@ -16,8 +16,10 @@
         "format": "prettier --write ."
     },
     "dependencies": {
+        "@nanostores/persistent": "^1.0.0",
         "luxon": "^3.6.1",
-        "mode-watcher": "^1.0.7"
+        "mode-watcher": "^1.0.7",
+        "nanostores": "^1.0.0"
     },
     "devDependencies": {
         "@astrojs/mdx": "^4.3.0",

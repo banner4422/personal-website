@@ -29,11 +29,11 @@
                 title="Search by title, description, category"
                 class={classNames(
                     "w-full h-full pl-10",
-                    "focus:outline-none focus:ring-1 focus:ring-gray-500 dark:focus:ring-gray-400",
-                    "border border-gray-300 dark:border-gray-700 rounded-md",
-                    "bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100",
+                    "focus:outline-none focus:ring-1 focus:ring-zinc-500 dark:focus:ring-zinc-400",
+                    "border border-zinc-300 dark:border-zinc-700 rounded-md",
+                    "bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100",
                     "h-10 p-2",
-                    "hover:bg-gray-100 dark:hover:bg-gray-700"
+                    "hover:bg-zinc-100 dark:hover:bg-zinc-700"
                 )}
             />
         </div>
@@ -48,12 +48,12 @@
                     "w-full pr-8 text-sm",
                     "focus:ring-0 focus:outline-none",
                     "overflow-hidden text-ellipsis cursor-pointer appearance-none",
-                    "border border-gray-300 dark:border-gray-700 rounded-md",
+                    "border border-zinc-300 dark:border-zinc-700 rounded-md",
                     selectedCategory !== "all"
-                        ? "bg-gray-100 dark:bg-gray-600 text-gray-900 dark:text-gray-100"
-                        : "bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100",
+                        ? "bg-zinc-100 dark:bg-zinc-600 text-zinc-900 dark:text-zinc-100"
+                        : "bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100",
                     "h-10 p-2",
-                    "hover:bg-gray-100 dark:hover:bg-gray-700"
+                    "hover:bg-zinc-100 dark:hover:bg-zinc-700"
                 )}
             >
                 {#each categories as category (category)}
@@ -75,12 +75,12 @@
             on:click={toggleSortOrder}
             class={classNames(
                 "cursor-pointer",
-                "border border-gray-300 dark:border-gray-700 rounded-md",
+                "border border-zinc-300 dark:border-zinc-700 rounded-md",
                 sortOrder !== "newest"
-                    ? "bg-gray-100 dark:bg-gray-600 text-gray-900 dark:text-gray-100"
-                    : "bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100",
+                    ? "bg-zinc-100 dark:bg-zinc-600 text-zinc-900 dark:text-zinc-100"
+                    : "bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100",
                 "h-10 p-2",
-                "hover:bg-gray-100 dark:hover:bg-gray-700"
+                "hover:bg-zinc-100 dark:hover:bg-zinc-700"
             )}
             aria-label={sortOrder === "newest"
                 ? "Sorted by newest first"
