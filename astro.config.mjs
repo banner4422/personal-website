@@ -9,6 +9,8 @@ import vercel from "@astrojs/vercel";
 
 import tailwindcss from "@tailwindcss/vite";
 
+import { visualizer } from "rollup-plugin-visualizer";
+
 // https://astro.build/config
 export default defineConfig({
     output: "server",
@@ -35,7 +37,12 @@ export default defineConfig({
     prefetch: true,
 
     vite: {
-        plugins: [tailwindcss()],
+        plugins: [
+            tailwindcss(),
+            visualizer({
+            emitFile: true,
+            filename: "stats.html",
+        })],
     },
     markdown: {
         syntaxHighlight: "shiki",
