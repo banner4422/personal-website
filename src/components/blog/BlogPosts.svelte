@@ -1,8 +1,8 @@
 <script lang="ts">
-    import { selectedCategory, sortOrder, searchTerm } from "../stores/blogState.ts";
-    import SearchAndFilterControls from "./blog/SearchAndFilterControls.svelte";
-    import FeaturedPost from "./blog/FeaturedPost.svelte";
-    import PostGrid from "./blog/PostGrid.svelte";
+    import { selectedCategory, sortOrder, searchTerm } from "../../stores/blogState.ts";
+    import SearchAndFilterControls from "./SearchAndFilterControls.svelte";
+    import FeaturedPost from "./FeaturedPost.svelte";
+    import PostGrid from "./PostGrid.svelte";
     import { type GetImageResult } from "astro";
 
     interface Post {
