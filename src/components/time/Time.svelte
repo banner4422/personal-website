@@ -24,11 +24,4 @@
     });
 </script>
 
-<div>
-    <p
-        class="text-black dark:text-zinc-200 text-center"
-        title="It refreshes every minute from when you open the page, so it is not real-time"
-    >
-        Time in Copenhagen is <span class="text-black dark:text-white font-medium">{time}</span>
-    </p>
-</div>
+<span class="text-black dark:text-white font-medium">{time}</span>

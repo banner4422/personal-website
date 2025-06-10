@@ -5,5 +5,18 @@ import Time from "./Time.svelte";
 <div
     class="flex flex-row items-center mb-2 space-x-0 sm:space-x-2 w-full px-5 pb-2 sm:pb-0 sm:px-0 md:justify-end"
 >
-    <Time client:visible />
+    <div>
+        <p
+            class="text-black dark:text-zinc-200 text-center"
+            title="It refreshes every minute from when you open the page, so it is not real-time"
+        >
+            Time in Copenhagen is
+            <Time client:only="svelte">
+                <span
+                    slot="fallback"
+                    class="inline-block align-sub h-[19.5px] w-[42px] rounded bg-zinc-300 dark:bg-zinc-700 animate-pulse"
+                    aria-hidden="true"></span>
+            </Time>
+        </p>
+    </div>
 </div>
