@@ -1,13 +1,53 @@
 ---
-import Routes from "../../components/app/Routes.svelte";
 import AppearanceModeSwitch from "../../components/app/AppearanceModeSwitch.svelte";
+
+let currentPath = Astro.url.pathname;
+
+const navigationRoutes = [
+    { name: "Home", route: "/" },
+    { name: "About", route: "/about" },
+    { name: "Blog", route: "/blog" },
+];
+
+const isCurrentRoute = (route: string): boolean => {
+    if (!currentPath) return false;
+    return route === "/"
+        ? currentPath === "/"
+        : currentPath === route || currentPath.startsWith(route + "/");
+};
 ---
 
 <header class="flex flex-col items-center w-full">
     <nav class="flex items-center justify-between w-full max-w-2xl px-4 md:px-8 py-8">
         <div class="ml-0">
-            <Routes client:load currentPath={Astro.url.pathname} />
+            {
+                navigationRoutes.map((route) => (
+                    <>
+                        <span class="sr-only">{route.name}</span>
+                        <a
+                            href={route.route}
+                            data-astro-prefetch
+                            class={`p-1 px-3 py-2 rounded-lg hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-colors duration-300 ${
+                                isCurrentRoute(route.route)
+                                    ? "font-semibold text-zinc-800 dark:text-zinc-200"
+                                    : "font-normal text-zinc-600 dark:text-zinc-400"
+                            }`}
+                        >
+                            {route.name}
+                        </a>
+                    </>
+                ))
+            }
         </div>
-        <AppearanceModeSwitch client:load />
+        <AppearanceModeSwitch client:only="svelte">
+            <span
+                slot="fallback"
+                class="dark:bg-zinc-50 bg-zinc-900 relative inline-flex h-6 w-11 items-center rounded-full transition-all duration-300 ml-auto opacity-50 cursor-not-allowed"
+            >
+                <span
+                    class="inline-block h-4 w-4 transform rounded-full dark:translate-x-1 dark:bg-zinc-900 translate-x-6 bg-zinc-50 transition-all duration-300"
+                ></span>
+            </span>
+        </AppearanceModeSwitch>
     </nav>
 </header>
