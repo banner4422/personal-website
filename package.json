@@ -19,7 +19,7 @@
         "@nanostores/persistent": "^1.0.0",
         "astro-loading-indicator": "^0.7.0",
         "mode-watcher": "^1.0.7",
-        "nanostores": "^1.0.0"
+        "nanostores": "^1.0.1"
     },
     "devDependencies": {
         "@astrojs/mdx": "^4.3.0",
