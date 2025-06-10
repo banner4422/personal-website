@@ -40,9 +40,10 @@ export default defineConfig({
         plugins: [
             tailwindcss(),
             visualizer({
-            emitFile: true,
-            filename: "stats.html",
-        })],
+                emitFile: true,
+                filename: "stats.html",
+            }),
+        ],
     },
     markdown: {
         syntaxHighlight: "shiki",
