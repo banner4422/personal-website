@@ -5,6 +5,8 @@ import "../../styles/global.css";
 import { SITE_TITLE, SITE_DESCRIPTION, AUTHOR, KEYWORDS } from "../../consts";
 import { ClientRouter } from "astro:transitions";
 import LoadingIndicator from "astro-loading-indicator/component";
+import { AstroFont } from "astro-font";
+import { join } from "path";
 
 interface Props {
     title: string;
@@ -38,34 +40,77 @@ const { title, description = SITE_DESCRIPTION } = Astro.props;
     href={new URL("rss.xml", Astro.site)}
 />
 
-<!-- Preloads -->
-<link
-    rel="preload"
-    href="/fonts/inter-v18-latin-regular.woff2"
-    as="font"
-    type="font/woff2"
-    crossorigin
-/>
-<link
-    rel="preload"
-    href="/fonts/inter-v18-latin-500.woff2"
-    as="font"
-    type="font/woff2"
-    crossorigin
-/>
-<link
-    rel="preload"
-    href="/fonts/inter-v18-latin-600.woff2"
-    as="font"
-    type="font/woff2"
-    crossorigin
-/>
-<link
-    rel="preload"
-    href="/fonts/inter-v18-latin-700.woff2"
-    as="font"
-    type="font/woff2"
-    crossorigin
+<AstroFont
+        config={[
+            {
+                name: "Inter",
+                src: [
+                    {
+                        style: "normal",
+                        weight: "400",
+                        path: join(
+                            process.cwd(),
+                            "public",
+                            "fonts",
+                            "inter-v18-latin-regular.woff2"
+                        ),
+                    },
+                    {
+                        style: "normal",
+                        weight: "500",
+                        path: join(
+                            process.cwd(),
+                            "public",
+                            "fonts",
+                            "inter-v18-latin-500.woff2"
+                        ),
+                    },
+                    {
+                        style: "normal",
+                        weight: "600",
+                        path: join(
+                            process.cwd(),
+                            "public",
+                            "fonts",
+                            "inter-v18-latin-600.woff2"
+                        ),
+                    },
+                    {
+                        style: "normal",
+                        weight: "700",
+                        path: join(
+                            process.cwd(),
+                            "public",
+                            "fonts",
+                            "inter-v18-latin-700.woff2"
+                        ),
+                    },
+                ],
+                display: "swap",
+                selector: "body",
+                fallback: "sans-serif",
+                cssVariable: "font-sans",
+            },
+            {
+                name: "Inter Mono",
+                src: [
+                    {
+                        style: "normal",
+                        weight: "400",
+                        path: join(
+                            process.cwd(),
+                            "public",
+                            "fonts",
+                            "inter-v18-latin-regular.woff2"
+                        ),
+                    },
+                ],
+                display: "swap",
+                selector: "code",
+                fallback: "monospace",
+                cssVariable: "font-mono",
+            },
+        ]}
 />
 
 <!-- SEO -->
