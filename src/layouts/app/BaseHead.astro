@@ -41,76 +41,51 @@ const { title, description = SITE_DESCRIPTION } = Astro.props;
 />
 
 <AstroFont
-        config={[
-            {
-                name: "Inter",
-                src: [
-                    {
-                        style: "normal",
-                        weight: "400",
-                        path: join(
-                            process.cwd(),
-                            "public",
-                            "fonts",
-                            "inter-v18-latin-regular.woff2"
-                        ),
-                    },
-                    {
-                        style: "normal",
-                        weight: "500",
-                        path: join(
-                            process.cwd(),
-                            "public",
-                            "fonts",
-                            "inter-v18-latin-500.woff2"
-                        ),
-                    },
-                    {
-                        style: "normal",
-                        weight: "600",
-                        path: join(
-                            process.cwd(),
-                            "public",
-                            "fonts",
-                            "inter-v18-latin-600.woff2"
-                        ),
-                    },
-                    {
-                        style: "normal",
-                        weight: "700",
-                        path: join(
-                            process.cwd(),
-                            "public",
-                            "fonts",
-                            "inter-v18-latin-700.woff2"
-                        ),
-                    },
-                ],
-                display: "swap",
-                selector: "body",
-                fallback: "sans-serif",
-                cssVariable: "font-sans",
-            },
-            {
-                name: "Inter Mono",
-                src: [
-                    {
-                        style: "normal",
-                        weight: "400",
-                        path: join(
-                            process.cwd(),
-                            "public",
-                            "fonts",
-                            "inter-v18-latin-regular.woff2"
-                        ),
-                    },
-                ],
-                display: "swap",
-                selector: "code",
-                fallback: "monospace",
-                cssVariable: "font-mono",
-            },
-        ]}
+    config={[
+        {
+            name: "Inter",
+            src: [
+                {
+                    style: "normal",
+                    weight: "400",
+                    path: join(process.cwd(), "public", "fonts", "inter-v18-latin-regular.woff2"),
+                },
+                {
+                    style: "normal",
+                    weight: "500",
+                    path: join(process.cwd(), "public", "fonts", "inter-v18-latin-500.woff2"),
+                },
+                {
+                    style: "normal",
+                    weight: "600",
+                    path: join(process.cwd(), "public", "fonts", "inter-v18-latin-600.woff2"),
+                },
+                {
+                    style: "normal",
+                    weight: "700",
+                    path: join(process.cwd(), "public", "fonts", "inter-v18-latin-700.woff2"),
+                },
+            ],
+            display: "swap",
+            selector: "body",
+            fallback: "sans-serif",
+            cssVariable: "font-sans",
+        },
+        {
+            name: "Inter Mono",
+            src: [
+                {
+                    style: "normal",
+                    weight: "400",
+                    path: join(process.cwd(), "public", "fonts", "inter-v18-latin-regular.woff2"),
+                },
+            ],
+            display: "swap",
+            selector: "code",
+            fallback: "monospace",
+            cssVariable: "font-mono",
+        },
+    ]}
 />
 
 <!-- SEO -->
