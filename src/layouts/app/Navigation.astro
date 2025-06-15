@@ -1,6 +1,7 @@
 ---
 import AppearanceModeSwitch from "../../components/app/AppearanceModeSwitch.svelte";
 import MobileMenu from "../../components/app/MobileMenu.svelte";
+import HamburgerIcon from "../../components/icons/HamburgerIcon.svelte";
 
 let currentPath = Astro.url.pathname;
 
@@ -20,34 +21,34 @@ const isCurrentRoute = (route: string): boolean => {
 ---
 
 <header class="flex flex-col items-center w-full">
-    <nav class="flex items-center justify-between w-full max-w-2xl px-4 md:px-8 py-8">
-        <!-- Mobile Menu -->
-        <div class="md:hidden">
-            <MobileMenu 
-                navigationRoutes={navigationRoutes} 
-                currentPath={currentPath} 
-                client:load
-            />
+    <nav class="flex items-center justify-between w-full max-w-2xl px-4 md:px-8 sm:py-8 py-4">
+        <div class="sm:hidden">
+            <MobileMenu navigationRoutes={navigationRoutes} currentPath={currentPath} client:only="svelte">
+                <span
+                    slot="fallback"
+                    class="md:hidden flex items-center justify-center p-2 rounded-lg hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-colors duration-300 opacity-50 cursor-not-allowed"
+                >
+                    <HamburgerIcon />
+                </span>
+            </MobileMenu>
         </div>
 
         <!-- Desktop Navigation -->
-        <div class="hidden md:flex ml-0">
+        <div class="hidden sm:flex ml-0">
             {
                 navigationRoutes.map((route) => (
-                    <>
-                        <span class="sr-only">{route.name}</span>
-                        <a
-                            href={route.route}
-                            data-astro-prefetch
-                            class={`p-1 px-3 py-2 rounded-lg hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-colors duration-300 ${
-                                isCurrentRoute(route.route)
-                                    ? "font-semibold text-zinc-800 dark:text-zinc-200"
-                                    : "font-normal text-zinc-600 dark:text-zinc-400"
-                            }`}
-                        >
-                            {route.name}
-                        </a>
-                    </>
+                    <span class="sr-only">{route.name}</span>
+                    <a
+                        href={route.route}
+                        data-astro-prefetch
+                        class={`p-1 px-3 py-2 rounded-lg hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-colors duration-300 ${
+                            isCurrentRoute(route.route)
+                                ? "font-semibold text-zinc-800 dark:text-zinc-200"
+                                : "font-normal text-zinc-600 dark:text-zinc-400"
+                        }`}
+                    >
+                        {route.name}
+                    </a>
                 ))
             }
         </div>
