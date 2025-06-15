@@ -49,6 +49,18 @@ export default defineConfig({
                 filename: "stats.html",
             }),
         ],
+        ssr: {
+            external: [
+                'node:url',
+                'node:path',
+                'node:crypto',
+                'node:fs',
+                'node:os',
+                'node:buffer',
+                'node:fs/promises',
+                'path'
+            ]
+        }
     },
     markdown: {
         syntaxHighlight: "shiki",
