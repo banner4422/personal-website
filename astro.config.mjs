@@ -13,8 +13,9 @@ import { visualizer } from "rollup-plugin-visualizer";
 
 // https://astro.build/config
 export default defineConfig({
+    trailingSlash: "always",
     output: "server",
-    site: "https://chrkn.dk",
+    site: "https://chrkn.dev",
     integrations: [
         mdx({
             // Enable syntax highlighting with Shiki
