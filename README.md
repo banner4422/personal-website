@@ -24,7 +24,7 @@ Credits to [Lee Robinson](https://github.com/leerob/leerob.io) for design inspir
 - [x] Better SEO set up.
 - [ ] Portfolio page with projects, includes a dedicated page for each project with info regarding the project.
 - [x] A more dedicated site for personal info, instead of it filling up the front page.
-- [ ] Perhaps a blog post functionality.
+- [x] Perhaps a blog post functionality.
 
 ## Contributing
 
