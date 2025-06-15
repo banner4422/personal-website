@@ -38,6 +38,12 @@ export default defineConfig({
         imageService: "cloudflare"
     }),
 
+    image: {
+        service: {
+            entrypoint: "astro/assets/services/compile",
+        },
+    },
+
     // Enable prefetching for faster page navigation
     prefetch: true,
 
