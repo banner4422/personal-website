@@ -35,14 +35,8 @@ export default defineConfig({
         platformProxy: {
             enabled: true
         },
-        imageService: "cloudflare"
+        imageService: "compile"
     }),
-
-    image: {
-        service: {
-            entrypoint: "astro/assets/services/compile",
-        },
-    },
 
     // Enable prefetching for faster page navigation
     prefetch: true,
