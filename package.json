@@ -19,6 +19,7 @@
         "@nanostores/persistent": "^1.0.0",
         "astro-font": "^1.1.0",
         "astro-loading-indicator": "^0.7.0",
+        "dayjs": "^1.11.10",
         "mode-watcher": "^1.0.8",
         "nanostores": "^1.0.1"
     },

@@ -1,0 +1,96 @@
+---
+export const prerender = true;
+import { getCollection, render } from "astro:content";
+import PageLayout from "../layouts/PageLayout.astro";
+import AppLayout from "../layouts/app/AppLayout.astro";
+import RelativeDate from "../components/RelativeDate/RelativeDate.svelte";
+import dayjs from "dayjs";
+import localizedFormat from "dayjs/plugin/localizedFormat";
+import timezone from "dayjs/plugin/timezone";
+import utc from "dayjs/plugin/utc";
+
+dayjs.extend(localizedFormat);
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
+const events = await getCollection("now");
+events.sort((a, b) => {
+    return new Date(b.data.date) < new Date(a.data.date) ? -1 : 1;
+});
+
+const title = "Now";
+const description = "What is Christian Krogh Nielsen up to these days?";
+---
+
+<AppLayout title={title} description={description}>
+    <PageLayout>
+        <h1 class="text-3xl font-bold mb-6">Now</h1>
+        <p class="text-zinc-700 dark:text-zinc-200 mb-8 text-lg">
+            What's <strong>Christian</strong> up to these days?
+        </p>
+
+        <ul class="list-none p-0 flex flex-col">
+            {
+                events.map(async (event) => {
+                    const { Content } = await render(event);
+
+                    return (
+                        <li class="grid grid-cols-[1rem_1fr] gap-x-4 justify-center relative">
+                            <div
+                                class="rounded-full w-4 h-4 bg-zinc-800 dark:bg-zinc-200 place-self-center"
+                                aria-hidden="true"
+                            />
+                            <span class="text-zinc-800 dark:text-zinc-100 font-bold">
+                                <RelativeDate date={new Date(event.data.date)} client:only="svelte">
+                                    <time
+                                        slot="fallback"
+                                        datetime={new Date(event.data.date).toISOString()}
+                                        title={dayjs(event.data.date).format("LLLL z")}
+                                        class="text-zinc-600 dark:text-zinc-400"
+                                    >
+                                        {dayjs(event.data.date).format("ll")}
+                                    </time>
+                                </RelativeDate>
+                            </span>
+                            <div
+                                class="absolute w-0.5 bg-zinc-800 dark:bg-zinc-200 top-[8px] bottom-0 left-[7px]"
+                                aria-hidden="true"
+                            />
+                            <div class="col-start-2 col-end-3 row-start-2 pb-8 prose prose-lg dark:prose-invert prose-headings:text-zinc-900 dark:prose-headings:text-zinc-100 prose-p:text-black dark:prose-p:text-zinc-200 prose-a:font-semibold prose-code:dark:bg-zinc-800 prose-code:bg-zinc-200 prose-img:rounded-lg max-w-none">
+                                <Content />
+                            </div>
+                        </li>
+                    );
+                })
+            }
+            <li class="grid grid-cols-[1rem_1fr] gap-x-4 justify-center relative mb-6">
+                <div
+                    class="rounded-full w-4 h-4 bg-zinc-800 dark:bg-zinc-200 place-self-center"
+                    aria-hidden="true"
+                >
+                </div>
+                <span class="text-zinc-800 dark:text-zinc-100 font-bold">A while ago</span>
+                <div
+                    class="absolute w-0.5 bg-zinc-800 dark:bg-zinc-200 top-[8px] bottom-0 left-[7px] hidden"
+                    aria-hidden="true"
+                >
+                </div>
+                <div
+                    class="col-start-2 col-end-3 row-start-2 prose prose-lg dark:prose-invert prose-headings:text-zinc-900 dark:prose-headings:text-zinc-100 prose-p:text-black dark:prose-p:text-zinc-200 prose-a:font-semibold prose-code:dark:bg-zinc-800 prose-code:bg-zinc-200 prose-img:rounded-lg max-w-none"
+                >
+                    <p>
+                        I discovered <a
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href="https://nownownow.com/">nownownow</a
+                        >, which talks about having a <code>/now</code> page for sharing brief updates
+                        on how things are going <strong>right now</strong> at this point in time, like
+                        if you are catching up with a friend for the first time in a while. Like what
+                        are you up to? What are you spending your time on? What are you excited about?
+                        I think it sounds quite cool, so I decided to make one for myself.
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </PageLayout>
+</AppLayout>
