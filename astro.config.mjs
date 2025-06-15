@@ -5,7 +5,7 @@ import sitemap from "@astrojs/sitemap";
 
 import svelte from "@astrojs/svelte";
 
-import vercel from "@astrojs/vercel";
+import cloudflare from "@astrojs/cloudflare";
 
 import tailwindcss from "@tailwindcss/vite";
 
@@ -31,7 +31,12 @@ export default defineConfig({
         sitemap(),
         svelte(),
     ],
-    adapter: vercel({}),
+    adapter: cloudflare({
+        platformProxy: {
+            enabled: true
+        },
+        imageService: "cloudflare"
+    }),
 
     // Enable prefetching for faster page navigation
     prefetch: true,
