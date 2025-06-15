@@ -5,7 +5,7 @@ import sitemap from "@astrojs/sitemap";
 
 import svelte from "@astrojs/svelte";
 
-import vercel from "@astrojs/vercel";
+import cloudflare from "@astrojs/cloudflare";
 
 import tailwindcss from "@tailwindcss/vite";
 
@@ -13,8 +13,9 @@ import { visualizer } from "rollup-plugin-visualizer";
 
 // https://astro.build/config
 export default defineConfig({
+    trailingSlash: "always",
     output: "server",
-    site: "https://chrkn.dk",
+    site: "https://chrkn.dev",
     integrations: [
         mdx({
             // Enable syntax highlighting with Shiki
@@ -31,7 +32,12 @@ export default defineConfig({
         sitemap(),
         svelte(),
     ],
-    adapter: vercel({}),
+    adapter: cloudflare({
+        platformProxy: {
+            enabled: true
+        },
+        imageService: "compile"
+    }),
 
     // Enable prefetching for faster page navigation
     prefetch: true,
@@ -44,6 +50,18 @@ export default defineConfig({
                 filename: "stats.html",
             }),
         ],
+        ssr: {
+            external: [
+                'node:url',
+                'node:path',
+                'node:crypto',
+                'node:fs',
+                'node:os',
+                'node:buffer',
+                'node:fs/promises',
+                'path'
+            ]
+        }
     },
     markdown: {
         syntaxHighlight: "shiki",
