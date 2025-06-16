@@ -34,9 +34,9 @@ export default defineConfig({
     ],
     adapter: cloudflare({
         platformProxy: {
-            enabled: true
+            enabled: true,
         },
-        imageService: "compile"
+        imageService: "compile",
     }),
 
     // Enable prefetching for faster page navigation
@@ -52,16 +52,16 @@ export default defineConfig({
         ],
         ssr: {
             external: [
-                'node:url',
-                'node:path',
-                'node:crypto',
-                'node:fs',
-                'node:os',
-                'node:buffer',
-                'node:fs/promises',
-                'path'
-            ]
-        }
+                "node:url",
+                "node:path",
+                "node:crypto",
+                "node:fs",
+                "node:os",
+                "node:buffer",
+                "node:fs/promises",
+                "path",
+            ],
+        },
     },
     markdown: {
         syntaxHighlight: "shiki",
