@@ -1,4 +1,5 @@
 // @ts-check
+/// <reference types="vitest" />
 import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
@@ -13,7 +14,6 @@ import { visualizer } from "rollup-plugin-visualizer";
 
 // https://astro.build/config
 export default defineConfig({
-    //trailingSlash: "always",
     output: "server",
     site: "https://chrkn.dev",
     integrations: [
@@ -62,6 +62,11 @@ export default defineConfig({
                 "path",
             ],
         },
+        test: {
+            globals: true,
+            environment: 'node',
+            include: ['**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}']
+        }
     },
     markdown: {
         syntaxHighlight: "shiki",
