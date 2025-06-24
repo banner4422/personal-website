@@ -1,7 +1,5 @@
 # My personal website
 
----
-
 A personal website meant for showcasing my work, projects, and interests.
 
 - **Framework:** [Astro](https://astro.build/) with [Svelte](https://svelte.dev/) components.
