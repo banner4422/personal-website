@@ -48,7 +48,9 @@ const description = "What is Christian Krogh Nielsen up to these days?";
                                         title={dayjs(event.data.date).format("LLLL z")}
                                         class="text-zinc-600 dark:text-zinc-400"
                                     >
-                                        {dayjs(event.data.date).format("ll")}
+                                        {dayjs().isSame(event.data.date, "year") 
+                                            ? dayjs(event.data.date).format("MMM D") 
+                                            : dayjs(event.data.date).format("ll")}
                                     </time>
                                 </RelativeDate>
                             </span>
