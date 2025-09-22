@@ -20,6 +20,10 @@ events.sort((a, b) => {
 
 const title = "Now";
 const description = "What is Christian Krogh Nielsen up to these days?";
+
+// cache for 10 minutes
+Astro.response.headers.set("Cache-Control", "public, max-age=600");
+Astro.response.headers.set("CDN-Cache-Control", "public, max-age=600");
 ---
 
 <AppLayout title={title} description={description}>
@@ -48,8 +52,8 @@ const description = "What is Christian Krogh Nielsen up to these days?";
                                         title={dayjs(event.data.date).format("LLLL z")}
                                         class="text-zinc-600 dark:text-zinc-400"
                                     >
-                                        {dayjs().isSame(event.data.date, "year") 
-                                            ? dayjs(event.data.date).format("MMM D") 
+                                        {dayjs().isSame(event.data.date, "year")
+                                            ? dayjs(event.data.date).format("MMM D")
                                             : dayjs(event.data.date).format("ll")}
                                     </time>
                                 </RelativeDate>

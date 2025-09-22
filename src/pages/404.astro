@@ -4,6 +4,10 @@ export const prerender = true;
 import { SITE_TITLE } from "../consts";
 import AppLayout from "../layouts/app/AppLayout.astro";
 import PageLayout from "../layouts/PageLayout.astro";
+
+// cache for 10 minutes
+Astro.response.headers.set("Cache-Control", "public, max-age=600");
+Astro.response.headers.set("CDN-Cache-Control", "public, max-age=600");
 ---
 
 <AppLayout title={`${SITE_TITLE} - Page Not Found`}>

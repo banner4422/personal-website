@@ -6,6 +6,10 @@ import AppLayout from "../layouts/app/AppLayout.astro";
 import AvatarCard from "../components/AvatarCard.astro";
 import PageLayout from "../layouts/PageLayout.astro";
 import SocialMediaCard from "../components/socialMedia/SocialMediaCard.astro";
+
+// cache for 10 minutes
+Astro.response.headers.set("Cache-Control", "public, max-age=600");
+Astro.response.headers.set("CDN-Cache-Control", "public, max-age=600");
 ---
 
 <AppLayout title={SITE_TITLE}>
