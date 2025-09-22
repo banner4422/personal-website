@@ -2,7 +2,7 @@
 import AnimatedBars from "./AnimatedBars.astro";
 import LoadingSpinner from "./LoadingSpinner.astro";
 import TidalIcon from "../icons/TidalIcon.astro";
-import { getNowPlaying } from "../../lib/server/tidal/tidal.ts";
+import { getNowPlaying } from "../../lib/server/tidal/tidal";
 
 const data = await getNowPlaying();
 const loading = !data || typeof data.isPlaying === "undefined";
