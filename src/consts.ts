@@ -51,9 +51,9 @@ export const SOCIAL_MEDIA: SocialMediaButton[] = [
         js: false,
     },
     {
-        colour: "Spotify",
-        link: "https://open.spotify.com/user/ataz1v90gnmq442fjrxpcpfj6?si=d6e8d944ca2142d3",
-        icon: "SpotifyIcon",
+        colour: "Tidal",
+        link: "https://tidal.com/@bannertheworld",
+        icon: "TidalIcon",
         js: false,
     },
     {
