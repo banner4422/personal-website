@@ -103,9 +103,10 @@ export const getNowPlaying = async (): Promise<NowPlayingSong> => {
         if (!isPlaying) return EMPTY_RESPONSE; // Maintain existing UI: show Not Playing when nothing is live
 
         // Prefer larger images if available
-        const img = track.image?.find((i) => i.size === "extralarge")
-            || track.image?.find((i) => i.size === "large")
-            || track.image?.[0];
+        const img =
+            track.image?.find((i) => i.size === "extralarge") ||
+            track.image?.find((i) => i.size === "large") ||
+            track.image?.[0];
 
         return {
             album: track.album?.["#text"] ?? "",
