@@ -175,7 +175,6 @@
     -webkit-tap-highlight-color: transparent;
 }
 
-
 @layer base {
     @supports not (scrollbar-gutter: stable) {
         html {
