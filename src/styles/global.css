@@ -52,6 +52,8 @@
     }
 
     html {
+        /* Reserve space for the scrollbar to prevent layout shift between pages */
+        scrollbar-gutter: stable both-edges;
         font-family:
             "Inter",
             system-ui,
@@ -171,4 +173,14 @@
 /* Disable tap highlight on mobile devices */
 .tap-highlight-transparent {
     -webkit-tap-highlight-color: transparent;
+}
+
+
+@layer base {
+    @supports not (scrollbar-gutter: stable) {
+        html {
+            /* Fallback for browsers without scrollbar-gutter support */
+            overflow-y: scroll;
+        }
+    }
 }
