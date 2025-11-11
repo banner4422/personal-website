@@ -41,7 +41,7 @@
         "@tailwindcss/vite": "^4.1.17",
         "@types/luxon": "^3.7.1",
         "@typescript-eslint/eslint-plugin": "^8.42.0",
-        "@typescript-eslint/parser": "^8.46.3",
+        "@typescript-eslint/parser": "^8.46.4",
         "astro": "^5.15.4",
         "eslint": "^9.39.1",
         "eslint-config-prettier": "^10.1.8",
