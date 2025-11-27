@@ -22,7 +22,7 @@
         "test:watch": "vitest"
     },
     "dependencies": {
-        "@astrojs/cloudflare": "^12.6.11",
+        "@astrojs/cloudflare": "^12.6.12",
         "@nanostores/persistent": "^1.2.0",
         "astro-font": "^1.1.0",
         "astro-loading-indicator": "^0.7.1",
