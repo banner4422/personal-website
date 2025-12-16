@@ -1,8 +1,6 @@
 const client_id = import.meta.env.SPOTIFY_CLIENT_ID as string;
-const client_secret = import.meta.env.SPOTIFY_CLIENT_SECRET as string;
+const client_secret = import.meta.env.SPOTIFY_CLIENT_SECRET as string; // kept for potential future use
 const refresh_token = import.meta.env.SPOTIFY_REFRESH_TOKEN as string;
-
-const basic = btoa(`${client_id}:${client_secret}`);
 const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing`;
 const TOP_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/top/tracks`;
 const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
@@ -144,20 +142,30 @@ export const getAccessToken = async () => {
         return cachedAccessToken;
     }
 
+    // Use a PKCE-compatible refresh flow: include client_id in body and omit Basic auth.
+    // This works for refresh tokens minted via PKCE (public client). Spotify accepts client_id in body.
+    const body = new URLSearchParams({
+        grant_type: "refresh_token",
+        refresh_token,
+        client_id,
+    });
+
     const response = await fetch(TOKEN_ENDPOINT, {
         method: "POST",
         headers: {
-            Authorization: `Basic ${basic}`,
             "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: new URLSearchParams({
-            grant_type: "refresh_token",
-            refresh_token,
-        }),
+        body,
     });
 
     if (!response.ok) {
-        throw new Error(`Failed to fetch access token: ${response.statusText}`);
+        let detail = "";
+        try {
+            detail = await response.text();
+        } catch {}
+        throw new Error(
+            `Failed to fetch access token: ${response.status} ${response.statusText}${detail ? ` — ${detail}` : ""}`
+        );
     }
 
     const data = await response.json<SpotifyAccessTokenResponse>();
