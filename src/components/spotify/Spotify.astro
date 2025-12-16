@@ -1,8 +1,8 @@
 ---
 import AnimatedBars from "./AnimatedBars.astro";
 import LoadingSpinner from "./LoadingSpinner.astro";
-import TidalIcon from "../icons/TidalIcon.astro";
-import { getNowPlaying } from "../../lib/server/tidal/tidal";
+import SpotifyIcon from "../icons/SpotifyIcon.astro";
+import { getNowPlaying } from "../../lib/server/spotify/spotify";
 
 const data = await getNowPlaying();
 const loading = !data || typeof data.isPlaying === "undefined";
@@ -22,11 +22,11 @@ const loading = !data || typeof data.isPlaying === "undefined";
                     </div>
                     <div class="flex sm:hidden flex-col space-y-2">
                         <AnimatedBars />
-                        <TidalIcon class="h-4 w-4 mt-px text-black dark:text-white" />
+                        <SpotifyIcon class="h-4 w-4 mt-px text-Spotify" />
                     </div>
                 </>
             ) : (
-                <TidalIcon class="h-4 w-4 mt-px text-black dark:text-white" />
+                <SpotifyIcon class="h-4 w-4 mt-px text-Spotify" />
             )
         }
         <div class="inline-flex flex-col sm:flex-row w-full max-w-full truncate ml-2">
@@ -38,7 +38,7 @@ const loading = !data || typeof data.isPlaying === "undefined";
                             {" "}
                             –{" "}
                         </span>
-                        <p class="text-zinc-500 dark:text-zinc-300 max-w-max truncate">Tidal</p>
+                        <p class="text-zinc-500 dark:text-zinc-300 max-w-max truncate">Spotify</p>
                     </>
                 ) : data?.isPlaying ? (
                     <>
@@ -69,7 +69,7 @@ const loading = !data || typeof data.isPlaying === "undefined";
                             {" "}
                             –{" "}
                         </span>
-                        <p class="text-zinc-500 dark:text-zinc-300 max-w-max truncate">Tidal</p>
+                        <p class="text-zinc-500 dark:text-zinc-300 max-w-max truncate">Spotify</p>
                     </>
                 )
             }
