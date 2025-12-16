@@ -1,0 +1,110 @@
+---
+const clientId = import.meta.env.PUBLIC_SPOTIFY_CLIENT_ID as string | undefined;
+const redirectUri = 'http://localhost:3000/callback';
+const scope = 'user-read-currently-playing';
+
+const missingClientId = !clientId;
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Spotify Login (PKCE) — Dev Only</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <style>
+      :root { color-scheme: dark light; }
+      body { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji"; padding: 2rem; }
+      .card { max-width: 720px; margin: 0 auto; border: 1px solid #4443; border-radius: 12px; padding: 1.25rem; }
+      pre { background: #0000000d; padding: 1rem; border-radius: 8px; overflow: auto; }
+      button { padding: .6rem 1rem; border-radius: .6rem; border: 1px solid #4443; cursor: pointer; }
+      .warn { color: #b45309; }
+    </style>
+  </head>
+  <body>
+    <div class="card" id="cfg" data-client-id={clientId} data-redirect-uri={redirectUri} data-scope={scope}>
+      <h1>Spotify Login (PKCE) — Dev Only</h1>
+      {missingClientId && (
+        <p class="warn"><strong>Missing PUBLIC_SPOTIFY_CLIENT_ID</strong>. Add it to your .env and restart dev server.</p>
+      )}
+      <p>This page generates a PKCE challenge and redirects you to Spotify to authorize the app. After authorizing, you will be redirected to <code>/callback</code> where you can copy the refresh token.</p>
+      <p><strong>Scope:</strong> <code>{scope}</code></p>
+      <p><button id="start" disabled={missingClientId}>Start Spotify login</button></p>
+      <pre id="log" aria-live="polite"></pre>
+    </div>
+
+    <script is:inline>
+      const root = document.getElementById('cfg');
+      const clientId = root?.dataset.clientId;
+      const redirectUri = root?.dataset.redirectUri;
+      const scope = root?.dataset.scope;
+      const logEl = document.getElementById('log');
+      const startBtn = document.getElementById('start');
+
+      const log = (msg) => {
+        if (!logEl) return;
+        if (typeof msg === 'string') logEl.textContent = msg;
+        else logEl.textContent = JSON.stringify(msg, null, 2);
+      };
+
+      const genRandom = (len = 64) => {
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~';
+        const array = new Uint8Array(len);
+        crypto.getRandomValues(array);
+        let out = '';
+        for (const n of array) out += chars[n % chars.length];
+        return out;
+      };
+
+      const sha256 = async (str) => {
+        const enc = new TextEncoder().encode(str);
+        const buf = await crypto.subtle.digest('SHA-256', enc);
+        return new Uint8Array(buf);
+      };
+
+      const b64url = (bytes) => {
+        let bin = '';
+        for (const b of bytes) bin += String.fromCharCode(b);
+        return btoa(bin).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+/g, '');
+      };
+
+      const start = async () => {
+        try {
+          if (!clientId || !redirectUri) {
+            log('Missing configuration');
+            return;
+          }
+
+          const codeVerifier = genRandom(64);
+          const codeChallenge = b64url(await sha256(codeVerifier));
+          const state = genRandom(16);
+
+          sessionStorage.setItem('pkce_code_verifier', codeVerifier);
+          sessionStorage.setItem('pkce_state', state);
+
+          const params = new URLSearchParams({
+            response_type: 'code',
+            client_id: clientId,
+            scope: scope || '',
+            code_challenge_method: 'S256',
+            code_challenge: codeChallenge,
+            redirect_uri: redirectUri,
+            state
+          });
+          const authUrl = `https://accounts.spotify.com/authorize?${params.toString()}`;
+          window.location.href = authUrl;
+        } catch (err) {
+          log(err);
+        }
+      };
+
+      if (startBtn) {
+        startBtn.addEventListener('click', start);
+        // Auto-start for convenience
+        if (!startBtn.hasAttribute('disabled')) {
+          start();
+        }
+      }
+    </script>
+  </body>
+  
+</html>
