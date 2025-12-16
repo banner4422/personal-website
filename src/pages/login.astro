@@ -1,6 +1,6 @@
 ---
 const clientId = import.meta.env.PUBLIC_SPOTIFY_CLIENT_ID as string | undefined;
-const redirectUri = 'http://localhost:3000/callback';
+const redirectUri = `${Astro.url.origin}/callback`;
 const scope = 'user-read-currently-playing';
 
 const missingClientId = !clientId;
