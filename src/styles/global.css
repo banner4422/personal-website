@@ -16,9 +16,9 @@
     --color-svelte: #eb4e27;
     --color-Discogs: #000000;
     --color-Python: #ffd343;
+    --color-Spotify: #1db954;
     --color-Bluesky: #1185fe;
     --color-LastFm: #d01f3c;
-    --color-tidal: #000000;
 
     --radius-social: 20%;
 
@@ -133,6 +133,10 @@
     background-color: var(--color-Discogs);
 }
 
+.hover-bg-Spotify:hover {
+    background-color: var(--color-Spotify);
+}
+
 .hover-bg-LastFm:hover {
     background-color: var(--color-LastFm);
 }
@@ -158,16 +162,12 @@
     background-color: var(--color-Discogs);
 }
 
-.dark .hover-bg-LastFm:hover {
-    background-color: var(--color-LastFm);
+.dark .hover-bg-Spotify:hover {
+    background-color: var(--color-Spotify);
 }
 
-/* Tidal hover background (supports both light and dark) */
-.hover-bg-Tidal:hover {
-    background-color: var(--color-tidal);
-}
-.dark .hover-bg-Tidal:hover {
-    background-color: var(--color-tidal);
+.dark .hover-bg-LastFm:hover {
+    background-color: var(--color-LastFm);
 }
 
 /* Disable tap highlight on mobile devices */

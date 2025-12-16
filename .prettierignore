@@ -1,0 +1,2 @@
+# Ignore Cloudflare Wrangler config (JSONC) so Prettier doesn't reformat it
+wrangler.jsonc

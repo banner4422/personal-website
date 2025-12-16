@@ -9,7 +9,14 @@ import tseslint from "typescript-eslint";
 export default [
     {
         // Ignore generated files and node_modules
-        ignores: ["dist/**", "node_modules/**", ".astro/**", ".vercel/**"],
+        ignores: [
+            "dist/**",
+            "node_modules/**",
+            ".astro/**",
+            ".vercel/**",
+            // Ignore Wrangler config (JSONC) so ESLint doesn't try to parse/format it
+            "wrangler.jsonc",
+        ],
     },
     eslintJs.configs.recommended,
     ...tseslint.configs.recommended,
