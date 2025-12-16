@@ -4,10 +4,6 @@ import AppLayout from "../layouts/app/AppLayout.astro";
 import PageLayout from "../layouts/PageLayout.astro";
 
 const errorMessage = "An unexpected error occurred";
-
-// cache for 10 minutes
-Astro.response.headers.set("Cache-Control", "public, max-age=600");
-Astro.response.headers.set("CDN-Cache-Control", "public, max-age=600");
 ---
 
 <AppLayout title={`${SITE_TITLE} - Server Error`}>

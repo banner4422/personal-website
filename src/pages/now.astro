@@ -20,10 +20,6 @@ events.sort((a, b) => {
 
 const title = "Now";
 const description = "What is Christian Krogh Nielsen up to these days?";
-
-// cache for 10 minutes
-Astro.response.headers.set("Cache-Control", "public, max-age=600");
-Astro.response.headers.set("CDN-Cache-Control", "public, max-age=600");
 ---
 
 <AppLayout title={title} description={description}>

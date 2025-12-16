@@ -163,6 +163,17 @@ export const getAccessToken = async () => {
         try {
             detail = await response.text();
         } catch {}
+
+        // Diagnostics: mask client_id to help detect misconfiguration without leaking secrets
+        const maskedClientId = client_id
+            ? `${client_id.slice(0, 6)}…${client_id.slice(-3)} (len:${client_id.length})`
+            : "undefined";
+        console.error("[SpotifyToken] Access token request failed", {
+            status: response.status,
+            statusText: response.statusText,
+            masked_client_id: maskedClientId,
+        });
+
         throw new Error(
             `Failed to fetch access token: ${response.status} ${response.statusText}${detail ? ` — ${detail}` : ""}`
         );
