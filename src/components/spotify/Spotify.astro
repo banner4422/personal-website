@@ -2,9 +2,9 @@
 import AnimatedBars from "./AnimatedBars.astro";
 import LoadingSpinner from "./LoadingSpinner.astro";
 import SpotifyIcon from "../icons/SpotifyIcon.astro";
-import { getNowPlaying } from "../../lib/server/spotify/spotify";
 
-const data = await getNowPlaying();
+const res = await fetch(new URL("/api/spotify/now-playing", Astro.url));
+const data = await res.json();
 const loading = !data || typeof data.isPlaying === "undefined";
 ---
 
