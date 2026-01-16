@@ -32,7 +32,7 @@
     },
     "devDependencies": {
         "@astrojs/mdx": "^4.3.13",
-        "@astrojs/rss": "^4.0.14",
+        "@astrojs/rss": "^4.0.15",
         "@astrojs/sitemap": "^3.6.1",
         "@astrojs/svelte": "^7.2.5",
         "@eslint/compat": "^2.0.1",
