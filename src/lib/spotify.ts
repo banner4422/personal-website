@@ -1,20 +1,23 @@
-const client_id = import.meta.env.SPOTIFY_CLIENT_ID as string;
-const client_secret = import.meta.env.SPOTIFY_CLIENT_SECRET as string;
-const refresh_token = import.meta.env.SPOTIFY_REFRESH_TOKEN as string;
-
-const basic = btoa(`${client_id}:${client_secret}`);
 const NOW_PLAYING_ENDPOINT = "https://api.spotify.com/v1/me/player/currently-playing";
 const TOKEN_ENDPOINT = "https://accounts.spotify.com/api/token";
 
 let cachedAccessToken: string | null = null;
 let tokenExpiryTime: number | null = null;
 
-const getAccessToken = async (): Promise<string | null> => {
+interface SpotifyCredentials {
+    clientId: string;
+    clientSecret: string;
+    refreshToken: string;
+}
+
+const getAccessToken = async (credentials: SpotifyCredentials): Promise<string | null> => {
     const currentTime = Date.now();
 
     if (cachedAccessToken && tokenExpiryTime && currentTime < tokenExpiryTime) {
         return cachedAccessToken;
     }
+
+    const basic = btoa(`${credentials.clientId}:${credentials.clientSecret}`);
 
     const response = await fetch(TOKEN_ENDPOINT, {
         method: "POST",
@@ -24,7 +27,7 @@ const getAccessToken = async (): Promise<string | null> => {
         },
         body: new URLSearchParams({
             grant_type: "refresh_token",
-            refresh_token,
+            refresh_token: credentials.refreshToken,
         }),
     });
 
@@ -59,9 +62,9 @@ const EMPTY_RESPONSE: NowPlayingSong = {
     title: "",
 };
 
-export const getNowPlaying = async (): Promise<NowPlayingSong> => {
+export const getNowPlaying = async (credentials: SpotifyCredentials): Promise<NowPlayingSong> => {
     try {
-        const accessToken = await getAccessToken();
+        const accessToken = await getAccessToken(credentials);
 
         if (!accessToken) {
             return EMPTY_RESPONSE;

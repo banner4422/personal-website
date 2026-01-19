@@ -4,7 +4,15 @@ import LoadingSpinner from "./LoadingSpinner.astro";
 import SpotifyIcon from "../icons/SpotifyIcon.astro";
 import { getNowPlaying } from "../../lib/spotify";
 
-const data = await getNowPlaying();
+// Access env vars from Cloudflare runtime (works both locally and in production)
+const runtime = Astro.locals.runtime;
+const env = runtime?.env ?? import.meta.env;
+
+const data = await getNowPlaying({
+    clientId: env.SPOTIFY_CLIENT_ID,
+    clientSecret: env.SPOTIFY_CLIENT_SECRET,
+    refreshToken: env.SPOTIFY_REFRESH_TOKEN,
+});
 const loading = !data || typeof data.isPlaying === "undefined";
 ---
 
