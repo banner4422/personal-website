@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import { onMount } from "svelte";
     import "../../styles/global.css";
     import { classNames, getHoverBgClass } from "../../lib/utils.js";
