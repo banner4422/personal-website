@@ -60,6 +60,7 @@ export default defineConfig({
                 "node:buffer",
                 "node:fs/promises",
                 "path",
+                "node:async_hooks",
             ],
         },
         test: {
