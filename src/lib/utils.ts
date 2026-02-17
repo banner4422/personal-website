@@ -13,7 +13,7 @@ export const classNames = (...classes: Array<string | false | null | undefined>)
  * The actual color values live in :root in global.css (single source of truth).
  */
 export const getSocialHover = (
-    colour: string,
+    colour: string
 ): { className: string; style: string | undefined } => {
     if (colour === "Instagram") {
         return { className: "instagram-gradient-button", style: undefined };
