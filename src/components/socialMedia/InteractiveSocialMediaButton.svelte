@@ -1,14 +1,14 @@
 <script lang="ts">
     import { onMount } from "svelte";
     import "../../styles/global.css";
-    import { classNames, getHoverBgClass } from "../../lib/utils.js";
+    import { classNames, getSocialHover } from "../../lib/utils.js";
 
     export let link = "";
     export let colour = "";
 
     let isPopoverOpen = false;
 
-    const hoverBgClass = getHoverBgClass(colour);
+    const { className: hoverBgClass, style: hoverStyle } = getSocialHover(colour);
 
     // Function to toggle popover
     function togglePopover() {
@@ -34,6 +34,7 @@
     <button
         on:click={togglePopover}
         aria-label={colour}
+        style={hoverStyle}
         class={classNames(
             "bg-zinc-50 border-zinc-900 text-zinc-900 hover:text-white",
             "dark:bg-zinc-900 dark:border-zinc-50 dark:text-zinc-50 dark:hover:text-white",

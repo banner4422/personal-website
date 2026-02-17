@@ -3,7 +3,8 @@
 
 @custom-variant dark (&:is(.dark *));
 
-@theme {
+/* Brand colors — single source of truth, always emitted (not tree-shaken) */
+:root {
     --color-GitHub: #333;
     --color-LinkedIn: #0077b5;
     --color-Discord: #5865f2;
@@ -20,14 +21,24 @@
     --color-Bluesky: #1185fe;
     --color-LastFm: #d01f3c;
 
+    --loading-indicator-color: #18181b; /* Light mode default */
+}
+
+/* Expose brand colors used as Tailwind utilities (text-Discord, text-Spotify, etc.) */
+@theme {
+    --color-Discord: #5865f2;
+    --color-React: #61dafb;
+    --color-work: #33b3d1;
+    --color-TypeScript: #3178c6;
+    --color-csharp: #9b4993;
+    --color-cbs: #4967aa;
+    --color-svelte: #eb4e27;
+    --color-Python: #ffd343;
+    --color-Spotify: #1db954;
+
     --radius-social: 20%;
 
     --font-sans: "Inter", "sans-serif";
-}
-
-/* 🌗 Custom color for loading indicator based on theme */
-:root {
-    --loading-indicator-color: #18181b; /* Light mode default */
 }
 
 .dark {
@@ -70,22 +81,6 @@
     }
 }
 
-/*
-  Keep only the sr-only class which is important for accessibility
-*/
-.sr-only {
-    border: 0;
-    padding: 0;
-    margin: 0;
-    position: absolute !important;
-    height: 1px;
-    width: 1px;
-    overflow: hidden;
-    clip: rect(1px, 1px, 1px, 1px);
-    clip-path: inset(50%);
-    white-space: nowrap;
-}
-
 /* Social media hover effects */
 /* Instagram gradient button with smooth transition */
 .instagram-gradient-button {
@@ -112,62 +107,10 @@
     opacity: 1;
 }
 
-/* Custom hover background classes for social media buttons */
-.hover-bg-GitHub:hover {
-    background-color: var(--color-GitHub);
-}
-
-.hover-bg-LinkedIn:hover {
-    background-color: var(--color-LinkedIn);
-}
-
-.hover-bg-Discord:hover {
-    background-color: var(--color-Discord);
-}
-
-.hover-bg-Bluesky:hover {
-    background-color: var(--color-Bluesky);
-}
-
-.hover-bg-Discogs:hover {
-    background-color: var(--color-Discogs);
-}
-
-.hover-bg-Spotify:hover {
-    background-color: var(--color-Spotify);
-}
-
-.hover-bg-LastFm:hover {
-    background-color: var(--color-LastFm);
-}
-
-/* Dark mode versions */
-.dark .hover-bg-GitHub:hover {
-    background-color: var(--color-GitHub);
-}
-
-.dark .hover-bg-LinkedIn:hover {
-    background-color: var(--color-LinkedIn);
-}
-
-.dark .hover-bg-Discord:hover {
-    background-color: var(--color-Discord);
-}
-
-.dark .hover-bg-Bluesky:hover {
-    background-color: var(--color-Bluesky);
-}
-
-.dark .hover-bg-Discogs:hover {
-    background-color: var(--color-Discogs);
-}
-
-.dark .hover-bg-Spotify:hover {
-    background-color: var(--color-Spotify);
-}
-
-.dark .hover-bg-LastFm:hover {
-    background-color: var(--color-LastFm);
+/* Generic social media hover — color set via --social-hover-color inline style */
+/*noinspection CssUnresolvedCustomProperty*/
+.social-hover:hover {
+    background-color: var(--social-hover-color, transparent);
 }
 
 /* Disable tap highlight on mobile devices */

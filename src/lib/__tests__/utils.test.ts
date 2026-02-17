@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { classNames, getHoverBgClass, formatArticleDate, formatPostDate } from "../utils";
+import { classNames, getSocialHover, formatArticleDate, formatPostDate } from "../utils";
 
 describe("classNames", () => {
     it("should join class names with spaces", () => {
@@ -19,15 +19,20 @@ describe("classNames", () => {
     });
 });
 
-describe("getHoverBgClass", () => {
-    it("should return instagram-gradient-button for Instagram", () => {
-        expect(getHoverBgClass("Instagram")).toBe("instagram-gradient-button");
+describe("getSocialHover", () => {
+    it("should return instagram-gradient-button class with no style for Instagram", () => {
+        const result = getSocialHover("Instagram");
+        expect(result.className).toBe("instagram-gradient-button");
+        expect(result.style).toBeUndefined();
     });
 
-    it("should return hover-bg-{colour} for other colours", () => {
-        expect(getHoverBgClass("Twitter")).toBe("hover-bg-Twitter");
-        expect(getHoverBgClass("GitHub")).toBe("hover-bg-GitHub");
-        expect(getHoverBgClass("LinkedIn")).toBe("hover-bg-LinkedIn");
+    it("should return social-hover class with var() style for other colours", () => {
+        const github = getSocialHover("GitHub");
+        expect(github.className).toBe("social-hover");
+        expect(github.style).toBe("--social-hover-color: var(--color-GitHub)");
+
+        const linkedin = getSocialHover("LinkedIn");
+        expect(linkedin.style).toBe("--social-hover-color: var(--color-LinkedIn)");
     });
 });
 

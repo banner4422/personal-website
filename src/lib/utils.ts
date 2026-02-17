@@ -7,17 +7,22 @@ export const classNames = (...classes: Array<string | false | null | undefined>)
     classes.filter(Boolean).join(" ");
 
 /*
- * Helper function to determine hover background class based on colour
- * @param {string} colour - The colour of the social media button
- * @return {string} - The corresponding hover background class
+ * Returns the hover class and optional inline style for a social media button.
+ * Instagram uses a gradient pseudo-element; all others use a single CSS class
+ * driven by a --social-hover-color custom property set via inline style.
+ * The actual color values live in :root in global.css (single source of truth).
  */
-export const getHoverBgClass = (colour: string): string => {
+export const getSocialHover = (
+    colour: string,
+): { className: string; style: string | undefined } => {
     if (colour === "Instagram") {
-        return "instagram-gradient-button";
+        return { className: "instagram-gradient-button", style: undefined };
     }
 
-    // Use a custom class that will be defined in global.css
-    return `hover-bg-${colour}`;
+    return {
+        className: "social-hover",
+        style: `--social-hover-color: var(--color-${colour})`,
+    };
 };
 
 /*

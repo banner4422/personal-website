@@ -1,5 +1,5 @@
 ---
-import { classNames, getHoverBgClass } from "../../lib/utils";
+import { classNames, getSocialHover } from "../../lib/utils";
 
 interface Props {
     colour: string;
@@ -7,7 +7,7 @@ interface Props {
 }
 const { colour, link } = Astro.props;
 
-const hoverBgClass = getHoverBgClass(colour);
+const { className: hoverBgClass, style: hoverStyle } = getSocialHover(colour);
 ---
 
 <a
@@ -15,6 +15,7 @@ const hoverBgClass = getHoverBgClass(colour);
     target="_blank"
     rel="noopener noreferrer"
     aria-label={colour}
+    style={hoverStyle}
     class={classNames(
         "bg-zinc-50 border-zinc-900 text-zinc-900 hover:text-white",
         "dark:bg-zinc-900 dark:border-zinc-50 dark:text-zinc-50 dark:hover:text-white",
