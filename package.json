@@ -50,7 +50,7 @@
         "prettier": "^3.8.1",
         "prettier-plugin-astro": "^0.14.1",
         "prettier-plugin-svelte": "^3.5.0",
-        "rollup-plugin-visualizer": "^6.0.5",
+        "rollup-plugin-visualizer": "^6.0.8",
         "svelte": "^5.53.0",
         "tailwindcss": "^4.2.0",
         "typescript": "^5.9.3",
