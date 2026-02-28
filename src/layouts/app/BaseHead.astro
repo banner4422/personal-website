@@ -130,8 +130,13 @@ const { title, description = SITE_DESCRIPTION } = Astro.props;
         }
         return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
     };
-    const isDark = getThemePreference() === "dark";
-    document.documentElement.classList[isDark ? "add" : "remove"]("dark");
+
+    function applyTheme() {
+        const isDark = getThemePreference() === "dark";
+        document.documentElement.classList[isDark ? "add" : "remove"]("dark");
+    }
+
+    applyTheme();
 
     if (isBrowser) {
         const observer = new MutationObserver(() => {
@@ -142,5 +147,9 @@ const { title, description = SITE_DESCRIPTION } = Astro.props;
             attributes: true,
             attributeFilter: ["class"],
         });
+
+        // Re-apply theme eagerly after each View Transitions page swap,
+        // before ModeWatcher (client:load) has a chance to initialize.
+        document.addEventListener("astro:after-swap", applyTheme);
     }
 </script>
