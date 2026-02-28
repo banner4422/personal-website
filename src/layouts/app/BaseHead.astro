@@ -130,8 +130,13 @@ const { title, description = SITE_DESCRIPTION } = Astro.props;
         }
         return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
     };
-    const isDark = getThemePreference() === "dark";
-    document.documentElement.classList[isDark ? "add" : "remove"]("dark");
+
+    function applyTheme() {
+        const isDark = getThemePreference() === "dark";
+        document.documentElement.classList[isDark ? "add" : "remove"]("dark");
+    }
+
+    applyTheme();
 
     if (isBrowser) {
         const observer = new MutationObserver(() => {
@@ -142,5 +147,18 @@ const { title, description = SITE_DESCRIPTION } = Astro.props;
             attributes: true,
             attributeFilter: ["class"],
         });
+
+        // Astro View Transitions replaces the entire <html> element with the
+        // server-rendered version (which has no dark class). Stamp the correct
+        // class onto the *incoming* document before the swap so there is never
+        // a frame where the wrong theme is visible.
+        document.addEventListener("astro:before-swap", (e) => {
+            const isDark = getThemePreference() === "dark";
+            e.newDocument.documentElement.classList[isDark ? "add" : "remove"]("dark");
+        });
+
+        // Belt-and-suspenders: also re-apply after the swap in case anything
+        // else (e.g. ModeWatcher re-initializing) removes the class.
+        document.addEventListener("astro:after-swap", applyTheme);
     }
 </script>
