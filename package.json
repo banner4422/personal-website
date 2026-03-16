@@ -59,7 +59,7 @@
         "wrangler": "^4.74.0"
     },
     "overrides": {
-        "runed": "0.35.1",
+        "runed": "0.37.1",
         "svelte-toolbelt": "0.10.6"
     }
 }
