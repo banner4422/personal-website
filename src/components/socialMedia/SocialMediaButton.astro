@@ -1,13 +1,13 @@
 ---
 import SocialMediaButtonStatic from "./SocialMediaButtonStatic.astro";
 import InteractiveSocialMediaButton from "./InteractiveSocialMediaButton.svelte";
-import type { IconComponent } from "./SocialMediaCard.astro";
 
 interface Props {
     colour: string;
     link: string;
     js: boolean | undefined;
-    children: IconComponent;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    children?: any;
 }
 
 const { colour, link, js = false, children } = Astro.props;
