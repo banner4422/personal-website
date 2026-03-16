@@ -8,7 +8,7 @@
         "@astrojs/cloudflare": "^12.6.13",
         "@nanostores/persistent": "^1.3.3",
         "astro-font": "^1.1.0",
-        "astro-loading-indicator": "^0.7.1",
+        "astro-loading-indicator": "^0.8.0",
         "dayjs": "^1.11.20",
         "mode-watcher": "^1.1.0",
         "nanostores": "^1.2.0",
@@ -464,7 +464,7 @@
 
     "astro-font": ["astro-font@1.1.0", "", {}, "sha512-hj1A0MkaJTeaArBpf1m9s4Nxu1Bn9h0QiEPeR9Dfjle25pT4CH4higzuadWzCRSvhGO2SzbM11YwZEF+cmLDxg=="],
 
-    "astro-loading-indicator": ["astro-loading-indicator@0.7.1", "", { "peerDependencies": { "astro": "^4.0.0 || ^5.0.0" } }, "sha512-SH5igTvcj+rHoy7o7JO7jIuPxxkNarHl2Bu1H41/fAOa1uiYuLoQNkGhV/Xqe4Jc9wnUHidwXNExjPHoL1plNg=="],
+    "astro-loading-indicator": ["astro-loading-indicator@0.8.0", "", { "peerDependencies": { "astro": "^4.0.0 || ^5.0.0 || ^6.0.0" } }, "sha512-huqaHbSCe8KLWnogxu9yNDybtVyp9OhJhU9LA5GwzBo8g4CcAQWcwjurleV+OpJAK2qNL2gO/V5ocPltvCC7Dg=="],
 
     "astrojs-compiler-sync": ["astrojs-compiler-sync@1.1.1", "", { "dependencies": { "synckit": "^0.11.0" }, "peerDependencies": { "@astrojs/compiler": ">=0.27.0" } }, "sha512-0mKvB9sDQRIZPsEJadw6OaFbGJ92cJPPR++ICca9XEyiUAZqgVuk25jNmzHPT0KF80rI94trSZrUR5iHFXGGOQ=="],
 
