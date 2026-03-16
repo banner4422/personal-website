@@ -8,6 +8,7 @@
     "main": "@astrojs/cloudflare/entrypoints/server",
     "compatibility_date": "2025-06-14",
     "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+    "package_manager": "npm@latest",
     "assets": {
         "binding": "ASSETS",
         "directory": "./dist",
