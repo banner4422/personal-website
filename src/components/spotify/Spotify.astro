@@ -3,7 +3,9 @@ import AnimatedBars from "./AnimatedBars.astro";
 import LoadingSpinner from "./LoadingSpinner.astro";
 import SpotifyIcon from "../icons/SpotifyIcon.astro";
 import { getNowPlaying } from "../../lib/spotify";
-import { env } from "cloudflare:workers";
+
+const runtime = Astro.locals.runtime;
+const env = runtime?.env ?? import.meta.env;
 
 const data = await getNowPlaying({
     clientId: env.SPOTIFY_CLIENT_ID,
