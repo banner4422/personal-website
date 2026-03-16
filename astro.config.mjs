@@ -33,7 +33,7 @@ export default defineConfig({
         svelte(),
     ],
     adapter: cloudflare({
-        imageService: "cloudflare",
+        imageService: "compile",
     }),
 
     // Enable prefetching for faster page navigation
