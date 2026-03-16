@@ -2,7 +2,6 @@
 import { SOCIAL_MEDIA } from "../../consts";
 import SocialMediaButton from "./SocialMediaButton.astro";
 
-// Dynamically import icon components
 import GitHubIcon from "../icons/GitHubIcon.astro";
 import LinkedInIcon from "../icons/LinkedInIcon.astro";
 import BlueskyIcon from "../icons/BlueskyIcon.astro";
@@ -12,38 +11,24 @@ import SpotifyIcon from "../icons/SpotifyIcon.astro";
 import DiscordIcon from "../icons/DiscordIcon.astro";
 import LastfmIcon from "../icons/LastfmIcon.astro";
 
-// Define a more specific type for the icon components
-export type IconComponent = typeof GitHubIcon;
-type IconMap = Record<string, IconComponent>;
-
-// Create a mapping of icon names to components
-const iconComponents: IconMap = {
-    GitHubIcon: GitHubIcon,
-    LinkedInIcon: LinkedInIcon,
-    BlueskyIcon: BlueskyIcon,
-    DiscogsIcon: DiscogsIcon,
-    InstagramIcon: InstagramIcon,
-    SpotifyIcon: SpotifyIcon,
-    DiscordIcon: DiscordIcon,
-    LastfmIcon: LastfmIcon,
+const iconMap: Record<string, typeof GitHubIcon> = {
+    GitHubIcon,
+    LinkedInIcon,
+    BlueskyIcon,
+    DiscogsIcon,
+    InstagramIcon,
+    SpotifyIcon,
+    DiscordIcon,
+    LastfmIcon,
 };
-
-const socialMediaButtonsWithIcons = SOCIAL_MEDIA.map((x) => {
-    const iconComponent = x.icon && iconComponents[x.icon] ? iconComponents[x.icon] : null;
-
-    return {
-        ...x,
-        iconComponent,
-    };
-});
 ---
 
 <div
     class="w-full grid grid-cols-2 justify-items-center md:grid-cols-4 justify-center gap-4 md:gap-x-16 pb-4"
 >
     {
-        socialMediaButtonsWithIcons.map((button) => {
-            const Icon = button.iconComponent;
+        SOCIAL_MEDIA.map((button) => {
+            const Icon = button.icon ? iconMap[button.icon] : null;
             return (
                 <SocialMediaButton colour={button.colour} link={button.link} js={button.js}>
                     {Icon && <Icon />}
