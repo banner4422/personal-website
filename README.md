@@ -1,6 +1,6 @@
 # My personal website
 
-A personal website meant for showcasing my work, projects, and interests.
+A personal website meant for showcasing my projects, info, and interests.
 
 - **Framework:** [Astro](https://astro.build/) with [Svelte](https://svelte.dev/) components.
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/)
