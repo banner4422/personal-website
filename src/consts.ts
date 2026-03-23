@@ -33,9 +33,9 @@ export const SOCIAL_MEDIA: SocialMediaButton[] = [
         js: false,
     },
     {
-        colour: "Bluesky",
-        link: "https://bsky.app/profile/chrkn.dk",
-        icon: "BlueskyIcon",
+        colour: "Letterboxd",
+        link: "https://letterboxd.com/kraelle/",
+        icon: "LetterboxdIcon",
         js: false,
     },
     {
