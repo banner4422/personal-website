@@ -43,10 +43,12 @@ export default defineConfig({
         plugins: [
             tailwindcss(),
             /** @type {import('vite').PluginOption} */
-            (visualizer({
-                emitFile: true,
-                filename: "stats.html",
-            })),
+            (
+                visualizer({
+                    emitFile: true,
+                    filename: "stats.html",
+                })
+            ),
         ],
         ssr: {
             external: [
