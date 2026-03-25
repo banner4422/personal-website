@@ -30,6 +30,6 @@ export function addSecurityHeaders(headers: Headers): void {
     headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
     headers.set(
         "Permissions-Policy",
-        "camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()",
+        "camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()"
     );
 }
