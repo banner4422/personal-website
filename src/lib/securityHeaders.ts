@@ -10,8 +10,10 @@ const cspDirectives: Record<string, string> = {
     "font-src": "'self'",
     // no client-side API calls to external services
     "connect-src": "'self'",
-    "frame-src": "'none'",
-    "frame-ancestors": "'none'",
+    // 'self' required — Astro's ClientRouter uses iframes for view transitions
+    "frame-src": "'self'",
+    // 'self' required — Astro's ClientRouter frames the current origin during navigation
+    "frame-ancestors": "'self'",
     "object-src": "'none'",
     "base-uri": "'self'",
     "form-action": "'self'",
@@ -25,7 +27,7 @@ const cspValue = Object.entries(cspDirectives)
 export function addSecurityHeaders(headers: Headers): void {
     headers.set("Content-Security-Policy", cspValue);
     headers.set("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
-    headers.set("X-Frame-Options", "DENY");
+    headers.set("X-Frame-Options", "SAMEORIGIN");
     headers.set("X-Content-Type-Options", "nosniff");
     headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
     headers.set(

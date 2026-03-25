@@ -5,11 +5,14 @@ import SpotifyIcon from "../icons/SpotifyIcon.astro";
 import { getNowPlaying } from "../../lib/spotify";
 import { env } from "cloudflare:workers";
 
-const data = await getNowPlaying({
-    clientId: env.SPOTIFY_CLIENT_ID,
-    clientSecret: env.SPOTIFY_CLIENT_SECRET,
-    refreshToken: env.SPOTIFY_REFRESH_TOKEN,
-});
+const data = await getNowPlaying(
+    {
+        clientId: env.SPOTIFY_CLIENT_ID,
+        clientSecret: env.SPOTIFY_CLIENT_SECRET,
+        refreshToken: env.SPOTIFY_REFRESH_TOKEN,
+    },
+    env.SESSION
+);
 const loading = !data || typeof data.isPlaying === "undefined";
 ---
 
