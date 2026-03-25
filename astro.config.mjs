@@ -1,5 +1,5 @@
 // @ts-check
-/// <reference types="vitest" />
+/// <reference types="vitest/config" />
 import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
@@ -42,10 +42,11 @@ export default defineConfig({
     vite: {
         plugins: [
             tailwindcss(),
-            visualizer({
+            /** @type {import('vite').PluginOption} */
+            (visualizer({
                 emitFile: true,
                 filename: "stats.html",
-            }),
+            })),
         ],
         ssr: {
             external: [
