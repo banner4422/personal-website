@@ -4,6 +4,14 @@ const TOKEN_ENDPOINT = "https://accounts.spotify.com/api/token";
 let cachedAccessToken: string | null = null;
 let tokenExpiryTime: number | null = null;
 
+let cachedNowPlaying: NowPlayingSong | null = null;
+let nowPlayingCacheExpiry: number | null = null;
+const NOW_PLAYING_TTL_MS = 30_000;
+const KV_TIMEOUT_MS = 500;
+
+const withTimeout = <T>(promise: Promise<T>, ms: number): Promise<T | null> =>
+    Promise.race([promise, new Promise<null>((resolve) => setTimeout(() => resolve(null), ms))]);
+
 interface SpotifyCredentials {
     clientId: string;
     clientSecret: string;
@@ -62,7 +70,32 @@ const EMPTY_RESPONSE: NowPlayingSong = {
     title: "",
 };
 
-export const getNowPlaying = async (credentials: SpotifyCredentials): Promise<NowPlayingSong> => {
+export const getNowPlaying = async (
+    credentials: SpotifyCredentials,
+    kv?: KVNamespace
+): Promise<NowPlayingSong> => {
+    const currentTime = Date.now();
+
+    if (cachedNowPlaying && nowPlayingCacheExpiry && currentTime < nowPlayingCacheExpiry) {
+        return cachedNowPlaying;
+    }
+
+    if (kv) {
+        try {
+            const kvCached = await withTimeout(
+                kv.get<NowPlayingSong>("spotify:now-playing", "json"),
+                KV_TIMEOUT_MS
+            );
+            if (kvCached) {
+                cachedNowPlaying = kvCached;
+                nowPlayingCacheExpiry = currentTime + NOW_PLAYING_TTL_MS;
+                return kvCached;
+            }
+        } catch {
+            // KV read failed, fall through to API
+        }
+    }
+
     try {
         const accessToken = await getAccessToken(credentials);
 
@@ -84,7 +117,7 @@ export const getNowPlaying = async (credentials: SpotifyCredentials): Promise<No
         const song = await response.json();
         if (!song?.item) return EMPTY_RESPONSE;
 
-        return {
+        const result: NowPlayingSong = {
             album: song.item.album?.name ?? "",
             albumImageUrl: song.item.album?.images?.[0]?.url ?? "",
             artist: song.item.artists?.map((a: { name: string }) => a.name).join(", ") ?? "",
@@ -92,6 +125,22 @@ export const getNowPlaying = async (credentials: SpotifyCredentials): Promise<No
             songUrl: song.item.external_urls?.spotify ?? "",
             title: song.item.name ?? "",
         };
+
+        cachedNowPlaying = result;
+        nowPlayingCacheExpiry = currentTime + NOW_PLAYING_TTL_MS;
+
+        if (kv) {
+            try {
+                await withTimeout(
+                    kv.put("spotify:now-playing", JSON.stringify(result), { expirationTtl: 30 }),
+                    KV_TIMEOUT_MS
+                );
+            } catch {
+                // KV write failed, not critical
+            }
+        }
+
+        return result;
     } catch (error) {
         console.error("Error fetching now playing data:", error);
         return EMPTY_RESPONSE;

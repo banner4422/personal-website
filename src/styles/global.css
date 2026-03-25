@@ -64,7 +64,7 @@
 
     html {
         /* Reserve space for the scrollbar to prevent layout shift between pages */
-        scrollbar-gutter: stable both-edges;
+        scrollbar-gutter: stable;
         font-family:
             "Inter",
             system-ui,
