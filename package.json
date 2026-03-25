@@ -60,6 +60,7 @@
     },
     "overrides": {
         "runed": "0.37.1",
-        "svelte-toolbelt": "0.10.6"
+        "svelte-toolbelt": "0.10.6",
+        "typescript": "^6.0.2"
     }
 }
