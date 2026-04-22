@@ -28,7 +28,7 @@
         "astro-loading-indicator": "^0.8.0",
         "dayjs": "^1.11.20",
         "mode-watcher": "^1.1.0",
-        "nanostores": "^1.2.0"
+        "nanostores": "^1.3.0"
     },
     "devDependencies": {
         "@astrojs/mdx": "^5.0.3",
