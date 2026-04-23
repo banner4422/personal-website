@@ -11,13 +11,13 @@ import Time from "./Time.svelte";
             title="It refreshes every minute from when you open the page, so it is not real-time"
         >
             Time in Copenhagen is{" "}
-            <Time client:only="svelte">
-                <span
+            <Time client:only="svelte"
+                ><span
                     slot="fallback"
-                    class="font-medium text-zinc-400 dark:text-zinc-500 cursor-not-allowed"
+                    class="font-medium tabular-nums text-zinc-400 dark:text-zinc-500 cursor-not-allowed"
                     style="filter: blur(8px); user-select: none;"
-                    aria-hidden="true">00:00</span>
-            </Time>
+                    aria-hidden="true">00:00</span></Time
+            >
         </p>
     </div>
 </div>

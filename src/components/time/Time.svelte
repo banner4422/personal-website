@@ -1,17 +1,18 @@
 <script lang="ts">
     import { onMount, onDestroy } from "svelte";
 
-    let time = "";
+    const formatter = new Intl.DateTimeFormat("en-DK", {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+        timeZone: "Europe/Copenhagen",
+    });
+
+    let time = formatter.format(new Date());
     let revealed = false;
     let timeoutId: ReturnType<typeof setTimeout>;
 
     const updateTime = () => {
-        const formatter = new Intl.DateTimeFormat("en-DK", {
-            hour: "2-digit",
-            minute: "2-digit",
-            hour12: false,
-            timeZone: "Europe/Copenhagen",
-        });
         time = formatter.format(new Date());
     };
 
@@ -39,7 +40,7 @@
 </script>
 
 <span
-    class="time-display font-medium {revealed
+    class="time-display font-medium tabular-nums {revealed
         ? 'time-revealed text-black dark:text-white'
         : 'time-blurred text-zinc-400 dark:text-zinc-500'}"
     class:interactive={!revealed}
