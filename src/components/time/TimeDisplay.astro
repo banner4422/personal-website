@@ -8,14 +8,15 @@ import Time from "./Time.svelte";
     <div>
         <p
             class="text-black dark:text-zinc-200 text-center"
-            title="It is not real-time, though it tries to"
+            title="It refreshes every minute from when you open the page, so it is not real-time"
         >
-            Time in Copenhagen is
+            Time in Copenhagen is{" "}
             <Time client:only="svelte">
                 <span
                     slot="fallback"
-                    class="inline-block align-sub h-[19.5px] w-[42px] rounded bg-zinc-300 dark:bg-zinc-700 animate-pulse"
-                    aria-hidden="true"></span>
+                    class="font-medium text-zinc-400 dark:text-zinc-500 cursor-not-allowed"
+                    style="filter: blur(8px); user-select: none;"
+                    aria-hidden="true">00:00</span>
             </Time>
         </p>
     </div>
