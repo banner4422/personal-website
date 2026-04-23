@@ -1,5 +1,5 @@
 ---
-import Time from "./Time.svelte";
+
 ---
 
 <div
@@ -11,12 +11,9 @@ import Time from "./Time.svelte";
             title="It is not real-time, though it tries to"
         >
             Time in Copenhagen is
-            <Time client:only="svelte">
-                <span
-                    slot="fallback"
-                    class="inline-block align-sub h-[19.5px] w-[42px] rounded bg-zinc-300 dark:bg-zinc-700 animate-pulse"
-                    aria-hidden="true"></span>
-            </Time>
+            <span
+                class="inline-block align-sub h-[19.5px] w-[42px] rounded bg-zinc-300 dark:bg-zinc-700 animate-pulse"
+                aria-hidden="true"></span>
         </p>
     </div>
 </div>
