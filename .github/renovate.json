@@ -7,8 +7,8 @@
     "rangeStrategy": "bump",
     "packageRules": [
         {
-          "matchDatasources": ["npm"],
-          "minimumReleaseAge": "3 days"
+            "matchDatasources": ["npm"],
+            "minimumReleaseAge": "3 days"
         }
-  ]
+    ]
 }
