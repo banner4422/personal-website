@@ -55,7 +55,7 @@
         "tailwindcss": "^4.2.3",
         "typescript": "^6.0.3",
         "typescript-eslint": "^8.58.2",
-        "vitest": "^4.1.4",
+        "vitest": "^4.1.5",
         "wrangler": "^4.84.0"
     },
     "overrides": {
