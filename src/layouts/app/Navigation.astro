@@ -1,7 +1,6 @@
 ---
 import AppearanceModeSwitch from "../../components/app/AppearanceModeSwitch.svelte";
 import MobileMenu from "../../components/app/MobileMenu.svelte";
-import HamburgerIcon from "../../components/icons/HamburgerIcon.svelte";
 
 let currentPath = Astro.url.pathname;
 
@@ -23,18 +22,7 @@ const isCurrentRoute = (route: string): boolean => {
 <header class="flex flex-col items-center w-full">
     <nav class="flex items-center justify-between w-full max-w-2xl px-4 md:px-8 sm:py-8 py-4">
         <div class="sm:hidden">
-            <MobileMenu
-                navigationRoutes={navigationRoutes}
-                currentPath={currentPath}
-                client:only="svelte"
-            >
-                <span
-                    slot="fallback"
-                    class="md:hidden flex items-center justify-center p-2 rounded-lg hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-colors duration-300 opacity-50 cursor-not-allowed"
-                >
-                    <HamburgerIcon />
-                </span>
-            </MobileMenu>
+            <MobileMenu navigationRoutes={navigationRoutes} currentPath={currentPath} client:load />
         </div>
 
         <div class="hidden sm:flex ml-0">
@@ -58,15 +46,6 @@ const isCurrentRoute = (route: string): boolean => {
             }
         </div>
 
-        <AppearanceModeSwitch client:only="svelte">
-            <span
-                slot="fallback"
-                class="dark:bg-zinc-50 bg-zinc-900 relative inline-flex h-6 w-11 items-center rounded-full transition-all duration-300 ml-auto opacity-50 cursor-not-allowed"
-            >
-                <span
-                    class="inline-block h-4 w-4 transform rounded-full dark:translate-x-1 dark:bg-zinc-900 translate-x-6 bg-zinc-50 transition-all duration-300"
-                ></span>
-            </span>
-        </AppearanceModeSwitch>
+        <AppearanceModeSwitch client:load />
     </nav>
 </header>
