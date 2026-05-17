@@ -49,7 +49,53 @@ export default defineConfig({
                     filename: "stats.html",
                 })
             ),
+            // Pre-bundle deps missing from the Cloudflare adapter's configEnvironment
+            // hook, to prevent mid-request dep optimizer reloads that crash the
+            // workerd module runner and pollute the browser's module graph.
+            /** @type {import('vite').Plugin} */
+            ({
+                name: "pre-bundle-missing-deps",
+                configEnvironment(name) {
+                    if (name === "ssr") {
+                        return {
+                            optimizeDeps: {
+                                include: [
+                                    "astro-font",
+                                    "astro/virtual-modules/transitions.js",
+                                    "astro/zod",
+                                ],
+                            },
+                        };
+                    }
+                    if (name === "client") {
+                        return {
+                            optimizeDeps: {
+                                include: [
+                                    "astro/virtual-modules/transitions-router.js",
+                                    "astro/virtual-modules/transitions-types.js",
+                                    "astro/virtual-modules/transitions-events.js",
+                                    "astro/virtual-modules/transitions-swap-functions.js",
+                                ],
+                            },
+                        };
+                    }
+                },
+            }),
         ],
+        server: {
+            warmup: {
+                ssrFiles: [
+                    "./src/pages/index.astro",
+                    "./src/pages/about.astro",
+                    "./src/pages/now.astro",
+                    "./src/pages/404.astro",
+                    "./src/pages/500.astro",
+                    "./src/pages/blog/index.astro",
+                    "./src/pages/blog/[...slug].astro",
+                    "./src/layouts/app/Footer.astro",
+                ],
+            },
+        },
         ssr: {
             external: [
                 "node:url",
@@ -59,7 +105,6 @@ export default defineConfig({
                 "node:os",
                 "node:buffer",
                 "node:fs/promises",
-                "path",
                 "node:async_hooks",
             ],
         },
