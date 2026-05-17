@@ -14,6 +14,8 @@ const cspDirectives: Record<string, string> = {
     "frame-src": "'self'",
     // 'self' required — Astro's ClientRouter frames the current origin during navigation
     "frame-ancestors": "'self'",
+    // blob: required for Vite's dev-mode module runner web worker
+    "worker-src": "'self' blob:",
     "object-src": "'none'",
     "base-uri": "'self'",
     "form-action": "'self'",
