@@ -39,17 +39,18 @@
     });
 </script>
 
-<span
-    class="time-display font-medium tabular-nums {revealed
-        ? 'time-revealed text-black dark:text-white'
-        : 'time-blurred text-zinc-400 dark:text-zinc-500'}"
-    class:interactive={!revealed}
-    on:click={() => !revealed && reveal()}
-    on:keydown={(e) => !revealed && e.key === "Enter" && reveal()}
-    role={revealed ? undefined : "button"}
-    tabindex={revealed ? undefined : 0}
-    title={revealed ? undefined : "Click to reveal the time"}>{time}</span
->
+{#if revealed}
+    <span class="time-display font-medium tabular-nums time-revealed text-black dark:text-white"
+        >{time}</span
+    >
+{:else}
+    <button
+        class="time-display font-medium tabular-nums time-blurred text-zinc-400 dark:text-zinc-500"
+        onclick={reveal}
+        onkeydown={(e) => e.key === "Enter" && reveal()}
+        title="Click to reveal the time">{time}</button
+    >
+{/if}
 
 <style>
     .time-blurred {
@@ -57,6 +58,11 @@
         cursor: pointer;
         user-select: none;
         transition: filter 0.4s ease;
+        background: none;
+        border: none;
+        padding: 0;
+        font: inherit;
+        color: inherit;
     }
 
     .time-blurred:hover {
