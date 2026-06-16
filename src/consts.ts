@@ -28,14 +28,8 @@ export const SOCIAL_MEDIA: SocialMediaButton[] = [
     },
     {
         colour: "LinkedIn",
-        link: "https://www.linkedin.com/in/christian-krogh-nielsen-55152625a/",
+        link: "https://www.linkedin.com/in/christian-krogh-nielsen/",
         icon: "LinkedInIcon",
-        js: false,
-    },
-    {
-        colour: "Letterboxd",
-        link: "https://letterboxd.com/kraelle/",
-        icon: "LetterboxdIcon",
         js: false,
     },
     {
@@ -61,12 +55,6 @@ export const SOCIAL_MEDIA: SocialMediaButton[] = [
         link: "https://www.last.fm/user/christiankn",
         icon: "LastfmIcon",
         js: false,
-    },
-    {
-        colour: "Discord",
-        link: "banner.",
-        js: true,
-        icon: "DiscordIcon",
     },
 ];
 
