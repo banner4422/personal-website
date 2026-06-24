@@ -1,11 +1,6 @@
 ---
-// ?url bypasses Astro's CSS virtual-module system, preventing the concurrent-
-// compilation race ("No Astro CSS at index 0") that occurs when ClientRouter's
-// iframe prefetch and the real navigation compile BaseHead.astro simultaneously.
 import globalCssUrl from "../../styles/global.css?url";
 import { SITE_TITLE, SITE_DESCRIPTION, AUTHOR, KEYWORDS } from "../../consts";
-import { ClientRouter } from "astro:transitions";
-import LoadingIndicator from "astro-loading-indicator/component";
 import { AstroFont } from "astro-font";
 import { join } from "path";
 
@@ -121,9 +116,6 @@ const { title, description = SITE_DESCRIPTION } = Astro.props;
 <meta property="twitter:description" content={description} />
 <meta property="twitter:creator" content={AUTHOR.name} />
 
-<ClientRouter />
-<LoadingIndicator color="var(--loading-indicator-color)" height="3px" threshold={600} />
-
 <!-- Dark mode script (to prevent flash of incorrect theme) -->
 <script is:inline>
     const isBrowser = typeof localStorage !== "undefined";
@@ -151,17 +143,5 @@ const { title, description = SITE_DESCRIPTION } = Astro.props;
             attributeFilter: ["class"],
         });
 
-        // Astro View Transitions replaces the entire <html> element with the
-        // server-rendered version (which has no dark class). Stamp the correct
-        // class onto the *incoming* document before the swap so there is never
-        // a frame where the wrong theme is visible.
-        document.addEventListener("astro:before-swap", (e) => {
-            const isDark = getThemePreference() === "dark";
-            e.newDocument.documentElement.classList[isDark ? "add" : "remove"]("dark");
-        });
-
-        // Belt-and-suspenders: also re-apply after the swap in case anything
-        // else (e.g. ModeWatcher re-initializing) removes the class.
-        document.addEventListener("astro:after-swap", applyTheme);
     }
 </script>
