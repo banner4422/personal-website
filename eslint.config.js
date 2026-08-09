@@ -21,6 +21,16 @@ export default [
     eslintJs.configs.recommended,
     ...tseslint.configs.recommended,
 
+    // Node.js maintenance scripts
+    {
+        files: ["scripts/**/*.mjs"],
+        languageOptions: {
+            globals: {
+                ...globals.node,
+            },
+        },
+    },
+
     // Configuration for Svelte files with TypeScript
     ...sveltePlugin.configs.recommended,
     {

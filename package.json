@@ -13,6 +13,7 @@
         "build": "astro build",
         "preview": "astro build && wrangler dev",
         "deploy": "astro build && wrangler deploy",
+        "spotify:authorize": "node --env-file-if-exists=.env scripts/spotify-authorize.mjs",
         "lint": "eslint . --ignore-pattern worker-configuration.d.ts",
         "lint:fix": "eslint . --fix --ignore-pattern worker-configuration.d.ts",
         "format": "prettier --write .",
