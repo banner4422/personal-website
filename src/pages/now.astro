@@ -1,21 +1,14 @@
 ---
-import { getCollection, render } from "astro:content";
 import PageLayout from "../layouts/PageLayout.astro";
 import AppLayout from "../layouts/app/AppLayout.astro";
-import RelativeDate from "../components/RelativeDate/RelativeDate.svelte";
-import dayjs from "dayjs";
-import localizedFormat from "dayjs/plugin/localizedFormat";
-import timezone from "dayjs/plugin/timezone";
-import utc from "dayjs/plugin/utc";
+import NowStatus from "../components/now/NowStatus.astro";
+import { getNowStatuses, getStatusPreview } from "../lib/now";
 
-dayjs.extend(localizedFormat);
-dayjs.extend(utc);
-dayjs.extend(timezone);
+if (Astro.url.search) {
+    return Astro.redirect("/now");
+}
 
-const events = await getCollection("now");
-events.sort((a, b) => {
-    return new Date(b.data.date) < new Date(a.data.date) ? -1 : 1;
-});
+const statuses = await getNowStatuses();
 
 const title = "Now";
 const description = "What is Christian Krogh Nielsen up to these days?";
@@ -23,56 +16,48 @@ const description = "What is Christian Krogh Nielsen up to these days?";
 
 <AppLayout title={title} description={description}>
     <PageLayout>
-        <h1 class="text-3xl font-bold mb-6">Now</h1>
+        <h1 class="text-3xl md:text-5xl tracking-tight font-bold mb-6">Now</h1>
         <p class="text-zinc-700 dark:text-zinc-200 mb-8 text-lg">
             What's <strong>Christian</strong> up to these days?
         </p>
 
         <ul class="list-none p-0 flex flex-col">
             {
-                events.map(async (event) => {
-                    const { Content } = await render(event);
-
-                    return (
-                        <li class="grid grid-cols-[1rem_1fr] gap-x-4 justify-center relative">
-                            <div
-                                class="rounded-full w-4 h-4 bg-zinc-800 dark:bg-zinc-200 place-self-center"
-                                aria-hidden="true"
-                            />
-                            <span class="text-zinc-800 dark:text-zinc-100 font-bold">
-                                <RelativeDate date={new Date(event.data.date)} client:only="svelte">
-                                    <time
-                                        slot="fallback"
-                                        datetime={new Date(event.data.date).toISOString()}
-                                        title={dayjs(event.data.date).format("LLLL z")}
-                                        class="text-zinc-600 dark:text-zinc-400"
-                                    >
-                                        {dayjs().isSame(event.data.date, "year")
-                                            ? dayjs(event.data.date).format("MMM D")
-                                            : dayjs(event.data.date).format("ll")}
-                                    </time>
-                                </RelativeDate>
-                            </span>
-                            <div
-                                class="absolute w-0.5 bg-zinc-800 dark:bg-zinc-200 top-[8px] bottom-0 left-[7px]"
-                                aria-hidden="true"
-                            />
-                            <div class="col-start-2 col-end-3 row-start-2 pb-8 prose prose-lg dark:prose-invert prose-headings:text-zinc-900 dark:prose-headings:text-zinc-100 prose-p:text-black dark:prose-p:text-zinc-200 prose-a:font-semibold prose-code:dark:bg-zinc-800 prose-code:bg-zinc-200 prose-img:rounded-lg max-w-none">
-                                <Content />
+                statuses[0] && <NowStatus status={statuses[0]} />
+            }
+            {
+                statuses.length > 1 && (
+                    <li id="older-statuses" class="grid grid-cols-[1rem_1fr] gap-x-4 relative" data-count={statuses.length}>
+                        <div class="absolute w-0.5 bg-zinc-800 dark:bg-zinc-200 top-0 bottom-0 left-[7px]" aria-hidden="true" />
+                        <div class="col-start-2 relative pb-8">
+                            <div class="relative min-h-36 overflow-hidden flex items-center justify-center">
+                                <p id="older-status-preview" class="absolute inset-0 m-0 text-lg leading-relaxed text-black dark:text-zinc-200 blur-[5px] opacity-45 select-none pointer-events-none" style="mask-image: linear-gradient(to right, transparent, black 1.5rem, black calc(100% - 1.5rem), transparent)" aria-hidden="true">
+                                    {getStatusPreview(statuses[1])}
+                                </p>
+                                <button
+                                    id="load-older-status"
+                                    type="button"
+                                    class="relative cursor-pointer rounded-lg bg-zinc-900 px-4 py-2 text-white font-semibold shadow-sm hover:bg-zinc-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 disabled:opacity-60 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
+                                >
+                                    Load an older status
+                                </button>
                             </div>
-                        </li>
-                    );
-                })
+                            <span id="older-status-error" class="text-sm text-red-700 dark:text-red-300 mt-2" role="status" hidden>
+                                Could not load the status. Please try again.
+                            </span>
+                        </div>
+                    </li>
+                )
             }
             <li class="grid grid-cols-[1rem_1fr] gap-x-4 justify-center relative mb-6">
                 <div
-                    class="rounded-full w-4 h-4 bg-zinc-800 dark:bg-zinc-200 place-self-center"
+                    class="relative z-10 rounded-full w-4 h-4 bg-zinc-800 dark:bg-zinc-200 place-self-center"
                     aria-hidden="true"
                 >
                 </div>
                 <span class="text-zinc-800 dark:text-zinc-100 font-bold">A while ago</span>
                 <div
-                    class="absolute w-0.5 bg-zinc-800 dark:bg-zinc-200 top-[8px] bottom-0 left-[7px] hidden"
+                    class="absolute w-0.5 h-3 bg-zinc-800 dark:bg-zinc-200 top-0 left-[7px]"
                     aria-hidden="true"
                 >
                 </div>
@@ -95,3 +80,63 @@ const description = "What is Christian Krogh Nielsen up to these days?";
         </ul>
     </PageLayout>
 </AppLayout>
+
+<script>
+    import dayjs from "dayjs";
+    import relativeTime from "dayjs/plugin/relativeTime";
+
+    dayjs.extend(relativeTime);
+
+    function updateStatusDates() {
+        document.querySelectorAll<HTMLTimeElement>("time[data-now-status]").forEach((time) => {
+            const date = dayjs(time.dateTime);
+            time.textContent = dayjs().diff(date, "day") < 2
+                ? date.fromNow()
+                : (time.dataset.absoluteDate ?? "");
+        });
+    }
+
+    updateStatusDates();
+    setInterval(updateStatusDates, 60_000);
+
+    const loader = document.querySelector<HTMLElement>("#older-statuses");
+    const button = document.querySelector<HTMLButtonElement>("#load-older-status");
+    const error = document.querySelector<HTMLElement>("#older-status-error");
+    const preview = document.querySelector<HTMLElement>("#older-status-preview");
+
+    if (loader && button && error && preview) {
+        let nextIndex = 1;
+        const count = Number(loader.dataset.count);
+
+        button.addEventListener("click", async () => {
+            button.disabled = true;
+            button.textContent = "Loading…";
+            error.hidden = true;
+
+            try {
+                const response = await fetch(`/now/older/${nextIndex}`);
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+                const template = document.createElement("template");
+                template.innerHTML = await response.text();
+                const status = template.content.querySelector("li");
+                if (!status) throw new Error("Missing status");
+
+                loader.before(status);
+                updateStatusDates();
+                nextIndex += 1;
+                if (nextIndex >= count) {
+                    loader.remove();
+                } else {
+                    preview.textContent = status.dataset.nextPreview ?? "";
+                    button.disabled = false;
+                    button.textContent = "Load an older status";
+                }
+            } catch {
+                error.hidden = false;
+                button.disabled = false;
+                button.textContent = "Try again";
+            }
+        });
+    }
+</script>
