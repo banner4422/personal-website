@@ -8,8 +8,10 @@ import AboutMe from "../components/AboutMe.astro";
 
 <AppLayout title="About Me">
     <PageLayout>
-        <AvatarCard />
-        <AboutMe />
+        <div>
+            <AvatarCard showDescription={false} />
+            <AboutMe />
+        </div>
         <SocialMediaCard />
     </PageLayout>
 </AppLayout>

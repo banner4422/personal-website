@@ -1,41 +1,45 @@
 ---
-import { Image } from "astro:assets";
-import avatarImage from "../assets/avatar.jpg";
+interface Props {
+    showDescription?: boolean;
+}
+
+const { showDescription = true } = Astro.props;
 ---
 
-<div class="flex flex-col md:flex-row items-center md:items-start">
-    <div class="flex flex-col grow order-2 md:order-1 w-full">
-        <h1
-            class="font-bold text-3xl md:text-5xl tracking-tight mb-3 text-black dark:text-white text-center md:text-left"
-        >
-            Christian Krogh Nielsen
-        </h1>
-        <h2 class="text-black dark:text-zinc-50 mb-4 text-center md:text-left text-pretty">
-            Student Software Engineer at{" "}
-            <span class="font-semibold whitespace-nowrap">
-                Copenhagen{" "}<span class="text-work">Optimization</span>
-            </span>
-            <br />
-            Creator and maintainer of the{" "}<span class="text-Discord">Discord</span> bot{" "}
-            <a
-                class="dark:text-yellow-300 text-yellow-600 underline decoration-yellow-600/30 dark:decoration-yellow-300/30 underline-offset-2 hover:decoration-yellow-600 dark:hover:decoration-yellow-300 transition-colors duration-200"
-                href="https://bentobot.xyz"
-                target="_blank"
-                rel="noopener noreferrer"
+{
+    showDescription ? (
+        <div>
+            <div>
+                <h1
+                    class="font-bold text-3xl md:text-5xl tracking-tight mb-3 text-black dark:text-white text-center md:text-left"
+                >
+                    Christian Krogh Nielsen
+                </h1>
+                <h2 class="text-black dark:text-zinc-50 mb-4 text-center md:text-left text-pretty">
+                    Software Engineer at{" "}
+                    <span class="font-semibold whitespace-nowrap">
+                        Copenhagen{" "}<span class="text-work">Optimization</span>
+                    </span>
+                    <br />
+                    I build and run the{" "}<span class="text-Discord">Discord</span> bot{" "}
+                    <a
+                        class="dark:text-yellow-300 text-yellow-600 underline decoration-yellow-600/30 dark:decoration-yellow-300/30 underline-offset-2 hover:decoration-yellow-600 dark:hover:decoration-yellow-300 transition-colors duration-200"
+                        href="https://bentobot.xyz"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Bento
+                    </a>
+                </h2>
+            </div>
+        </div>
+    ) : (
+        <div>
+            <h1
+                class="font-bold text-3xl md:text-5xl tracking-tight mb-3 text-black dark:text-white text-center md:text-left"
             >
-                Bento
-            </a>
-        </h2>
-    </div>
-    <div class="w-40 md:w-52 mb-4 md:mb-0 md:ml-4 order-1 md:order-2">
-        <Image
-            alt="Christian Krogh Nielsen"
-            height="208"
-            width="208"
-            src={avatarImage}
-            class="rounded-full filter grayscale w-full"
-            loading="eager"
-            decoding="sync"
-        />
-    </div>
-</div>
+                Christian Krogh Nielsen
+            </h1>
+        </div>
+    )
+}

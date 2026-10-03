@@ -61,8 +61,6 @@ export const SOCIAL_MEDIA: SocialMediaButton[] = [
 // SEO keywords
 export const KEYWORDS = [
     "Christian Krogh Nielsen",
-    "Student Software Engineer",
-    "Student",
     "Software Engineer",
     "Web Development",
     "Copenhagen",

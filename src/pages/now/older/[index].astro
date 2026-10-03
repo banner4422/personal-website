@@ -1,0 +1,17 @@
+---
+import NowStatus from "../../../components/now/NowStatus.astro";
+import { getNowStatuses, getStatusPreview } from "../../../lib/now";
+
+const indexParam = Astro.params.index;
+const index = Number(indexParam);
+const statuses = await getNowStatuses();
+const status = indexParam && /^[1-9]\d*$/.test(indexParam) ? statuses[index] : undefined;
+
+if (!status) {
+    return new Response("Status not found", { status: 404 });
+}
+
+Astro.response.headers.set("X-Robots-Tag", "noindex");
+---
+
+<NowStatus status={status} nextPreview={getStatusPreview(statuses[index + 1])} />

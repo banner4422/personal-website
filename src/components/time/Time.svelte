@@ -40,12 +40,12 @@
 </script>
 
 {#if revealed}
-    <span class="time-display font-medium tabular-nums time-revealed text-black dark:text-white"
+    <span class="time-display time-revealed text-black dark:text-white"
         >{time}</span
     >
 {:else}
     <button
-        class="time-display font-medium tabular-nums time-blurred text-zinc-400 dark:text-zinc-500"
+        class="time-display time-blurred text-zinc-400 dark:text-zinc-500"
         onclick={reveal}
         onkeydown={(e) => e.key === "Enter" && reveal()}
         title="Click to reveal the time">{time}</button

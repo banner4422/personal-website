@@ -1,0 +1,48 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { render } from "astro:content";
+
+interface Props {
+    status: CollectionEntry<"now">;
+    nextPreview?: string;
+}
+
+const { status, nextPreview } = Astro.props;
+const { Content } = await render(status);
+const dateFormatter = new Intl.DateTimeFormat("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+    timeZone: "Europe/Copenhagen",
+});
+const timestampFormatter = new Intl.DateTimeFormat("en-US", {
+    dateStyle: "full",
+    timeStyle: "long",
+    timeZone: "Europe/Copenhagen",
+});
+---
+
+<li class="grid grid-cols-[1rem_1fr] gap-x-4 justify-center relative" data-next-preview={nextPreview}>
+    <div
+        class="rounded-full w-4 h-4 bg-zinc-800 dark:bg-zinc-200 place-self-center"
+        aria-hidden="true"
+    />
+    <time
+        datetime={status.data.date.toISOString()}
+        title={timestampFormatter.format(status.data.date)}
+        data-now-status
+        data-absolute-date={dateFormatter.format(status.data.date)}
+        class="text-zinc-800 dark:text-zinc-100 font-bold"
+    >
+        {dateFormatter.format(status.data.date)}
+    </time>
+    <div
+        class="absolute w-0.5 bg-zinc-800 dark:bg-zinc-200 top-[8px] bottom-0 left-[7px]"
+        aria-hidden="true"
+    />
+    <div class="col-start-2 col-end-3 row-start-2 pb-8">
+        <div class="prose prose-lg dark:prose-invert prose-headings:text-zinc-900 dark:prose-headings:text-zinc-100 prose-p:text-black dark:prose-p:text-zinc-200 prose-a:font-semibold prose-code:dark:bg-zinc-800 prose-code:bg-zinc-200 prose-img:rounded-lg max-w-none">
+            <Content />
+        </div>
+    </div>
+</li>
